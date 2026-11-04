@@ -1,0 +1,36 @@
+# Conjunto de TESTE (retido) da minimizacao de dados pessoais.
+# Escrito antes da primeira execucao da versao 0.3 e nao usado para ajustar as
+# expressoes regulares nem as regras de nomes: mede a generalizacao. O conjunto
+# de desenvolvimento (dados_pessoais.yaml) foi usado para corrigir a versao 0.2.0.
+# Todos os dados sao ficticios.
+
+positivos:
+  - {id: T01, tipo: CPF, texto: "Interessado: CPF: 390.533.447-05, servidor efetivo.", remover: ["390.533.447-05"]}
+  - {id: T02, tipo: CPF, texto: "o CPF do gestor do contrato é 39053344705", remover: ["39053344705"]}
+  - {id: T03, tipo: CNPJ, texto: "Atestado de exclusividade emitido para o CNPJ 45.997.418/0001-53.", remover: ["45.997.418/0001-53"]}
+  - {id: T04, tipo: EMAIL, texto: "Dúvidas: compras.saude@pmfi.pr.gov.br ou setor.patrimonio@gmail.com", remover: ["compras.saude@pmfi.pr.gov.br", "setor.patrimonio@gmail.com"]}
+  - {id: T05, tipo: TELEFONE, texto: "Telefone: +55 (45) 3521-1234, ramal 210.", remover: ["3521-1234"]}
+  - {id: T06, tipo: TELEFONE, texto: "Fone (045) 3524-1000 para agendar a vistoria.", remover: ["3524-1000"]}
+  - {id: T07, tipo: TELEFONE, texto: "Recados com a chefia no 45 3521.1234.", remover: ["3521.1234"]}
+  - {id: T08, tipo: TELEFONE, texto: "Falar com o fiscal pelo 99812-3344.", remover: ["99812-3344"]}
+  - {id: T09, tipo: CEP, texto: "Local de entrega: CEP: 85.864-470, Foz do Iguaçu.", remover: ["85.864-470"], preservar: ["Foz do Iguaçu"]}
+  - {id: T10, tipo: RG, texto: "Recebedor: RG 7.654.321-0, conforme termo.", remover: ["7.654.321-0"]}
+  - {id: T11, tipo: NOME, texto: "Demanda registrada por José Souza, do setor de frota.", remover: ["José Souza"]}
+  - {id: T12, tipo: NOME, texto: "Encaminhado pela Dra. Luciana Martins Prado, médica responsável.", remover: ["Luciana Martins Prado"]}
+  - {id: T13, tipo: NOME, texto: "MARIA DA CONCEIÇÃO PEREIRA solicitou a reposição dos materiais.", remover: ["MARIA DA CONCEIÇÃO PEREIRA"]}
+  - {id: T14, tipo: NOME, texto: "Equipe: Rafael Gomes e Bianca Torres acompanharão a entrega.", remover: ["Rafael Gomes", "Bianca Torres"]}
+  - {id: T15, tipo: NOME, texto: "Segundo o diretor Marcos Antônio Vieira, a demanda é urgente.", remover: ["Marcos Antônio Vieira"]}
+
+negativos:
+  - {id: U01, texto: "Ações de enfrentamento à violência previstas na Lei Maria da Penha."}
+  - {id: U02, texto: "Manutenção da Avenida Juscelino Kubitschek e da Rodovia BR-277."}
+  - {id: U03, texto: "Reforma da Escola Estadual Ayrton Senna da Silva."}
+  - {id: U04, texto: "Beneficiários do Programa Bolsa Família atendidos pelo CRAS."}
+  - {id: U05, texto: "Formatação conforme a norma ABNT NBR 14724:2011."}
+  - {id: U06, texto: "Processo judicial nº 0001234-56.2026.8.16.0030 em trâmite."}
+  - {id: U07, texto: "Central de atendimento 0800 643 1234, gratuita ao cidadão."}
+  - {id: U08, texto: "Compra de 2.500 resmas de papel A4 e 300 cartuchos de toner."}
+  - {id: U09, texto: "Termo de referência versão 3.1, de 12/08/2026, revisado em 20/08/2026."}
+  - {id: U10, texto: "Atender ao Hospital Municipal Padre Germano Lauck e à UPA Morumbi."}
+  - {id: U11, texto: "Licença de uso do sistema por 36 meses, com 200 usuários simultâneos."}
+  - {id: U12, texto: "Recursos da emenda parlamentar 202641230007, exercício de 2026."}

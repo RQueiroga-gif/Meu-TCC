@@ -1,0 +1,24 @@
+% Gerado por avaliacao/relatorio.py — nao editar a mao; rode novamente a avaliacao.
+\begin{table}[htbp]
+\caption{Minimização de dados pessoais --- conjunto de desenvolvimento}\label{tab:minimizacao_desen}
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Tipo & Itens & v0.2.0 & v0.3 (regex) & v0.3 (regex + NER) \\
+\midrule
+CEP & 2 & 50\% & 100\% & 100\% \\
+CNPJ & 3 & 67\% & 100\% & 100\% \\
+CPF & 4 & 100\% & 100\% & 100\% \\
+EMAIL & 4 & 100\% & 100\% & 100\% \\
+NOME & 6 & 0\% & 0\% & 100\% \\
+RG & 2 & 0\% & 100\% & 100\% \\
+TELEFONE & 7 & 86\% & 100\% & 100\% \\
+\textbf{Global} & 28 & \textbf{61\%} & \textbf{79\%} & \textbf{100\%} \\
+Falsos positivos & 15 textos & 1 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}{\small \textbf{Fonte:} Elaborado pelo autor (2026), a partir de \texttt{avaliacao/resultados/resumo.json}.}\par
+{\small \textbf{Nota:} proporção de dados pessoais removidos do texto; falsos positivos: textos sem dado pessoal alterados pela minimização.}\end{minipage}
+\end{table}

@@ -1,0 +1,8 @@
+# Normaliza fins de linha (o projeto mistura CRLF do Windows e LF)
+* text=auto
+*.png binary
+*.pdf binary
+*.zip binary
+# Textos oficiais: bytes preservados (o SHA-256 está em ingestao/oficial/MANIFESTO.yaml)
+ingestao/oficial/*.htm -text
+ingestao/amostra/** -text

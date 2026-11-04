@@ -1,0 +1,55 @@
+# Conjunto de teste da minimizacao de dados pessoais (RN06; LGPD, art. 6º, III).
+# Todos os dados sao ficticios. CPFs e CNPJs foram gerados com digitos
+# verificadores validos, mas nao correspondem a pessoas reais conhecidas.
+#
+# positivos: cada item lista os dados pessoais que NAO podem sobreviver no texto
+#   minimizado ("remover") e trechos que DEVEM sobreviver ("preservar").
+# negativos: textos sem dado pessoal; a minimizacao nao pode altera-los.
+
+positivos:
+  - {id: P01, tipo: CPF, texto: "Responsável pela demanda: CPF 529.982.247-25.", remover: ["529.982.247-25"]}
+  - {id: P02, tipo: CPF, texto: "Servidor de CPF 52998224725 solicitou a compra.", remover: ["52998224725"]}
+  - {id: P03, tipo: CPF, texto: "CPF nº 111.444.777-35, lotado no almoxarifado, com estimativa de R$ 12.000,00.", remover: ["111.444.777-35"], preservar: ["R$ 12.000,00"]}
+  - {id: P04, tipo: CNPJ, texto: "Fornecedor atual: CNPJ 11.222.333/0001-81.", remover: ["11.222.333/0001-81"]}
+  - {id: P05, tipo: CNPJ, texto: "Empresa de CNPJ 11222333000181 presta o serviço hoje.", remover: ["11222333000181"]}
+  - {id: P06, tipo: CNPJ, texto: "Cotação recebida do CNPJ alfanumérico 12.ABC.345/01DE-35.", remover: ["12.ABC.345/01DE-35"]}
+  - {id: P07, tipo: EMAIL, texto: "Contato: joao.silva@prefeitura.pr.gov.br para dúvidas.", remover: ["joao.silva@prefeitura.pr.gov.br"]}
+  - {id: P08, tipo: EMAIL, texto: "Enviar a cotação para maria_souza+compras@gmail.com.", remover: ["maria_souza+compras@gmail.com"]}
+  - {id: P09, tipo: EMAIL, texto: "E-mail do fiscal: CONTATO.FISCAL@EMPRESA.COM.BR", remover: ["CONTATO.FISCAL@EMPRESA.COM.BR"]}
+  - {id: P10, tipo: TELEFONE, texto: "Telefone do requisitante: (45) 99876-5432.", remover: ["99876-5432"]}
+  - {id: P11, tipo: TELEFONE, texto: "Ligar para (45) 3521-1234 no horário comercial.", remover: ["3521-1234"]}
+  - {id: P12, tipo: TELEFONE, texto: "Celular 45 99876-5432 do responsável.", remover: ["99876-5432"]}
+  - {id: P13, tipo: TELEFONE, texto: "WhatsApp +55 45 99876-5432 para agendamento.", remover: ["99876-5432"]}
+  - {id: P14, tipo: TELEFONE, texto: "Telefone (45)998765432 da chefia.", remover: ["998765432"]}
+  - {id: P15, tipo: TELEFONE, texto: "Contato pelo celular 45998765432.", remover: ["45998765432"]}
+  - {id: P16, tipo: CEP, texto: "Entrega no CEP 85851-000, sala 12.", remover: ["85851-000"]}
+  - {id: P17, tipo: CEP, texto: "Endereço de entrega com CEP 85.851-000.", remover: ["85.851-000"]}
+  - {id: P18, tipo: RG, texto: "Servidor portador do RG 12.345.678-9 assinará o recebimento.", remover: ["12.345.678-9"]}
+  - {id: P19, tipo: RG, texto: "Documento de identidade RG nº 9.876.543-2 SESP/PR.", remover: ["9.876.543-2"]}
+  - {id: P20, tipo: NOME, texto: "A demanda foi apresentada pelo servidor João Carlos da Silva, do protocolo.", remover: ["João Carlos da Silva"]}
+  - {id: P21, tipo: NOME, texto: "Solicitado pela Sra. Maria Aparecida Souza para o setor de compras.", remover: ["Maria Aparecida Souza"]}
+  - {id: P22, tipo: NOME, texto: "O fiscal designado é Pedro Henrique Oliveira, matrícula 1234.", remover: ["Pedro Henrique Oliveira"]}
+  - {id: P23, tipo: NOME, texto: "Encaminhar a Ana Paula Ferreira, chefe da Divisão de Patrimônio, a lista de bens.", remover: ["Ana Paula Ferreira"], preservar: ["Divisão de Patrimônio"]}
+  - {id: P24, tipo: NOME, texto: "Conforme relato de Carlos Eduardo Lima, os equipamentos estão obsoletos.", remover: ["Carlos Eduardo Lima"]}
+  - id: P25
+    tipo: MISTO
+    texto: "Aquisição de 40 notebooks, estimativa de R$ 180.000,00 até 30/06/2027. Responsável: Fernanda Costa Ribeiro, CPF 529.982.247-25, e-mail fernanda.ribeiro@educacao.foz.pr.gov.br, telefone (45) 99123-4567."
+    remover: ["Fernanda Costa Ribeiro", "529.982.247-25", "fernanda.ribeiro@educacao.foz.pr.gov.br", "99123-4567"]
+    preservar: ["40 notebooks", "R$ 180.000,00", "30/06/2027"]
+
+negativos:
+  - {id: N01, texto: "Aquisição de 40 notebooks com estimativa de R$ 180.000,00 e conclusão até 30/06/2027."}
+  - {id: N02, texto: "Processo SEI nº 23000.012345/2026-11, instruído conforme a Lei nº 14.133/2021."}
+  - {id: N03, texto: "Dispensa com fundamento no art. 75, II, da Lei nº 14.133/2021, até R$ 50.000,00."}
+  - {id: N04, texto: "Pregão Eletrônico nº 90012/2026, item CATMAT 150452, quantidade de 1.500.000 folhas."}
+  - {id: N05, texto: "Nota de empenho 2026NE000123 emitida em 15/12/2026, das 08:00 às 17:00."}
+  - {id: N06, texto: "Valor unitário de R$ 3.999,90 e total de R$ 159.996,00 para o exercício de 2027."}
+  - {id: N07, texto: "Atender às unidades da Secretaria Municipal de Educação de Foz do Iguaçu e ao Departamento de Licitações."}
+  - {id: N08, texto: "Reforma da Escola Municipal Tancredo Neves e do Colégio Estadual Presidente Costa e Silva."}
+  - {id: N09, texto: "Equipamentos para o Hospital Ministro Costa Cavalcanti, conveniado ao Sistema Único de Saúde."}
+  - {id: N10, texto: "Recursos do Ministério da Saúde, conforme orientação do Tribunal de Contas da União."}
+  - {id: N11, texto: "Contrato nº 12/2026, com vigência de 12 meses, prorrogável até 60 meses."}
+  - {id: N12, texto: "Atendimento pela central 156 e pela ouvidoria, ramal 2045."}
+  - {id: N13, texto: "Instalação na Avenida Brasil, 1500, Centro, em área de 250 m²."}
+  - {id: N14, texto: "Plano de contratações anual de 2027, código PCA 2027-0458, grau de prioridade alto."}
+  - {id: N15, texto: "Substituição de 120 lâmpadas fluorescentes por LED de 18 W com selo Procel."}

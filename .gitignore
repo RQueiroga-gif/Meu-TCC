@@ -1,0 +1,25 @@
+# ambiente
+.env
+.venv/
+__pycache__/
+*.py[cod]
+
+# dados locais (o banco e o índice são reconstruíveis pelo seed)
+backend/db/*.sqlite3*
+backend/db/*.npz
+backend/saida/
+ingestao/brutos/
+
+# ferramentas
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+
+# indice lexical (BM25)
+backend/db/*.json.gz
+
+# cache de vetores da avaliacao (regeravel)
+backend/avaliacao/cache/
+.coverage
+coverage.json
+backend/avaliacao/resultados_anteriores/

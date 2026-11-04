@@ -1,0 +1,24 @@
+% Gerado por avaliacao/relatorio.py — nao editar a mao; rode novamente a avaliacao.
+\begin{table}[htbp]
+\caption{Tempo de resposta por etapa (ms)}\label{tab:latencia}
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Etapa & n & Mediana & P95 & Máximo \\
+\midrule
+Registrar demanda (HTTP) & 32 & 32,5 & 40,0 & 51,2 \\
+Recuperação & 30 & 579,5 & 645,4 & 687,4 \\
+Geração (provedor determinístico) & 30 & 0,2 & 0,2 & 0,3 \\
+Normalização, verificação e análise & 30 & 43,0 & 80,1 & 112,8 \\
+Persistência e auditoria & 30 & 6,1 & 6,9 & 15,6 \\
+Total do orquestrador & 30 & 637,8 & 703,0 & 807,9 \\
+Gerar minuta (HTTP) & 32 & 642,9 & 710,2 & 815,7 \\
+Validar (HTTP) & 30 & 9,7 & 10,8 & 11,3 \\
+Exportar .docx (HTTP) & 30 & 264,5 & 292,4 & 314,1 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}{\small \textbf{Fonte:} Elaborado pelo autor (2026), a partir de \texttt{avaliacao/resultados/resumo.json}.}\par
+{\small \textbf{Nota:} provedor de linguagem determinístico; o tempo do modelo de linguagem real não está incluído.}\end{minipage}
+\end{table}

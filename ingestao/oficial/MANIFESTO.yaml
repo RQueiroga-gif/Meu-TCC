@@ -1,0 +1,24 @@
+# Texto oficial do corpus normativo (HTML do Planalto), obtido em 26/10/2026.
+# O hash SHA-256 identifica a versao exata usada na avaliacao do capitulo de
+# resultados; a reingestao so reindexa quando o hash da fonte muda.
+
+- sigla: L14133
+  arquivo: L14133.htm
+  url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14133.htm
+  bytes: 649705
+  sha256: 71244ea6f2ce95007f8af07761a034a8572c30531751d1f05c9399a54ad8eb05
+  obtido_em: '2026-10-26'
+
+- sigla: D10947
+  arquivo: D10947.htm
+  url: https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/decreto/d10947.htm
+  bytes: 52598
+  sha256: 9eb9deeffcb15479d5893678ebe3358227157dbec0a9f173e2eeb2ec87cb0b48
+  obtido_em: '2026-10-26'
+
+- sigla: L13709
+  arquivo: L13709.htm
+  url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm
+  bytes: 310252
+  sha256: 81d1a9a34d7bca9a3908a4c3b018f5fd128deedc04699209b740ca5d4b2467be
+  obtido_em: '2026-10-26'

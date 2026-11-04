@@ -1,0 +1,60 @@
+# Ambiente completo: MySQL, backend e frontend.
+# Uso: docker compose up --build   (interface em http://localhost:8501)
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_SENHA_ROOT:-raiz-troque-esta-senha}
+      MYSQL_DATABASE: ${DB_NOME:-dfd}
+      MYSQL_USER: ${DB_USUARIO:-dfd}
+      MYSQL_PASSWORD: ${DB_SENHA:-troque-esta-senha}
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - mysql-dados:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 20
+
+  backend:
+    build: ./backend
+    environment:
+      DB_DIALETO: mysql
+      DB_HOST: mysql
+      DB_NOME: ${DB_NOME:-dfd}
+      DB_USUARIO: ${DB_USUARIO:-dfd}
+      DB_SENHA: ${DB_SENHA:-troque-esta-senha}
+      SECRET_KEY: ${SECRET_KEY:-troque-esta-chave-em-producao}
+      LLM_PROVEDOR: ${LLM_PROVEDOR:-echo}
+      LLM_MODELO: ${LLM_MODELO:-claude-haiku-4-5-20251001}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      EMBEDDING_MODELO: ${EMBEDDING_MODELO:-hash}
+      OLLAMA_URL: http://host.docker.internal:11434
+      INDICE_ARQUIVO: /app/dados/indice.npz
+      PASTA_SAIDA: /app/dados/saida
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    ports: ["8001:8001"]
+    volumes:
+      # scripts/seed.py procura as amostras em <raiz>/ingestao/amostra
+      - ./ingestao:/ingestao:ro
+      # indice vetorial e .docx exportados sobrevivem a recriacao do container
+      - backend-dados:/app/dados
+    depends_on:
+      mysql: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8001/saude')"]
+      interval: 10s
+      retries: 30
+      start_period: 20s
+
+  frontend:
+    build: ./frontend
+    environment:
+      API_URL: http://backend:8001
+    ports: ["8501:8501"]
+    depends_on:
+      backend: {condition: service_healthy}
+
+volumes:
+  mysql-dados: {}
+  backend-dados: {}

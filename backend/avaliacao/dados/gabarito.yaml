@@ -1,0 +1,318 @@
+# Gabarito da avaliacao do prototipo (capitulo de Analise de Resultados).
+#
+# demandas: necessidades administrativas sinteticas, redigidas no registro de um
+#   requisitante (linguagem natural, sem copiar o texto legal). Para cada uma:
+#   - relevantes: dispositivos que um especialista citaria para fundamentar a
+#     justificativa e a descricao do objeto daquela demanda especifica
+#     (referencia_vetorial "SIGLA|dispositivo", conferida no texto oficial);
+#   - campos: valores que devem ser EXTRAIDOS da demanda (art. 8º, III a VII, do
+#     Decreto nº 10.947/2022); null quando a informacao nao consta.
+# fora_do_dominio: pedidos que nao sao demandas de contratacao; o portao de
+#   suficiencia deve barra-los (fluxo alternativo A1).
+#
+# Elaborado pelo autor a partir da leitura dos dispositivos (Lei nº 14.133/2021,
+# Decreto nº 10.947/2022 e LGPD, texto oficial de 26/10/2026). Os dispositivos
+# genericos do DFD (Decreto nº 10.947/2022, art. 8º) nao entram nos relevantes,
+# salvo quando a demanda trata do proprio planejamento: o que se mede e a
+# capacidade de recuperar o fundamento ESPECIFICO de cada objeto.
+
+versao: "1.0"
+data: "2026-10-26"
+
+demandas:
+  - id: D01
+    titulo: Notebooks para laboratórios escolares
+    descricao: >-
+      Aquisição de 40 notebooks para os laboratórios de informática das escolas
+      municipais, em substituição a equipamentos com mais de oito anos de uso que
+      já não suportam os sistemas educacionais. Prioridade alta, estimativa de
+      R$ 180.000,00 e conclusão pretendida até 30/06/2027.
+    relevantes: ["L14133|art. 6º, X", "L14133|art. 40, caput", "L14133|art. 40, III", "L14133|art. 6º, XIII"]
+    campos: {quantidade: "40", estimativa_valor: "R$ 180.000,00", data_pretendida: "30/06/2027", grau_prioridade: "alto", vinculacao_outro_dfd: null}
+
+  - id: D02
+    titulo: Limpeza das unidades de saúde
+    descricao: >-
+      Contratação de empresa para serviços de limpeza, asseio e conservação das
+      unidades básicas de saúde, com postos de trabalho fixos e funcionários da
+      contratada atuando diariamente nas dependências, pelo período de 12 meses.
+    relevantes: ["L14133|art. 6º, XV", "L14133|art. 6º, XVI", "L14133|art. 47, caput"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D03
+    titulo: Vigilância patrimonial
+    descricao: >-
+      Serviço de vigilância patrimonial armada, 24 horas por dia, para o prédio
+      da prefeitura e o almoxarifado central, com vigilantes alocados
+      exclusivamente nos postos do órgão.
+    relevantes: ["L14133|art. 6º, XVI", "L14133|art. 6º, XV"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D04
+    titulo: Reforma da cobertura
+    descricao: >-
+      Reforma da cobertura e substituição do telhado do prédio da Secretaria de
+      Educação, com infiltrações que comprometem a segurança dos servidores,
+      exigindo responsável técnico de engenharia e projeto da intervenção.
+    relevantes: ["L14133|art. 6º, XII", "L14133|art. 6º, XXI", "L14133|art. 46, caput", "L14133|art. 6º, XXV"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D05
+    titulo: Manutenção predial
+    descricao: >-
+      Contratação de serviços de manutenção predial preventiva e corretiva
+      (elétrica, hidráulica e alvenaria) nos prédios administrativos, com valor
+      estimado de R$ 85.000,00 para o exercício.
+    relevantes: ["L14133|art. 6º, XXI", "L14133|art. 75, I", "L14133|art. 6º, XV"]
+    campos: {quantidade: null, estimativa_valor: "R$ 85.000,00", data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D06
+    titulo: Material de expediente por registro de preços
+    descricao: >-
+      Registro de preços para aquisição parcelada de material de expediente
+      (papel A4, canetas, grampeadores e pastas) para todas as secretarias ao
+      longo de 12 meses, com entregas conforme a necessidade de cada unidade.
+    relevantes: ["L14133|art. 6º, XLV", "L14133|art. 40, II", "L14133|art. 82, caput", "L14133|art. 86, caput"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D07
+    titulo: Hortifrutigranjeiros para a merenda
+    descricao: >-
+      Compra de frutas, verduras e pães para a merenda escolar apenas durante o
+      período necessário à conclusão da licitação que está em andamento, por se
+      tratar de alimentos perecíveis que não podem faltar aos alunos.
+    relevantes: ["L14133|art. 75, IV", "L14133|art. 40, IV"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D08
+    titulo: Bombas e caminhões-pipa após enchente
+    descricao: >-
+      Contratação urgente de locação de bombas de sucção e caminhões-pipa para
+      atender os bairros atingidos pela enchente, após decretação de situação de
+      emergência, para evitar risco à saúde e à segurança da população.
+    relevantes: ["L14133|art. 75, VIII"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D09
+    titulo: Software de gestão tributária exclusivo
+    descricao: >-
+      Aquisição de licenças do software de gestão tributária já utilizado pelo
+      município, comercializado apenas pela empresa desenvolvedora, conforme
+      atestado de exclusividade apresentado.
+    relevantes: ["L14133|art. 74, I", "L14133|art. 74, § 1º"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D10
+    titulo: Curso de fiscalização de contratos
+    descricao: >-
+      Contratação de curso de capacitação de servidores em gestão e fiscalização
+      de contratos, ministrado por instrutor de reconhecida experiência e
+      publicações na área, para 30 participantes.
+    relevantes: ["L14133|art. 74, III", "L14133|art. 6º, XVIII", "L14133|art. 6º, XIX", "L14133|art. 74, § 3º"]
+    campos: {quantidade: "30", estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D11
+    titulo: Locação de imóvel para o CRAS
+    descricao: >-
+      Locação de imóvel para instalar a nova unidade do CRAS no bairro Morumbi,
+      cuja localização é indispensável ao atendimento das famílias da região,
+      não havendo imóvel público disponível.
+    relevantes: ["L14133|art. 51, caput", "L14133|art. 74, V", "L14133|art. 74, § 5º"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D12
+    titulo: Cadeiras ergonômicas
+    descricao: >-
+      Compra de 15 cadeiras ergonômicas para o setor de atendimento ao público,
+      com valor estimado de R$ 12.000,00, prioridade média.
+    relevantes: ["L14133|art. 75, II", "L14133|art. 6º, X"]
+    campos: {quantidade: "15", estimativa_valor: "R$ 12.000,00", data_pretendida: null, grau_prioridade: "médio", vinculacao_outro_dfd: null}
+
+  - id: D13
+    titulo: Projetos de arquitetura e engenharia da creche
+    descricao: >-
+      Contratação de empresa para elaborar os projetos básico e executivo de
+      arquitetura e engenharia da nova creche municipal.
+    relevantes: ["L14133|art. 6º, XVIII", "L14133|art. 6º, XXV", "L14133|art. 6º, XXVI"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D14
+    titulo: Construção de unidade de saúde
+    descricao: >-
+      Construção de uma unidade básica de saúde no loteamento Três Lagoas,
+      incluindo fundações, estrutura, instalações e acabamento, com projeto
+      executivo já aprovado. Vinculada ao DFD 0012/2026, que trata dos projetos.
+    relevantes: ["L14133|art. 6º, XII", "L14133|art. 46, caput", "L14133|art. 46, § 1º"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: "DFD 0012/2026"}
+
+  - id: D15
+    titulo: Veículos para transporte de pacientes
+    descricao: >-
+      Aquisição de 3 veículos utilitários adaptados para o transporte de
+      pacientes em tratamento fora do município, com garantia e assistência
+      técnica na região.
+    relevantes: ["L14133|art. 6º, X", "L14133|art. 40, § 1º, III", "L14133|art. 40, caput"]
+    campos: {quantidade: "3", estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D16
+    titulo: Combustível para a frota
+    descricao: >-
+      Fornecimento contínuo de gasolina e óleo diesel para os veículos da frota
+      municipal durante todo o exercício de 2027, com abastecimento conforme o
+      consumo.
+    relevantes: ["L14133|art. 6º, XV", "L14133|art. 40, caput", "L14133|art. 40, II"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D17
+    titulo: Hospedagem em nuvem do protocolo eletrônico
+    descricao: >-
+      Contratação de serviço de computação em nuvem para hospedar o sistema de
+      protocolo eletrônico, que armazena dados pessoais dos cidadãos e exige
+      medidas de segurança contra acessos não autorizados.
+    relevantes: ["L13709|art. 46, caput", "L14133|art. 6º, XIII", "L13709|art. 33, caput"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D18
+    titulo: Credenciamento de clínicas
+    descricao: >-
+      Credenciamento de clínicas e laboratórios para realizar exames de imagem
+      nos usuários do SUS, cabendo ao próprio paciente escolher o prestador
+      dentre os credenciados.
+    relevantes: ["L14133|art. 6º, XLIII", "L14133|art. 79, caput", "L14133|art. 79, II", "L14133|art. 74, IV"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D19
+    titulo: Show no aniversário da cidade
+    descricao: >-
+      Contratação de banda musical consagrada pela crítica e pelo público para o
+      show do aniversário da cidade, por intermédio do empresário exclusivo do
+      grupo.
+    relevantes: ["L14133|art. 74, II", "L14133|art. 74, § 2º"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D20
+    titulo: Pavimentação asfáltica
+    descricao: >-
+      Pavimentação asfáltica de 5 km de vias urbanas no bairro Porto Belo, com
+      drenagem pluvial, orçamento de referência baseado em tabelas oficiais de
+      custos de obras.
+    relevantes: ["L14133|art. 6º, XII", "L14133|art. 23, § 2º", "L14133|art. 46, caput"]
+    campos: {quantidade: "5 km", estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D21
+    titulo: Medicamentos da farmácia básica
+    descricao: >-
+      Aquisição de medicamentos da farmácia básica com entregas parceladas ao
+      longo do ano, em quantidades definidas a partir do consumo dos últimos
+      doze meses registrado no sistema de estoque.
+    relevantes: ["L14133|art. 40, III", "L14133|art. 40, II", "L14133|art. 6º, XLV"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D22
+    titulo: Iluminação e climatização eficientes
+    descricao: >-
+      Substituição de lâmpadas fluorescentes por LED e de aparelhos de ar-
+      condicionado antigos por modelos com selo de eficiência energética, para
+      reduzir o consumo de energia e o impacto ambiental dos prédios públicos.
+    relevantes: ["L14133|art. 11, IV", "L14133|art. 18, § 1º, XII"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D23
+    titulo: Serviços por associação de pessoas com deficiência
+    descricao: >-
+      Contratação de associação de pessoas com deficiência, sem fins lucrativos,
+      para serviços de digitalização de documentos do arquivo municipal.
+    relevantes: ["L14133|art. 75, XIV"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D24
+    titulo: Demanda para o plano de contratações anual
+    descricao: >-
+      Formalização da demanda de manutenção dos aparelhos de ar-condicionado para
+      inclusão no plano de contratações anual de 2027, com identificação da área
+      requisitante e do grau de prioridade baixo.
+    relevantes: ["D10947|art. 8º, caput", "D10947|art. 2º, IV", "L14133|art. 12, VII", "D10947|art. 6º, caput"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: "baixo", vinculacao_outro_dfd: null}
+
+  - id: D25
+    titulo: Transporte escolar
+    descricao: >-
+      Prestação de serviço de transporte escolar para alunos da zona rural,
+      de forma continuada ao longo do ano letivo, essencial para a frequência
+      escolar.
+    relevantes: ["L14133|art. 6º, XV"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D26
+    titulo: Pequenas despesas de pronto pagamento
+    descricao: >-
+      Pequenas compras de pronto pagamento, de até R$ 10.000,00, para reposição
+      imediata de peças e materiais de consumo, que dispensam registro no plano
+      de contratações anual.
+    relevantes: ["D10947|art. 7º, IV", "L14133|art. 95, § 2º"]
+    campos: {quantidade: null, estimativa_valor: "R$ 10.000,00", data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D27
+    titulo: Contratação com informações sigilosas
+    descricao: >-
+      Aquisição de equipamentos de monitoramento para a guarda municipal cujas
+      especificações foram classificadas como sigilosas, não devendo constar do
+      plano de contratações anual publicado.
+    relevantes: ["D10947|art. 7º, I", "D10947|art. 7º, parágrafo único"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D28
+    titulo: Uniformes escolares
+    descricao: >-
+      Aquisição de uniformes escolares padronizados para 5.000 alunos da rede
+      municipal, divididos em lotes por tipo de peça para ampliar a competição.
+    relevantes: ["L14133|art. 40, V", "L14133|art. 40, § 2º", "L14133|art. 6º, X"]
+    campos: {quantidade: "5.000", estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D29
+    titulo: Peças do fabricante durante a garantia
+    descricao: >-
+      Aquisição de peças de reposição do aparelho de raio-X junto ao fabricante
+      original, durante o período de garantia técnica, condição exigida para não
+      perder a garantia do equipamento.
+    relevantes: ["L14133|art. 75, IV", "L14133|art. 47, § 2º"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D30
+    titulo: Instituição de pesquisa
+    descricao: >-
+      Contratação de fundação de apoio vinculada à universidade estadual para
+      executar projeto de pesquisa e desenvolvimento institucional voltado à
+      inovação na gestão pública municipal.
+    relevantes: ["L14133|art. 75, XV", "L14133|art. 6º, LV"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D31
+    titulo: Estimativa de preços de mobiliário
+    descricao: >-
+      Aquisição de mobiliário para a biblioteca pública, com estimativa de preço
+      obtida em painel de preços oficial, contratações similares de outros
+      órgãos e cotação com três fornecedores.
+    relevantes: ["L14133|art. 23, caput", "L14133|art. 23, § 1º", "L14133|art. 6º, X"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+  - id: D32
+    titulo: Estudo técnico preliminar da nova sede
+    descricao: >-
+      Formalização da necessidade de nova sede para a Secretaria de Assistência
+      Social, cuja solução será definida em estudo técnico preliminar com
+      levantamento de mercado e análise das alternativas.
+    relevantes: ["L14133|art. 6º, XX", "L14133|art. 18, § 1º", "L14133|art. 18, I"]
+    campos: {quantidade: null, estimativa_valor: null, data_pretendida: null, grau_prioridade: null, vinculacao_outro_dfd: null}
+
+fora_do_dominio:
+  - {id: F01, descricao: "Gostaria de saber quantos dias de férias tenho direito neste ano."}
+  - {id: F02, descricao: "Qual é a previsão do tempo para o fim de semana em Foz do Iguaçu?"}
+  - {id: F03, descricao: "Escreva um poema sobre o outono e as folhas que caem."}
+  - {id: F04, descricao: "Preciso de ajuda para calcular minha aposentadoria pelo regime próprio."}
+  - {id: F05, descricao: "Faça um resumo do jogo de futebol de ontem à noite."}
+  - {id: F06, descricao: "Como faço para trocar a senha do meu e-mail institucional?"}
+  - {id: F07, descricao: "Receita de bolo de cenoura com cobertura de chocolate."}
+  - {id: F08, descricao: "Traduza para o inglês a frase bom dia a todos os presentes."}
+  - {id: F09, descricao: "Agendar reunião com a equipe na próxima terça-feira às 14h."}
+  - {id: F10, descricao: "Sugira uma lista de filmes para assistir no feriado prolongado."}

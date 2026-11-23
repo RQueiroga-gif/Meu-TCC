@@ -22,7 +22,6 @@ def _configurar_ambiente(pasta: Path) -> None:
             "DB_DIALETO": "sqlite",
             "DB_ARQUIVO": str(pasta / "teste.sqlite3"),
             "INDICE_ARQUIVO": str(pasta / "indice.npz"),
-            "INDICE_BACKEND": "numpy",
             "INDICE_LEXICAL_ARQUIVO": str(pasta / "indice_lexical.json.gz"),
             "RECUPERACAO_MODO": "denso",          # cada modo tem testes proprios
             "LLM_PROVEDOR": "echo",

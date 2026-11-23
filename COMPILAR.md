@@ -177,12 +177,10 @@ execução baixa o modelo e demora alguns minutos.
 
 | Provedor | `.env` | Observação |
 |---|---|---|
-| Anthropic (nuvem) | `LLM_PROVEDOR=anthropic`, `ANTHROPIC_API_KEY=sk-ant-…`, `LLM_MODELO=claude-haiku-4-5-20251001` | Retentativas automáticas em 429/5xx |
 | Gemini (nuvem) | `LLM_PROVEDOR=gemini`, `GEMINI_API_KEY=…`, `GEMINI_MODELO=gemini-3.6-flash` | Chave em aistudio.google.com. No nível gratuito o Google pode usar o conteúdo enviado: só demandas fictícias. Espera automática em 429/503 |
-| Groq (nuvem) | `LLM_PROVEDOR=groq`, `GROQ_API_KEY=…`, `GROQ_MODELO=openai/gpt-oss-120b` | Chave em console.groq.com. Nível gratuito com limite por minuto e por dia; respeita o `retry-after`. Só demandas fictícias até a política de dados constar no TCC |
+| Groq (nuvem, gerador do E9) | `LLM_PROVEDOR=groq`, `GROQ_API_KEY=…`, `GROQ_MODELO=openai/gpt-oss-120b` | Chave em console.groq.com. Nível gratuito com limite por minuto e por dia; respeita o `retry-after`. Só demandas fictícias até a política de dados constar no TCC |
 | Revisão de texto | `LLM_PROVEDOR_CORRECAO=gemini`, `LLM_MODELO_CORRECAO=…` (opcional) | Segundo modelo do botão "Revisar texto"; vazio = o mesmo do `LLM_PROVEDOR` |
-| Ollama (local) | `LLM_PROVEDOR=ollama`, `OLLAMA_MODELO=llama3.1:8b` | Antes: `ollama pull llama3.1:8b` e `ollama serve` |
-| Echo | `LLM_PROVEDOR=echo` | Determinístico, sem rede |
+| Echo | `LLM_PROVEDOR=echo` | Simulador determinístico, sem rede: só para testes |
 
 Reinicie a API após mudar o `.env`.
 
@@ -206,17 +204,20 @@ pip install spacy
 pip install https://github.com/explosion/spacy-models/releases/download/pt_core_news_md-3.8.0/pt_core_news_md-3.8.0-py3-none-any.whl
 ```
 
-### Avaliação do capítulo 5
+### Avaliação do capítulo 6
 
 ```powershell
 cd backend
 python -m avaliacao.executar                    # E1 a E8 (~35 min com o BGE-M3)
-python -m avaliacao.executar --somente-e9 --llm anthropic gemini   # E9 com as chaves do .env
-python -m avaliacao.executar --somente-e9 --llm gemini --amostra 6 # Gemini gratuito (20/dia)
+python -m avaliacao.executar --somente-e9 --llm groq               # 32 demandas, 4 condições e 6 adversariais
+python -m avaliacao.executar --somente-e9 --llm gemini --amostra 6 # réplica: 6 demandas, 4 condições
 ```
 
-O E9 salva cada geração assim que termina; se parar (cota, rede), repita o
-mesmo comando e ele continua de onde parou.
+Os dois provedores são usados no nível gratuito. O E9 salva cada geração assim
+que termina; quando a cota do dia acaba (ou a rede cai), repita o mesmo comando
+no dia seguinte e ele continua de onde parou. O E9 da Groq leva vários dias.
+Gerações feitas com a versão 0.4.4 precisam da medida corrigida da 0.4.5 antes das
+tabelas: veja `python -m avaliacao.remedir_e9` no README (seção D).
 
 Resultados em `backend/avaliacao/resultados/` (copie `figuras/*.pdf` e
 `latex/*.tex` para o projeto LaTeX, pastas `figuras/resultados/` e `tabelas/`).
@@ -242,7 +243,7 @@ Resultados em `backend/avaliacao/resultados/` (copie `figuras/*.pdf` e
 | *"Não foi possível falar com a API em http://localhost:8001"* | A API não está rodando ou está em outra porta. Suba o `uvicorn` (passo A.2) ou defina `API_URL`. |
 | Toda geração responde *"Não foram encontrados fundamentos normativos suficientes"* | Índice vazio ou limiar alto demais. Veja **Gestor → Base normativa**: se "Trechos no índice vetorial" for 0 ou diferente do banco, rode `python -m scripts.seed --reindexar`. |
 | *"A base normativa precisa ser reindexada"* | O gerador de embeddings mudou desde a indexação. Rode `python -m scripts.seed --reindexar`. |
-| *"O serviço de geração está temporariamente indisponível"* | Falha do provedor de LLM (chave ausente/errada, Ollama parado). O motivo fica em **Registros de auditoria** (ação `FALHA_GERACAO`) e no log da API. |
+| *"O serviço de geração está temporariamente indisponível"* | Falha do provedor de LLM (chave ausente ou errada, cota esgotada, rede). O motivo fica em **Registros de auditoria** (ação `FALHA_GERACAO`) e no log da API. |
 | *"Muitas tentativas sem sucesso"* no login | Bloqueio de 15 min após 5 senhas erradas. Reinicie a API para liberar em desenvolvimento. |
 | `Activate.ps1 cannot be loaded` | `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` |
 | `database is locked` | Dois processos escrevendo no mesmo SQLite (ex.: seed com a API aberta sob carga). Pare a API, rode o seed, suba de novo — ou use MySQL. |

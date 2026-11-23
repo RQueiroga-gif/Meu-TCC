@@ -1,19 +1,19 @@
 % Gerado por avaliacao/relatorio.py — nao editar a mao; rode novamente a avaliacao.
 \begin{table}[htbp]
 \caption{Portão de suficiência: separação entre demandas e pedidos fora do domínio}\label{tab:portao}
-\centering\footnotesize
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lrrlrrl}
+\centering\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrlrrrl}
 \toprule
-Pontuação & AUC & $\rho$ & v0.2.0: TPR / FPR & Limiares (VC) & TPR / FPR (VC) & Adotado: TPR / FPR \\
+Pontuação & AUC & $\rho$ & v0.2.0: TPR / FPR & Limiares (VC) & TPR / FPR (VC) & IC 95\% FPR (VC) & Adotado: TPR / FPR \\
 \midrule
-hash & 0,981 & 0,38 & 0,10: 100\% / 100\% & 0,47 e 0,45 & 97\% / 10\% & 0,46: 97\% / 10\% \\
-spaCy & 0,997 & 0,13 & -- & 0,68 e 0,60 & 97\% / 10\% & 0,64: 97\% / 10\% \\
-BGE-M3 & 0,975 & 0,05 & 0,45: 100\% / 40\% & 0,53 e 0,55 & 84\% / 10\% & 0,52: 94\% / 10\% \\
-BM25 & 0,994 & 0,03 & -- & 0,52 e 0,50 & 97\% / 0\% & não se aplica \\
+hash & 0,983 & 0,38 & 0,10: 100\% / 100\% & 0,49 e 0,49 & 97\% / 6\% & 2--16 & 0,46: 97\% / 10\% \\
+spaCy & 0,923 & 0,13 & -- & 0,77 e 0,73 & 84\% / 26\% & 16--40 & 0,74: 91\% / 26\% \\
+BGE-M3 & 0,934 & 0,05 & 0,45: 100\% / 62\% & 0,53 e 0,55 & 81\% / 12\% & 6--24 & 0,52: 94\% / 22\% \\
+BM25 & 0,983 & 0,03 & -- & 0,52 e 0,52 & 97\% / 6\% & 2--16 & não se aplica \\
 \bottomrule
-\end{tabular}
-\par\smallskip
-\begin{minipage}{\linewidth}{\small \textbf{Fonte:} Elaborado pelo autor (2026), a partir de \texttt{avaliacao/resultados/resumo.json}.}\par
-{\small \textbf{Nota:} 32 demandas e 10 pedidos fora do domínio. TPR: demandas aceitas; FPR: pedidos fora do domínio aceitos. VC: validação cruzada em duas partes (limiar escolhido numa metade pelo índice de Youden e aplicado à outra). $\rho$: correlação de Spearman entre o tamanho da consulta e a pontuação, entre as demandas.}\end{minipage}
+\end{tabular}}
+\fonte{Elaborado pelo autor, a partir de \texttt{avaliacao/resultados/resumo.json}.}
+\nota{32 demandas e 50 pedidos fora do domínio. TPR: demandas aceitas; FPR: pedidos fora do domínio aceitos. VC: validação cruzada em duas partes (limiar escolhido numa metade pelo índice de Youden e aplicado à outra). $\rho$: correlação de Spearman entre o tamanho da consulta e a pontuação, entre as demandas. IC 95\%: intervalo de Wilson, em pontos percentuais.}
 \end{table}

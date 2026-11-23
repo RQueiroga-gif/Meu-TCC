@@ -1,0 +1,27 @@
+% Gerado por avaliacao/relatorio.py — nao editar a mao; rode novamente a avaliacao.
+\begin{table}[htbp]
+\caption{Segmentação por dispositivo e por blocos de tamanho fixo}\label{tab:segmentacao}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrrrr}
+\toprule
+Segmentação & Recup. & Unid. & R@6 & R@600p & R@1800p & Palavras@6 & Citáveis \\
+\midrule
+dispositivo & BM25 & 1.734 & 36,5\% & 39,3\% & 54,4\% & 398 & 100\% \\
+dispositivo & hash & 1.734 & 15,4\% & 15,4\% & 18,0\% & 869 & 100\% \\
+dispositivo & spaCy & 1.734 & 16,9\% & 15,9\% & 19,0\% & 910 & 100\% \\
+dispositivo & BGE-M3 & 1.734 & 24,2\% & 33,6\% & 53,9\% & 355 & 100\% \\
+blocos de 100 & BM25 & 657 & 40,1\% & 40,1\% & 57,6\% & 600 & 8\% \\
+blocos de 100 & hash & 657 & 9,9\% & 9,9\% & 16,7\% & 600 & 12\% \\
+blocos de 100 & spaCy & 657 & 17,2\% & 17,2\% & 25,0\% & 600 & 13\% \\
+blocos de 100 & BGE-M3 & 657 & 30,5\% & 30,5\% & 48,7\% & 600 & 14\% \\
+blocos de 300 & BM25 & 220 & 51,6\% & 39,6\% & 51,6\% & 1.800 & 3\% \\
+blocos de 300 & hash & 220 & 24,7\% & 10,9\% & 24,7\% & 1.800 & 1\% \\
+blocos de 300 & spaCy & 220 & 22,9\% & 15,6\% & 22,9\% & 1.800 & 8\% \\
+blocos de 300 & BGE-M3 & 220 & 41,9\% & 29,7\% & 41,9\% & 1.800 & 3\% \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}{\small \textbf{Fonte:} Elaborado pelo autor (2026), a partir de \texttt{avaliacao/resultados/resumo.json}.}\par
+{\small \textbf{Nota:} blocos com 20\% de sobreposição; um bloco cobre um dispositivo quando contém ao menos metade de suas palavras. R@600p e R@1800p: revocação com o mesmo volume de contexto (palavras). Citáveis: unidades recuperadas que correspondem a um único dispositivo.}\end{minipage}
+\end{table}

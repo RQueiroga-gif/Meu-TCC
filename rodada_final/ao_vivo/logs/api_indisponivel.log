@@ -1,0 +1,106 @@
+
+===== 2026-11-23 07:18:51 -m uvicorn app.main:app --host 127.0.0.1 --port 8011
+INFO:     Started server process [29540]
+INFO:     Waiting for application startup.
+07:18:54 INFO     app.database: Esquema aplicado (sqlite): schema_sqlite.sql
+07:18:55 INFO     app.core.indice: Indice carregado: 1734 trechos (bge:BAAI/bge-m3)
+07:18:55 INFO     dfd: Banco: sqlite | Índice: automatico (1734 trechos) | Provedor de LLM: groq | Revisão de texto: gemini
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+07:18:55 INFO     app.llm.factory: Provedor de LLM ativo: groq
+07:19:09 INFO     app.core.embeddings: Carregando modelo de embeddings: BAAI/bge-m3
+07:19:09 INFO     app.core.embeddings: Carregando modelo de embeddings: BAAI/bge-m3
+07:19:09 INFO     app.core.embeddings: Carregando modelo de embeddings: BAAI/bge-m3
+07:19:09 INFO     sentence_transformers.base.model: No device provided, using cpu
+07:19:09 INFO     sentence_transformers.base.model: No device provided, using cpu
+07:19:09 INFO     sentence_transformers.base.model: No device provided, using cpu
+07:19:09 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:09 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:09 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:09 INFO     sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-m3.
+07:19:09 INFO     sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-m3.
+07:19:09 INFO     sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-m3.
+07:19:10 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+07:19:10 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+07:19:10 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+07:19:10 WARNING  huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+07:19:10 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:10 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:10 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:10 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/main "HTTP/1.1 200 OK"
+07:19:10 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/main "HTTP/1.1 200 OK"
+07:19:10 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/main "HTTP/1.1 200 OK"
+07:19:10 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/discussions?p=0 "HTTP/1.1 200 OK"
+07:19:10 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/discussions?p=0 "HTTP/1.1 200 OK"
+07:19:10 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/discussions?p=0 "HTTP/1.1 200 OK"
+07:19:11 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/refs%2Fpr%2F130 "HTTP/1.1 200 OK"
+07:19:11 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/refs%2Fpr%2F130 "HTTP/1.1 200 OK"
+07:19:11 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/refs%2Fpr%2F130 "HTTP/1.1 200 OK"
+07:19:11 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+07:19:11 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+07:19:11 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  34%|███▍      | 134/391 [00:00<00:00, 427.20it/s]07:19:11 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors "HTTP/1.1 302 Found"
+07:19:11 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors "HTTP/1.1 302 Found"
+07:19:11 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors "HTTP/1.1 302 Found"
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s][A
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s][A[ALoading weights:  70%|███████   | 275/391 [00:00<00:00, 727.62it/s]
+Loading weights:  66%|██████▌   | 258/391 [00:00<00:00, 2575.46it/s][ALoading weights: 100%|██████████| 391/391 [00:00<00:00, 872.42it/s]
+
+
+Loading weights:  75%|███████▌  | 295/391 [00:00<00:00, 2948.30it/s][A[ALoading weights: 100%|██████████| 391/391 [00:00<00:00, 2896.57it/s]
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3318.40it/s]
+07:19:12 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+07:19:12 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+07:19:12 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+07:19:12 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+07:19:12 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+07:19:12 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+07:19:18 INFO     app.core.embeddings: Carregando modelo de embeddings: BAAI/bge-m3
+07:19:18 INFO     sentence_transformers.base.model: No device provided, using cpu
+07:19:20 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:20 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:20 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:20 INFO     sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-m3.
+07:19:20 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:20 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/5617a9f61b028005a4858fdac845db406aefb181/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+07:19:20 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/5617a9f61b028005a4858fdac845db406aefb181/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+07:19:20 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\backend\app\core\embeddings.py:68: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dimensao = int(self._modelo.get_sentence_embedding_dimension())
+07:19:21 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:21 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/5617a9f61b028005a4858fdac845db406aefb181/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 11036.53it/s]
+07:19:21 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/main "HTTP/1.1 200 OK"
+07:19:21 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+07:19:21 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/discussions?p=0 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:59129 - "GET /saude HTTP/1.1" 200 OK
+07:19:21 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+07:19:21 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/refs%2Fpr%2F130 "HTTP/1.1 200 OK"
+07:19:22 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+07:19:24 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:19:24 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors "HTTP/1.1 302 Found"
+07:19:25 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/5617a9f61b028005a4858fdac845db406aefb181/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+INFO:     127.0.0.1:59130 - "GET /demandas HTTP/1.1" 200 OK
+C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\backend\app\core\embeddings.py:68: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dimensao = int(self._modelo.get_sentence_embedding_dimension())
+INFO:     127.0.0.1:59133 - "POST /demandas HTTP/1.1" 201 Created
+07:19:27 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+INFO:     127.0.0.1:59136 - "POST /dfd/5/gerar HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:53531 - "GET /demandas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53532 - "GET /demandas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56550 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56551 - "GET /demandas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56553 - "GET /normas/estatisticas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56554 - "GET /normas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56555 - "GET /auditoria/integridade HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56556 - "GET /auditoria?limite=300 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56563 - "GET /normas/estatisticas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56564 - "GET /normas HTTP/1.1" 200 OK
+07:19:47 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.00)
+INFO:     127.0.0.1:56565 - "GET /normas/buscar?consulta=Compra+de+15+cadeiras+ergon%C3%B4micas+para+o+setor+de+atendimento+ao+p%C3%BAblico%2C+com+valor+estimado+de+R%24+12.000%2C00%2C+prioridade+m%C3%A9dia.&k=6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56566 - "GET /auditoria/integridade HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56567 - "GET /auditoria?limite=300 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56578 - "GET /indicadores HTTP/1.1" 200 OK

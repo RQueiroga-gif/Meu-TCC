@@ -1,0 +1,37 @@
+INFO     Esquema aplicado (sqlite): schema_sqlite.sql
+INFO     usuário criado: demandante@orgao.gov.br (demandante)
+INFO     usuário criado: gestor@orgao.gov.br (gestor)
+INFO     usuário criado: sistema@orgao.gov.br (sistema)
+INFO     Carregando modelo de embeddings: BAAI/bge-m3
+INFO     No device provided, using cpu
+INFO     HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+INFO     Loading SentenceTransformer model from BAAI/bge-m3.
+INFO     HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO     HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+INFO     HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/main "HTTP/1.1 200 OK"
+INFO     HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/discussions?p=0 "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 10929.00it/s]
+INFO     HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/refs%2Fpr%2F130 "HTTP/1.1 200 OK"
+INFO     HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+INFO     HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+INFO     HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors "HTTP/1.1 302 Found"
+INFO     HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO     HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+INFO     HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/5617a9f61b028005a4858fdac845db406aefb181/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\backend\app\core\embeddings.py:68: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dimensao = int(self._modelo.get_sentence_embedding_dimension())
+INFO     Indice gravado: C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\rodada_final\ao_vivo\dados\indice.npz (1249 trechos)
+INFO     L14133: 1249 dispositivos indexados
+INFO     L14133: 1249 dispositivos (atualizada)
+INFO     Indice gravado: C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\rodada_final\ao_vivo\dados\indice.npz (1324 trechos)
+INFO     D10947: 75 dispositivos indexados
+INFO     D10947: 75 dispositivos (atualizada)
+INFO     Indice gravado: C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\rodada_final\ao_vivo\dados\indice.npz (1734 trechos)
+INFO     L13709: 410 dispositivos indexados
+INFO     L13709: 410 dispositivos (atualizada)
+INFO     Seed concluído.
+INFO     Credenciais de desenvolvimento:
+INFO       demandante@orgao.gov.br      senha: demandante123
+INFO       gestor@orgao.gov.br          senha: gestor123

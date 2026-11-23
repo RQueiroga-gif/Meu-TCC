@@ -1,0 +1,7 @@
+[23/11/2026 13:02:28,38] inicio
+extrair=0
+remedir=0
+e9_groq=0
+e9_gemini=0
+pytest=0
+[23/11/2026 13:04:29,61] fim

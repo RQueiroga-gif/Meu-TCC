@@ -1,0 +1,15 @@
+Rodada final pre-banca (22-23/11/2026)
+
+A_rodada_completa.bat        pytest -> E1 a E8 com BGE-M3 -> teste dos provedores -> E9 Gemini (6) -> E9 Groq
+B_sistema_ao_vivo.bat        sobe API e interface com modelo real e roda o roteiro de capturas (ao_vivo.py)
+C_E9_groq.bat                retoma o E9 da Groq uma vez
+D_sistema_para_inspecao.bat  sobe o sistema para a inspecao heuristica manual
+E_E9_retomar.bat             retoma o Gemini (amostra 6) e depois a Groq
+F_E9_groq_ate_concluir.bat   repete a Groq ate fechar 128 + 12 geracoes (espera 20 min entre tentativas)
+G_extrair_minutas_e9.bat     copia dos bancos temporarios as minutas do E9 (somente leitura)
+H_finalizar_e9.bat           depois de F: extrai as minutas, reaplica a medida corrigida da 0.4.5
+                             (avaliacao.remedir_e9), refaz as tabelas do E9 sem novas geracoes e roda o pytest
+
+progresso_e9.py mostra o que falta (logs/E9_progresso.md).
+Os resultados de 27/10 foram copiados para backend/avaliacao/resultados_2026-10-27_v0.3_referencia
+antes da execucao. Logs em rodada_final/logs.

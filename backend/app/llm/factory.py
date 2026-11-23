@@ -10,20 +10,16 @@ import logging
 from ..config import config
 from .base import ErroProvedorLLM, ProvedorLLM
 from .provedores import (
-    ProvedorAnthropic,
     ProvedorEco,
     ProvedorGemini,
     ProvedorGroq,
-    ProvedorOllama,
 )
 
 log = logging.getLogger(__name__)
 
 REGISTRO: dict[str, type[ProvedorLLM]] = {
-    "anthropic": ProvedorAnthropic,
     "gemini": ProvedorGemini,
     "groq": ProvedorGroq,
-    "ollama": ProvedorOllama,
     "echo": ProvedorEco,
 }
 

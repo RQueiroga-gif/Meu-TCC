@@ -118,8 +118,8 @@ class GeracaoEntrada(BaseModel):
     limiar: float | None = Field(default=None, ge=0.0, le=1.0)
     provedor: str | None = Field(
         default=None,
-        pattern="^(anthropic|gemini|groq|ollama|echo)$",
-        description="anthropic | gemini | groq | ollama | echo",
+        pattern="^(gemini|groq|echo)$",
+        description="gemini | groq | echo",
     )
     usar_rag: bool = Field(default=True, description="False apenas no Experimento 1")
 

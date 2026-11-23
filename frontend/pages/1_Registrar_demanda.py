@@ -51,16 +51,19 @@ with st.form("demanda"):
             "normativos aplicáveis e só extrai valores que estiverem escritos aqui."
         ),
     )
+    # v0.4: o contador de caracteres saiu. Dentro de st.form o valor so e
+    # atualizado no envio, e a tela mostrava "0 caracteres" com o campo cheio
+    # (achado da avaliacao heuristica: status do sistema incorreto).
     st.caption(
-        f"{len(descricao.strip())} caracteres · dica: informe quantidade, valor (R$), "
-        "data pretendida (dd/mm/aaaa) e prioridade (baixa, média ou alta)."
+        "Dica: informe quantidade, valor (R$), data pretendida (dd/mm/aaaa) e "
+        "prioridade (baixa, média ou alta). Mínimo de 20 caracteres."
     )
 
     st.warning(
-        "Evite inserir dados pessoais desnecessários na descrição. Identificadores "
-        "como CPF, CNPJ, e-mail e telefone são removidos automaticamente antes de "
-        "qualquer processamento, e todas as informações registradas são gravadas em "
-        "log de auditoria.",
+        "Não informe dados pessoais na descrição. O sistema tenta remover CPF, CNPJ, "
+        "e-mail, telefone e nomes antes de gravar e de enviar o texto ao modelo de "
+        "linguagem, mas a remoção automática não é completa. Todas as ações ficam "
+        "registradas na auditoria.",
         icon=":material/privacy_tip:",
     )
 
@@ -110,7 +113,10 @@ if salvar or gerar:
         try:
             minuta = cliente.gerar_minuta(demanda["id_dfd"])
         except cliente.ErroAPI as erro:
-            estado.update(label="Não foi possível gerar a minuta", state="error")
+            # v0.4.4: expanded=True. Sem ele a caixa de status recolhia ao mudar para
+            # erro e escondia o motivo e a orientação dos fluxos A1 e A2 (achado do
+            # teste ao vivo da rodada final).
+            estado.update(label="Não foi possível gerar a minuta", state="error", expanded=True)
             if erro.codigo == 422:
                 st.error(str(erro), icon=":material/search_off:")
                 st.caption(

@@ -1,0 +1,40 @@
+# Conferencia manual das citacoes que a medida automatica do E9 classificou como
+# "artigo inexistente" (23/11/2026, versao 0.4.5). Cada entrada foi conferida no
+# texto da minuta. avaliacao.remedir_e9 desconta da contagem automatica as
+# entradas classificadas como nao inexistentes e guarda, na linha do checkpoint,
+# a contagem original (inexistentes_automaticas) e as entradas aplicadas.
+#
+# Classificacoes:
+#   fora_da_base: artigo de norma fora da base (Constituicao Federal, LDB), que o
+#                 extrator nao reconheceu e associou as normas da base;
+#   atribuicao_errada: artigo existente da Lei no 14.133/2021, listado em tabela ou
+#                 lista, que o extrator associou ao Decreto no 10.947/2022 do titulo
+#                 seguinte.
+groq-openai-gpt-oss-120b:
+  - {id: D02, condicao: isolada, artigo: "40", vezes: 1, classificacao: atribuicao_errada,
+     trecho: "tabela da Lei nº 14.133/2021: 'art. 40-42 | Sanções, responsabilidade e controle interno'"}
+  - {id: D05, condicao: isolada, artigo: "25", vezes: 1, classificacao: atribuicao_errada,
+     trecho: "lista da Lei nº 14.133/2021: 'Art. 25 (pagamento)'"}
+  - {id: D05, condicao: isolada, artigo: "26", vezes: 1, classificacao: atribuicao_errada,
+     trecho: "lista da Lei nº 14.133/2021: 'Art. 26 (sanções administrativas)'"}
+  - {id: D13, condicao: isolada, artigo: "205", vezes: 1, classificacao: fora_da_base,
+     trecho: "'art. 205 da CF/88'"}
+  - {id: D18, condicao: isolada, artigo: "196", vezes: 1, classificacao: fora_da_base,
+     trecho: "'art. 196 da CF/88'"}
+  - {id: D20, condicao: isolada, artigo: "30", vezes: 1, classificacao: atribuicao_errada,
+     trecho: "tabela da Lei nº 14.133/2021: 'Art. 30-31 | Formalização e assinatura do contrato'"}
+  - {id: D21, condicao: isolada, artigo: "44", vezes: 1, classificacao: atribuicao_errada,
+     trecho: "lista da Lei nº 14.133/2021: 'art. 44 (gestão e fiscalização)'"}
+  - {id: D23, condicao: isolada, artigo: "227", vezes: 1, classificacao: fora_da_base,
+     trecho: "'art. 227, § 1º, CF'"}
+  - {id: D25, condicao: isolada, artigo: "205", vezes: 2, classificacao: fora_da_base,
+     trecho: "'art. 205 da CF/88'"}
+  - {id: D25, condicao: isolada, artigo: "211", vezes: 1, classificacao: fora_da_base,
+     trecho: "'art. 211, § 2º, Lei 9.394/1996 - LDB'"}
+  - {id: D32, condicao: isolada, artigo: "31", vezes: 1, classificacao: atribuicao_errada,
+     trecho: "tabela da Lei nº 14.133/2021: 'art. 31 | Responsabilidade do gestor de contrato'"}
+gemini-gemini-3.6-flash:
+  - {id: D01, condicao: isolada, artigo: "205", vezes: 1, classificacao: fora_da_base,
+     trecho: "'Constituição Federal de 1988: Art. 205 e Art. 206'"}
+  - {id: D01, condicao: isolada, artigo: "206", vezes: 1, classificacao: fora_da_base,
+     trecho: "'Constituição Federal de 1988: Art. 205 e Art. 206, inciso VII'"}

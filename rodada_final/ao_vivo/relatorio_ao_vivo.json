@@ -1,0 +1,214 @@
+{
+  "contexto": {
+    "inicio": "23/11/2026 07:06",
+    "simulador": false,
+    "provedor": "groq",
+    "revisor": "gemini",
+    "embeddings": "(do .env)",
+    "versao": "0.4.4",
+    "saude": {
+      "aplicacao": "Assistente de DFD",
+      "versao": "0.4.4",
+      "banco": {
+        "dialeto": "sqlite",
+        "disponivel": true
+      },
+      "indice": {
+        "modo": "automatico",
+        "trechos": 1734
+      },
+      "embeddings": {
+        "gerador": "bge:BAAI/bge-m3",
+        "semantico": true
+      },
+      "provedor_llm": "groq",
+      "provedor_correcao": "gemini"
+    }
+  },
+  "verificacoes": [
+    {
+      "id": "V01",
+      "descricao": "Tela de acesso",
+      "esperado": "formulário de acesso visível",
+      "obtido": "visível",
+      "situacao": "PASSOU",
+      "captura": "t01_acesso.png"
+    },
+    {
+      "id": "V02",
+      "descricao": "Login do demandante",
+      "esperado": "painel do agente",
+      "obtido": "painel exibido",
+      "situacao": "PASSOU",
+      "captura": null
+    },
+    {
+      "id": "V03",
+      "descricao": "Contador de caracteres removido (Quadro 22)",
+      "esperado": "sem contador",
+      "obtido": "sem contador",
+      "situacao": "PASSOU",
+      "captura": "t03_registro.png"
+    },
+    {
+      "id": "V04",
+      "descricao": "Aviso de privacidade honesto (Quadro 22)",
+      "esperado": "aviso sobre remoção incompleta",
+      "obtido": "presente",
+      "situacao": "PASSOU",
+      "captura": "t03_registro.png"
+    },
+    {
+      "id": "V05",
+      "descricao": "Geração da minuta de D12 com modelo real",
+      "esperado": "tela de revisão",
+      "obtido": "minuta gerada em 26 s",
+      "situacao": "PASSOU",
+      "captura": null
+    },
+    {
+      "id": "V06",
+      "descricao": "Selo declara os limites da verificação (Quadro 22)",
+      "esperado": "selo com o limite, ou aviso de inconsistência",
+      "obtido": "selo com limite",
+      "situacao": "PASSOU",
+      "captura": "t04_revisao.png"
+    },
+    {
+      "id": "V07",
+      "descricao": "Grade 2 x 2 de indicadores (Quadro 22)",
+      "esperado": "quatro indicadores visíveis",
+      "obtido": "visíveis",
+      "situacao": "PASSOU",
+      "captura": "t05_conformidade.png"
+    },
+    {
+      "id": "V08",
+      "descricao": "Modelo e versão do prompt registrados na versão",
+      "esperado": "modelo gpt-oss-120b; prompt p-1.1",
+      "obtido": "modelo openai/gpt-oss-120b; prompt p-1.1",
+      "situacao": "PASSOU",
+      "captura": "t04c_versoes.png"
+    },
+    {
+      "id": "V09",
+      "descricao": "Revisão de redação por segundo modelo (RF13, UC05b)",
+      "esperado": "sugestão comparada lado a lado pelo revisor gemini",
+      "obtido": "sugestão exibida; revisor gemini · gemini-3",
+      "situacao": "PASSOU",
+      "captura": "t04b_revisao_texto.png"
+    },
+    {
+      "id": "V10",
+      "descricao": "Aceite ou descarte da sugestão",
+      "esperado": "decisão do agente",
+      "obtido": "nenhuma mudança sugerida; descartada",
+      "situacao": "PASSOU",
+      "captura": null
+    },
+    {
+      "id": "V11",
+      "descricao": "Aprovação com 7 de 8 campos confirmados (RF07)",
+      "esperado": "botão Aprovar desabilitado",
+      "obtido": "desabilitado",
+      "situacao": "PASSOU",
+      "captura": "t06_validacao.png"
+    },
+    {
+      "id": "V12",
+      "descricao": "Aprovação com os 8 campos e a declaração",
+      "esperado": "versão aprovada",
+      "obtido": "aprovada",
+      "situacao": "PASSOU",
+      "captura": null
+    },
+    {
+      "id": "V13",
+      "descricao": "Exportar após editar minuta aprovada (CT07, RN01)",
+      "esperado": "botão desabilitado e API com código 409",
+      "obtido": "botão desabilitado; API 409",
+      "situacao": "PASSOU",
+      "captura": "t06b_edicao_pos_aprovacao.png"
+    },
+    {
+      "id": "V14",
+      "descricao": "Exportação .docx: integridade e hash",
+      "esperado": "arquivo abre e SHA-256 igual ao exibido",
+      "obtido": "53 parágrafos; SHA-256 igual (cd5b1dcd93455ebe…)",
+      "situacao": "PASSOU",
+      "captura": "t07_exportacao.png"
+    },
+    {
+      "id": "V15-F49",
+      "descricao": "Pedido fora do domínio F49 (fluxo A1)",
+      "esperado": "geração barrada, demanda preservada, nenhuma chamada ao modelo",
+      "obtido": "não barrada",
+      "situacao": "FALHOU",
+      "captura": "t09_fluxo_a1_f49.png"
+    },
+    {
+      "id": "V15-F09",
+      "descricao": "Pedido fora do domínio F09 (fluxo A1)",
+      "esperado": "geração barrada, demanda preservada, nenhuma chamada ao modelo",
+      "obtido": "não barrada",
+      "situacao": "FALHOU",
+      "captura": "t09_fluxo_a1_f09.png"
+    },
+    {
+      "id": "V16",
+      "descricao": "Minimização de CPF, e-mail, telefone e nome antes do banco",
+      "esperado": "aviso na tela e nenhum identificador no banco",
+      "obtido": "aviso exibido; nenhum identificador gravado",
+      "situacao": "PASSOU",
+      "captura": "t10_dados_pessoais.png"
+    },
+    {
+      "id": "V17",
+      "descricao": "Provedor indisponível (fluxo A2)",
+      "esperado": "mensagem clara e demanda preservada",
+      "obtido": "mensagem exibida; demanda preservada",
+      "situacao": "PASSOU",
+      "captura": "t12_fluxo_a2.png"
+    },
+    {
+      "id": "V18",
+      "descricao": "Painel do demandante com situações",
+      "esperado": "documentos listados",
+      "obtido": "5 documentos",
+      "situacao": "PASSOU",
+      "captura": "t02_painel.png"
+    },
+    {
+      "id": "V19",
+      "descricao": "Painel de vigência do gestor",
+      "esperado": "3 de 3 normas; 1.734 trechos no banco e no índice",
+      "obtido": "normas 3 de 3; trechos 1734 no banco e 1734 no índice",
+      "situacao": "PASSOU",
+      "captura": "t08_base_normativa.png"
+    },
+    {
+      "id": "V20",
+      "descricao": "Consulta à base normativa",
+      "esperado": "trechos com similaridade e limiar",
+      "obtido": "trechos exibidos",
+      "situacao": "PASSOU",
+      "captura": "t08b_consulta_base.png"
+    },
+    {
+      "id": "V21",
+      "descricao": "Integridade da cadeia de auditoria",
+      "esperado": "cadeia íntegra",
+      "obtido": "íntegra, 17 registros",
+      "situacao": "PASSOU",
+      "captura": "t11_auditoria.png"
+    },
+    {
+      "id": "V22",
+      "descricao": "Painel de indicadores do gestor",
+      "esperado": "indicadores exibidos",
+      "obtido": "exibido",
+      "situacao": "PASSOU",
+      "captura": "t13_indicadores.png"
+    }
+  ]
+}

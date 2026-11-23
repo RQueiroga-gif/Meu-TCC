@@ -1,0 +1,4 @@
+Minutas extraidas e associaveis: 133
+  gemini-gemini-3.6-flash.jsonl: {'remedidas': 18, 'auditadas': 1, 'sem_alteracao': 6}
+  groq-openai-gpt-oss-120b.jsonl: {'remedidas': 92, 'auditadas': 9, 'sem_alteracao': 36}
+  groq-openai-gpt-oss-120b_injecao.jsonl: {'sem_alteracao': 7, 'auditadas': 0, 'remedidas': 5}

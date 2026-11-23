@@ -1,0 +1,25 @@
+% Gerado por avaliacao/relatorio.py — nao editar a mao; rode novamente a avaliacao.
+\begin{table}[htbp]
+\caption{Resultados do E9 por provedor e condição}\label{tab:llm}
+\centering\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+Condição & n & Cit./min. & Precisão & Inexist. & Revog. & Valores & Ancoragem & Inconsist. & Lat. (s) \\
+\midrule
+\multicolumn{10}{l}{\textit{Gemini (gemini-3.6-flash)}} \\
+\quad LLM isolada & 6 & 5,5 & 23,6\% & 0 & 0\% & 75,0\% & -- & -- & 21,6 \\
+\quad Sistema sem RAG & 6 & 0,0 & -- & 0 & 0\% & 75,0\% & 0,0\% & 100\% & 11,0 \\
+\quad Sistema com RAG só lexical (BM25) & 6 & 2,7 & 85,0\% & 0 & 0\% & 75,0\% & 83,3\% & 17\% & 13,6 \\
+\quad Sistema completo (RAG) & 6 & 3,3 & 45,8\% & 0 & 0\% & 75,0\% & 83,3\% & 17\% & 9,2 \\
+\multicolumn{10}{l}{\textit{Groq (openai/gpt-oss-120b)}} \\
+\quad LLM isolada & 32 & 20,6 & 15,0\% & 0 & 6\% & 100,0\% & -- & -- & 7,5 \\
+\quad Sistema sem RAG & 32 & 0,2 & 0,0\% & 6 & 0\% & 84,2\% & 0,0\% & 100\% & 11,0 \\
+\quad Sistema com RAG só lexical (BM25) & 30 & 2,9 & 57,9\% & 0 & 0\% & 71,3\% & 100,0\% & 0\% & 16,8 \\
+\quad Sistema completo (RAG) & 30 & 3,1 & 62,0\% & 0 & 0\% & 82,4\% & 100,0\% & 0\% & 23,6 \\
+\bottomrule
+\end{tabular}}
+\fonte{Elaborado pelo autor, a partir de \texttt{avaliacao/resultados/resumo.json}.}
+\nota{Cit./min.: citações a artigo por minuta, contadas no texto do documento --- nas condições do sistema, inclusive a linha de fundamentação de cada campo redigido; Precisão: média, por minuta, da fração das citações que coincidem com um dispositivo do gabarito; Inexist.: citações a artigo que não existe na norma, depois da conferência manual das apontadas pela contagem automática (avaliacao/dados/auditoria\_e9.yaml), somadas, no sistema, aos marcadores de fundamento sem trecho correspondente no contexto; Revog.: minutas que citam norma revogada pela Lei nº 14.133/2021 (Lei nº 8.666/1993, Lei nº 10.520/2002 ou Lei nº 12.462/2011); Valores: fração dos valores da demanda (quantidade, valor, data, prioridade) presentes no texto. Ancoragem e inconsistência vêm da verificação do sistema e não se aplicam à LLM isolada (--). n exclui as demandas barradas pelo portão; falhas do provedor não refeitas: 0.}
+\end{table}

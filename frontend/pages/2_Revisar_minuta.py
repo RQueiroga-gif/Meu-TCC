@@ -39,10 +39,10 @@ exportado = minuta.get("situacao") == "exportado"
 
 st.progress(2 / 3, text="Etapa 2 de 3 — Revisão da minuta")
 st.title("Revisão da minuta preliminar do DFD")
+ORIGEM_VERSAO = {"geracao": "gerada pelo modelo", "edicao": "editada pelo agente"}
 st.caption(
     f"{minuta.get('numero') or ''} · {minuta.get('titulo') or ''} · "
-    f"versão {minuta['versao']} ({minuta['origem']}) · "
-    f"modelo: {minuta.get('modelo_llm') or '—'} · prompt: {minuta.get('versao_prompt') or '—'}"
+    f"versão {minuta['versao']} ({ORIGEM_VERSAO.get(minuta['origem'], minuta['origem'])})"
 )
 if exportado:
     st.info("Este DFD já foi exportado: a minuta é exibida apenas para consulta.",
@@ -56,9 +56,12 @@ if verificacao.get("inconsistencia_detectada"):
         icon=":material/report:",
     )
 elif verificacao.get("taxa_ancoragem") is not None:
+    # v0.4: o selo diz o que a verificacao confere e o que nao confere, para
+    # nao ser lido como "o documento esta correto" (calibracao da confianca).
     st.success(
-        f"Verificação automática: {verificacao['taxa_ancoragem']:.0%} dos campos "
-        "redigidos têm fundamento válido no contexto recuperado.",
+        f"Verificação automática: as citações de {verificacao['taxa_ancoragem']:.0%} dos "
+        "campos redigidos conferem com os trechos recuperados. A interpretação jurídica "
+        "não é verificada: leia o texto e as fontes antes de aprovar.",
         icon=":material/verified:",
     )
 
@@ -136,7 +139,7 @@ with lateral:
                 st.markdown(f"**[{fonte['marcador']}] {fonte['referencia']}**{selo}")
                 st.progress(
                     min(max(fonte["similaridade"], 0.0), 1.0),
-                    text=f"similaridade {fonte['similaridade']:.2f}",
+                    text=f"similaridade {fonte['similaridade']:.2f}".replace(".", ","),
                 )
                 with st.expander("Ver trecho completo"):
                     st.write(fonte["texto"])
@@ -146,6 +149,10 @@ with lateral:
         cliente.painel_analise(minuta.get("analise") or {})
 
     with aba_versoes:
+        st.caption(
+            f"Versão exibida: modelo {minuta.get('modelo_llm') or '—'} · "
+            f"prompt {minuta.get('versao_prompt') or '—'}"
+        )
         try:
             historico = cliente.versoes(id_dfd)
         except cliente.ErroAPI as erro:
@@ -156,7 +163,8 @@ with lateral:
                 versao.get("decisao") or "", ""
             )
             st.caption(
-                f"v{versao['versao']} · {versao['origem']} · {versao.get('autor') or '—'} · "
+                f"v{versao['versao']} · {ORIGEM_VERSAO.get(versao['origem'], versao['origem'])} · "
+                f"{versao.get('autor') or '—'} · "
                 f"{versao['data_geracao'][:16].replace('T', ' ')} UTC{decisao}"
             )
 

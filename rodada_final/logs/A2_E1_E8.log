@@ -1,0 +1,668 @@
+E5 — minimização de dados pessoais
+E1 — recuperação por dispositivo
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 9760.52it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\backend\app\core\embeddings.py:68: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dimensao = int(self._modelo.get_sentence_embedding_dimension())
+E3 — portão de suficiência
+E4 — verificação por injeção de falhas
+E2 — segmentação por dispositivo x blocos
+Preparando a API (banco temporário + corpus oficial)
+E7 — cenários funcionais
+23:39:19 INFO     app.database: Esquema aplicado (sqlite): schema_sqlite.sql
+23:39:19 INFO     dfd: Banco: sqlite | Índice: automatico (1734 trechos) | Provedor de LLM: echo | Revisão de texto: gemini
+23:39:19 INFO     httpx2: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+23:39:19 INFO     httpx2: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+23:39:19 INFO     httpx2: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+23:39:19 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:20 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:20 INFO     app.services.geracao: DFD 1: versao 1 gravada (geracao)
+23:39:20 INFO     httpx2: HTTP Request: POST http://testserver/dfd/1/gerar "HTTP/1.1 200 OK"
+23:39:20 INFO     app.services.geracao: DFD 1: versao 2 gravada (edicao)
+23:39:20 INFO     httpx2: HTTP Request: POST http://testserver/dfd/1/revisar "HTTP/1.1 200 OK"
+23:39:20 INFO     httpx2: HTTP Request: POST http://testserver/dfd/1/validar "HTTP/1.1 200 OK"
+23:39:20 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0001_v2_exp1.docx
+23:39:20 INFO     httpx2: HTTP Request: POST http://testserver/dfd/1/exportar "HTTP/1.1 200 OK"
+23:39:20 INFO     httpx2: HTTP Request: GET http://testserver/dfd/1/exportacoes/1/arquivo "HTTP/1.1 200 OK"
+23:39:20 INFO     httpx2: HTTP Request: GET http://testserver/auditoria?id_dfd=1 "HTTP/1.1 200 OK"
+23:39:20 INFO     httpx2: HTTP Request: GET http://testserver/auditoria/integridade "HTTP/1.1 200 OK"
+23:39:20 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:21 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 0 aceitos pelo portao (limiar 0.52)
+23:39:21 INFO     app.services.geracao: DFD 2: geracao barrada pelo portao de suficiencia
+23:39:21 INFO     httpx2: HTTP Request: POST http://testserver/dfd/2/gerar "HTTP/1.1 422 Unprocessable Content"
+23:39:21 INFO     httpx2: HTTP Request: GET http://testserver/auditoria?id_dfd=2 "HTTP/1.1 200 OK"
+23:39:21 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:21 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:21 INFO     httpx2: HTTP Request: POST http://testserver/dfd/3/gerar "HTTP/1.1 503 Service Unavailable"
+23:39:21 INFO     httpx2: HTTP Request: GET http://testserver/demandas/3 "HTTP/1.1 200 OK"
+23:39:21 INFO     httpx2: HTTP Request: GET http://testserver/auditoria?id_dfd=3 "HTTP/1.1 200 OK"
+23:39:21 INFO     app.routers.demandas: Demanda de demandante@orgao.gov.br: 4 identificador(es) removido(s) antes da gravação
+23:39:21 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:22 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:22 INFO     app.services.geracao: DFD 4: versao 1 gravada (geracao)
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/dfd/4/gerar "HTTP/1.1 200 OK"
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:22 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:22 INFO     app.services.geracao: DFD 5: versao 1 gravada (geracao)
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/dfd/5/gerar "HTTP/1.1 200 OK"
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/dfd/5/exportar "HTTP/1.1 409 Conflict"
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/dfd/5/validar "HTTP/1.1 422 Unprocessable Content"
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/dfd/5/validar "HTTP/1.1 200 OK"
+23:39:22 INFO     app.services.geracao: DFD 5: versao 2 gravada (edicao)
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/dfd/5/revisar "HTTP/1.1 200 OK"
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/dfd/5/exportar "HTTP/1.1 409 Conflict"
+23:39:22 INFO     httpx2: HTTP Request: GET http://testserver/dfd/5 "HTTP/1.1 404 Not Found"
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/dfd/5/gerar "HTTP/1.1 403 Forbidden"
+23:39:22 INFO     dfd: Encerrando a aplicação.
+E6 — tempo de resposta por etapa
+23:39:22 INFO     app.database: Esquema aplicado (sqlite): schema_sqlite.sql
+23:39:22 INFO     dfd: Banco: sqlite | Índice: automatico (1734 trechos) | Provedor de LLM: echo | Revisão de texto: gemini
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/auth/login "HTTP/1.1 200 OK"
+23:39:22 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:22 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:23 INFO     app.services.geracao: DFD 6: versao 1 gravada (geracao)
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/dfd/6/gerar "HTTP/1.1 200 OK"
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/dfd/6/validar "HTTP/1.1 200 OK"
+23:39:23 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0006_v1_exp2.docx
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/dfd/6/exportar "HTTP/1.1 200 OK"
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:23 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:23 INFO     app.services.geracao: DFD 7: versao 1 gravada (geracao)
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/dfd/7/gerar "HTTP/1.1 200 OK"
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/dfd/7/validar "HTTP/1.1 200 OK"
+23:39:23 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0007_v1_exp3.docx
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/dfd/7/exportar "HTTP/1.1 200 OK"
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:23 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:23 INFO     app.services.geracao: DFD 8: versao 1 gravada (geracao)
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/dfd/8/gerar "HTTP/1.1 200 OK"
+23:39:23 INFO     httpx2: HTTP Request: POST http://testserver/dfd/8/validar "HTTP/1.1 200 OK"
+23:39:24 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0008_v1_exp4.docx
+23:39:24 INFO     httpx2: HTTP Request: POST http://testserver/dfd/8/exportar "HTTP/1.1 200 OK"
+23:39:24 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:24 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:24 INFO     app.services.geracao: DFD 9: versao 1 gravada (geracao)
+23:39:24 INFO     httpx2: HTTP Request: POST http://testserver/dfd/9/gerar "HTTP/1.1 200 OK"
+23:39:24 INFO     httpx2: HTTP Request: POST http://testserver/dfd/9/validar "HTTP/1.1 200 OK"
+23:39:24 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0009_v1_exp5.docx
+23:39:24 INFO     httpx2: HTTP Request: POST http://testserver/dfd/9/exportar "HTTP/1.1 200 OK"
+23:39:24 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:25 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:25 INFO     app.services.geracao: DFD 10: versao 1 gravada (geracao)
+23:39:25 INFO     httpx2: HTTP Request: POST http://testserver/dfd/10/gerar "HTTP/1.1 200 OK"
+23:39:25 INFO     httpx2: HTTP Request: POST http://testserver/dfd/10/validar "HTTP/1.1 200 OK"
+23:39:25 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0010_v1_exp6.docx
+23:39:25 INFO     httpx2: HTTP Request: POST http://testserver/dfd/10/exportar "HTTP/1.1 200 OK"
+23:39:25 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:25 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:25 INFO     app.services.geracao: DFD 11: versao 1 gravada (geracao)
+23:39:25 INFO     httpx2: HTTP Request: POST http://testserver/dfd/11/gerar "HTTP/1.1 200 OK"
+23:39:25 INFO     httpx2: HTTP Request: POST http://testserver/dfd/11/validar "HTTP/1.1 200 OK"
+23:39:26 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0011_v1_exp7.docx
+23:39:26 INFO     httpx2: HTTP Request: POST http://testserver/dfd/11/exportar "HTTP/1.1 200 OK"
+23:39:26 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:26 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:26 INFO     app.services.geracao: DFD 12: versao 1 gravada (geracao)
+23:39:26 INFO     httpx2: HTTP Request: POST http://testserver/dfd/12/gerar "HTTP/1.1 200 OK"
+23:39:26 INFO     httpx2: HTTP Request: POST http://testserver/dfd/12/validar "HTTP/1.1 200 OK"
+23:39:26 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0012_v1_exp8.docx
+23:39:26 INFO     httpx2: HTTP Request: POST http://testserver/dfd/12/exportar "HTTP/1.1 200 OK"
+23:39:26 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:27 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:27 INFO     app.services.geracao: DFD 13: versao 1 gravada (geracao)
+23:39:27 INFO     httpx2: HTTP Request: POST http://testserver/dfd/13/gerar "HTTP/1.1 200 OK"
+23:39:27 INFO     httpx2: HTTP Request: POST http://testserver/dfd/13/validar "HTTP/1.1 200 OK"
+23:39:27 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0013_v1_exp9.docx
+23:39:27 INFO     httpx2: HTTP Request: POST http://testserver/dfd/13/exportar "HTTP/1.1 200 OK"
+23:39:27 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:27 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:27 INFO     app.services.geracao: DFD 14: versao 1 gravada (geracao)
+23:39:27 INFO     httpx2: HTTP Request: POST http://testserver/dfd/14/gerar "HTTP/1.1 200 OK"
+23:39:27 INFO     httpx2: HTTP Request: POST http://testserver/dfd/14/validar "HTTP/1.1 200 OK"
+23:39:28 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0014_v1_exp10.docx
+23:39:28 INFO     httpx2: HTTP Request: POST http://testserver/dfd/14/exportar "HTTP/1.1 200 OK"
+23:39:28 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:28 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:28 INFO     app.services.geracao: DFD 15: versao 1 gravada (geracao)
+23:39:28 INFO     httpx2: HTTP Request: POST http://testserver/dfd/15/gerar "HTTP/1.1 200 OK"
+23:39:28 INFO     httpx2: HTTP Request: POST http://testserver/dfd/15/validar "HTTP/1.1 200 OK"
+23:39:28 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0015_v1_exp11.docx
+23:39:28 INFO     httpx2: HTTP Request: POST http://testserver/dfd/15/exportar "HTTP/1.1 200 OK"
+23:39:28 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:29 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:29 INFO     app.services.geracao: DFD 16: versao 1 gravada (geracao)
+23:39:29 INFO     httpx2: HTTP Request: POST http://testserver/dfd/16/gerar "HTTP/1.1 200 OK"
+23:39:29 INFO     httpx2: HTTP Request: POST http://testserver/dfd/16/validar "HTTP/1.1 200 OK"
+23:39:29 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0016_v1_exp12.docx
+23:39:29 INFO     httpx2: HTTP Request: POST http://testserver/dfd/16/exportar "HTTP/1.1 200 OK"
+23:39:29 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:29 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:29 INFO     app.services.geracao: DFD 17: versao 1 gravada (geracao)
+23:39:29 INFO     httpx2: HTTP Request: POST http://testserver/dfd/17/gerar "HTTP/1.1 200 OK"
+23:39:29 INFO     httpx2: HTTP Request: POST http://testserver/dfd/17/validar "HTTP/1.1 200 OK"
+23:39:30 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0017_v1_exp13.docx
+23:39:30 INFO     httpx2: HTTP Request: POST http://testserver/dfd/17/exportar "HTTP/1.1 200 OK"
+23:39:30 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:30 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:30 INFO     app.services.geracao: DFD 18: versao 1 gravada (geracao)
+23:39:30 INFO     httpx2: HTTP Request: POST http://testserver/dfd/18/gerar "HTTP/1.1 200 OK"
+23:39:30 INFO     httpx2: HTTP Request: POST http://testserver/dfd/18/validar "HTTP/1.1 200 OK"
+23:39:30 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0018_v1_exp14.docx
+23:39:30 INFO     httpx2: HTTP Request: POST http://testserver/dfd/18/exportar "HTTP/1.1 200 OK"
+23:39:30 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:31 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:31 INFO     app.services.geracao: DFD 19: versao 1 gravada (geracao)
+23:39:31 INFO     httpx2: HTTP Request: POST http://testserver/dfd/19/gerar "HTTP/1.1 200 OK"
+23:39:31 INFO     httpx2: HTTP Request: POST http://testserver/dfd/19/validar "HTTP/1.1 200 OK"
+23:39:31 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0019_v1_exp15.docx
+23:39:31 INFO     httpx2: HTTP Request: POST http://testserver/dfd/19/exportar "HTTP/1.1 200 OK"
+23:39:31 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:31 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:31 INFO     app.services.geracao: DFD 20: versao 1 gravada (geracao)
+23:39:31 INFO     httpx2: HTTP Request: POST http://testserver/dfd/20/gerar "HTTP/1.1 200 OK"
+23:39:31 INFO     httpx2: HTTP Request: POST http://testserver/dfd/20/validar "HTTP/1.1 200 OK"
+23:39:32 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0020_v1_exp16.docx
+23:39:32 INFO     httpx2: HTTP Request: POST http://testserver/dfd/20/exportar "HTTP/1.1 200 OK"
+23:39:32 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:32 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:32 INFO     app.services.geracao: DFD 21: versao 1 gravada (geracao)
+23:39:32 INFO     httpx2: HTTP Request: POST http://testserver/dfd/21/gerar "HTTP/1.1 200 OK"
+23:39:32 INFO     httpx2: HTTP Request: POST http://testserver/dfd/21/validar "HTTP/1.1 200 OK"
+23:39:32 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0021_v1_exp17.docx
+23:39:32 INFO     httpx2: HTTP Request: POST http://testserver/dfd/21/exportar "HTTP/1.1 200 OK"
+23:39:32 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:33 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:33 INFO     app.services.geracao: DFD 22: versao 1 gravada (geracao)
+23:39:33 INFO     httpx2: HTTP Request: POST http://testserver/dfd/22/gerar "HTTP/1.1 200 OK"
+23:39:33 INFO     httpx2: HTTP Request: POST http://testserver/dfd/22/validar "HTTP/1.1 200 OK"
+23:39:33 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0022_v1_exp18.docx
+23:39:33 INFO     httpx2: HTTP Request: POST http://testserver/dfd/22/exportar "HTTP/1.1 200 OK"
+23:39:33 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:33 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:33 INFO     app.services.geracao: DFD 23: versao 1 gravada (geracao)
+23:39:33 INFO     httpx2: HTTP Request: POST http://testserver/dfd/23/gerar "HTTP/1.1 200 OK"
+23:39:33 INFO     httpx2: HTTP Request: POST http://testserver/dfd/23/validar "HTTP/1.1 200 OK"
+23:39:34 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0023_v1_exp19.docx
+23:39:34 INFO     httpx2: HTTP Request: POST http://testserver/dfd/23/exportar "HTTP/1.1 200 OK"
+23:39:34 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:34 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 0 aceitos pelo portao (limiar 0.52)
+23:39:34 INFO     app.services.geracao: DFD 24: geracao barrada pelo portao de suficiencia
+23:39:34 INFO     httpx2: HTTP Request: POST http://testserver/dfd/24/gerar "HTTP/1.1 422 Unprocessable Content"
+23:39:34 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:34 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 0 aceitos pelo portao (limiar 0.52)
+23:39:34 INFO     app.services.geracao: DFD 25: geracao barrada pelo portao de suficiencia
+23:39:34 INFO     httpx2: HTTP Request: POST http://testserver/dfd/25/gerar "HTTP/1.1 422 Unprocessable Content"
+23:39:34 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:35 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:35 INFO     app.services.geracao: DFD 26: versao 1 gravada (geracao)
+23:39:35 INFO     httpx2: HTTP Request: POST http://testserver/dfd/26/gerar "HTTP/1.1 200 OK"
+23:39:35 INFO     httpx2: HTTP Request: POST http://testserver/dfd/26/validar "HTTP/1.1 200 OK"
+23:39:35 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0026_v1_exp20.docx
+23:39:35 INFO     httpx2: HTTP Request: POST http://testserver/dfd/26/exportar "HTTP/1.1 200 OK"
+23:39:35 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:35 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:35 INFO     app.services.geracao: DFD 27: versao 1 gravada (geracao)
+23:39:35 INFO     httpx2: HTTP Request: POST http://testserver/dfd/27/gerar "HTTP/1.1 200 OK"
+23:39:35 INFO     httpx2: HTTP Request: POST http://testserver/dfd/27/validar "HTTP/1.1 200 OK"
+23:39:36 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0027_v1_exp21.docx
+23:39:36 INFO     httpx2: HTTP Request: POST http://testserver/dfd/27/exportar "HTTP/1.1 200 OK"
+23:39:36 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:36 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:36 INFO     app.services.geracao: DFD 28: versao 1 gravada (geracao)
+23:39:36 INFO     httpx2: HTTP Request: POST http://testserver/dfd/28/gerar "HTTP/1.1 200 OK"
+23:39:36 INFO     httpx2: HTTP Request: POST http://testserver/dfd/28/validar "HTTP/1.1 200 OK"
+23:39:36 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0028_v1_exp22.docx
+23:39:36 INFO     httpx2: HTTP Request: POST http://testserver/dfd/28/exportar "HTTP/1.1 200 OK"
+23:39:36 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:37 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:37 INFO     app.services.geracao: DFD 29: versao 1 gravada (geracao)
+23:39:37 INFO     httpx2: HTTP Request: POST http://testserver/dfd/29/gerar "HTTP/1.1 200 OK"
+23:39:37 INFO     httpx2: HTTP Request: POST http://testserver/dfd/29/validar "HTTP/1.1 200 OK"
+23:39:37 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0029_v1_exp23.docx
+23:39:37 INFO     httpx2: HTTP Request: POST http://testserver/dfd/29/exportar "HTTP/1.1 200 OK"
+23:39:37 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:37 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:37 INFO     app.services.geracao: DFD 30: versao 1 gravada (geracao)
+23:39:37 INFO     httpx2: HTTP Request: POST http://testserver/dfd/30/gerar "HTTP/1.1 200 OK"
+23:39:37 INFO     httpx2: HTTP Request: POST http://testserver/dfd/30/validar "HTTP/1.1 200 OK"
+23:39:37 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0030_v1_exp24.docx
+23:39:37 INFO     httpx2: HTTP Request: POST http://testserver/dfd/30/exportar "HTTP/1.1 200 OK"
+23:39:37 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:38 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:38 INFO     app.services.geracao: DFD 31: versao 1 gravada (geracao)
+23:39:38 INFO     httpx2: HTTP Request: POST http://testserver/dfd/31/gerar "HTTP/1.1 200 OK"
+23:39:38 INFO     httpx2: HTTP Request: POST http://testserver/dfd/31/validar "HTTP/1.1 200 OK"
+23:39:38 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0031_v1_exp25.docx
+23:39:38 INFO     httpx2: HTTP Request: POST http://testserver/dfd/31/exportar "HTTP/1.1 200 OK"
+23:39:38 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:38 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:39 INFO     app.services.geracao: DFD 32: versao 1 gravada (geracao)
+23:39:39 INFO     httpx2: HTTP Request: POST http://testserver/dfd/32/gerar "HTTP/1.1 200 OK"
+23:39:39 INFO     httpx2: HTTP Request: POST http://testserver/dfd/32/validar "HTTP/1.1 200 OK"
+23:39:39 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0032_v1_exp26.docx
+23:39:39 INFO     httpx2: HTTP Request: POST http://testserver/dfd/32/exportar "HTTP/1.1 200 OK"
+23:39:39 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:39 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:39 INFO     app.services.geracao: DFD 33: versao 1 gravada (geracao)
+23:39:39 INFO     httpx2: HTTP Request: POST http://testserver/dfd/33/gerar "HTTP/1.1 200 OK"
+23:39:39 INFO     httpx2: HTTP Request: POST http://testserver/dfd/33/validar "HTTP/1.1 200 OK"
+23:39:39 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0033_v1_exp27.docx
+23:39:39 INFO     httpx2: HTTP Request: POST http://testserver/dfd/33/exportar "HTTP/1.1 200 OK"
+23:39:39 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:40 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:40 INFO     app.services.geracao: DFD 34: versao 1 gravada (geracao)
+23:39:40 INFO     httpx2: HTTP Request: POST http://testserver/dfd/34/gerar "HTTP/1.1 200 OK"
+23:39:40 INFO     httpx2: HTTP Request: POST http://testserver/dfd/34/validar "HTTP/1.1 200 OK"
+23:39:40 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0034_v1_exp28.docx
+23:39:40 INFO     httpx2: HTTP Request: POST http://testserver/dfd/34/exportar "HTTP/1.1 200 OK"
+23:39:40 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:40 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:40 INFO     app.services.geracao: DFD 35: versao 1 gravada (geracao)
+23:39:40 INFO     httpx2: HTTP Request: POST http://testserver/dfd/35/gerar "HTTP/1.1 200 OK"
+23:39:40 INFO     httpx2: HTTP Request: POST http://testserver/dfd/35/validar "HTTP/1.1 200 OK"
+23:39:41 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0035_v1_exp29.docx
+23:39:41 INFO     httpx2: HTTP Request: POST http://testserver/dfd/35/exportar "HTTP/1.1 200 OK"
+23:39:41 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:41 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:41 INFO     app.services.geracao: DFD 36: versao 1 gravada (geracao)
+23:39:41 INFO     httpx2: HTTP Request: POST http://testserver/dfd/36/gerar "HTTP/1.1 200 OK"
+23:39:41 INFO     httpx2: HTTP Request: POST http://testserver/dfd/36/validar "HTTP/1.1 200 OK"
+23:39:41 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0036_v1_exp30.docx
+23:39:41 INFO     httpx2: HTTP Request: POST http://testserver/dfd/36/exportar "HTTP/1.1 200 OK"
+23:39:41 INFO     httpx2: HTTP Request: POST http://testserver/demandas "HTTP/1.1 201 Created"
+23:39:42 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+23:39:42 INFO     app.services.geracao: DFD 37: versao 1 gravada (geracao)
+23:39:42 INFO     httpx2: HTTP Request: POST http://testserver/dfd/37/gerar "HTTP/1.1 200 OK"
+23:39:42 INFO     httpx2: HTTP Request: POST http://testserver/dfd/37/validar "HTTP/1.1 200 OK"
+23:39:42 INFO     app.services.exportador: DFD exportado: C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw\saida\dfd_0037_v1_exp31.docx
+23:39:42 INFO     httpx2: HTTP Request: POST http://testserver/dfd/37/exportar "HTTP/1.1 200 OK"
+23:39:42 INFO     dfd: Encerrando a aplicação.
+E8 — testes automatizados e cobertura
+Gráficos e tabelas
+23:40:12 INFO     fontTools.subset: maxp pruned
+23:40:12 INFO     fontTools.subset: cmap pruned
+23:40:12 INFO     fontTools.subset: kern dropped
+23:40:12 INFO     fontTools.subset: post pruned
+23:40:12 INFO     fontTools.subset: FFTM dropped
+23:40:12 INFO     fontTools.subset: GPOS pruned
+23:40:12 INFO     fontTools.subset: GSUB pruned
+23:40:12 INFO     fontTools.subset: glyf pruned
+23:40:12 INFO     fontTools.subset: Added gid0 to subset
+23:40:12 INFO     fontTools.subset: Added first four glyphs to subset
+23:40:12 INFO     fontTools.subset: Closing glyph list over 'MATH': 50 glyphs before
+23:40:12 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'B', 'C', 'E', 'G', 'H', 'M', 'R', 'a', 'at', 'atilde', 'b', 'c', 'ccedilla', 'comma', 'd', 'e', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'iacute', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'y', 'zero']
+23:40:12 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 28, 35, 37, 38, 40, 42, 43, 48, 53, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 169, 175]
+23:40:12 INFO     fontTools.subset: Closed glyph list over 'MATH': 56 glyphs after
+23:40:12 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'B', 'C', 'E', 'G', 'H', 'M', 'R', 'a', 'at', 'atilde', 'b', 'c', 'ccedilla', 'comma', 'd', 'e', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'iacute', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'y', 'zero']
+23:40:12 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 28, 35, 37, 38, 40, 42, 43, 48, 53, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 169, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:12 INFO     fontTools.subset: Closing glyph list over 'GSUB': 56 glyphs before
+23:40:12 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'B', 'C', 'E', 'G', 'H', 'M', 'R', 'a', 'at', 'atilde', 'b', 'c', 'ccedilla', 'comma', 'd', 'e', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'iacute', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'y', 'zero']
+23:40:12 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 28, 35, 37, 38, 40, 42, 43, 48, 53, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 169, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:12 INFO     fontTools.subset: Closed glyph list over 'GSUB': 56 glyphs after
+23:40:12 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'B', 'C', 'E', 'G', 'H', 'M', 'R', 'a', 'at', 'atilde', 'b', 'c', 'ccedilla', 'comma', 'd', 'e', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'iacute', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'y', 'zero']
+23:40:12 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 28, 35, 37, 38, 40, 42, 43, 48, 53, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 169, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:12 INFO     fontTools.subset: Closing glyph list over 'glyf': 56 glyphs before
+23:40:12 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'B', 'C', 'E', 'G', 'H', 'M', 'R', 'a', 'at', 'atilde', 'b', 'c', 'ccedilla', 'comma', 'd', 'e', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'iacute', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'y', 'zero']
+23:40:12 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 28, 35, 37, 38, 40, 42, 43, 48, 53, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 169, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:12 INFO     fontTools.subset: Closed glyph list over 'glyf': 60 glyphs after
+23:40:12 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'B', 'C', 'E', 'G', 'H', 'M', 'R', 'a', 'acute', 'at', 'atilde', 'b', 'c', 'ccedilla', 'cedilla', 'comma', 'd', 'dotlessi', 'e', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'iacute', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'tilde', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'y', 'zero']
+23:40:12 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 28, 35, 37, 38, 40, 42, 43, 48, 53, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 118, 122, 165, 169, 175, 243, 666, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:12 INFO     fontTools.subset: Retaining 60 glyphs
+23:40:12 INFO     fontTools.subset: head subsetting not needed
+23:40:12 INFO     fontTools.subset: hhea subsetting not needed
+23:40:12 INFO     fontTools.subset: maxp subsetting not needed
+23:40:12 INFO     fontTools.subset: OS/2 subsetting not needed
+23:40:12 INFO     fontTools.subset: hmtx subsetted
+23:40:12 INFO     fontTools.subset: cmap subsetted
+23:40:12 INFO     fontTools.subset: fpgm subsetting not needed
+23:40:12 INFO     fontTools.subset: prep subsetting not needed
+23:40:12 INFO     fontTools.subset: cvt  subsetting not needed
+23:40:12 INFO     fontTools.subset: loca subsetting not needed
+23:40:12 INFO     fontTools.subset: post subsetted
+23:40:12 INFO     fontTools.subset: gasp subsetting not needed
+23:40:12 INFO     fontTools.subset: MATH subsetted
+23:40:12 INFO     fontTools.subset: GDEF subsetted
+23:40:12 INFO     fontTools.subset: GPOS subsetted
+23:40:12 INFO     fontTools.subset: GSUB subsetted
+23:40:12 INFO     fontTools.subset: name subsetting not needed
+23:40:12 INFO     fontTools.subset: glyf subsetted
+23:40:12 INFO     fontTools.subset: head pruned
+23:40:12 INFO     fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+23:40:12 INFO     fontTools.subset: OS/2 CodePage ranges pruned: [0]
+23:40:12 INFO     fontTools.subset: glyf pruned
+23:40:12 INFO     fontTools.subset: GDEF pruned
+23:40:12 INFO     fontTools.subset: GPOS pruned
+23:40:12 INFO     fontTools.subset: GSUB pruned
+23:40:12 INFO     fontTools.subset: name pruned
+23:40:13 INFO     fontTools.subset: maxp pruned
+23:40:13 INFO     fontTools.subset: cmap pruned
+23:40:13 INFO     fontTools.subset: kern dropped
+23:40:13 INFO     fontTools.subset: post pruned
+23:40:13 INFO     fontTools.subset: FFTM dropped
+23:40:13 INFO     fontTools.subset: GPOS pruned
+23:40:13 INFO     fontTools.subset: GSUB pruned
+23:40:13 INFO     fontTools.subset: glyf pruned
+23:40:13 INFO     fontTools.subset: Added gid0 to subset
+23:40:13 INFO     fontTools.subset: Added first four glyphs to subset
+23:40:13 INFO     fontTools.subset: Closing glyph list over 'MATH': 40 glyphs before
+23:40:13 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'R', 'U', 'a', 'aacute', 'atilde', 'b', 'c', 'ccedilla', 'd', 'e', 'eight', 'five', 'four', 'i', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'x', 'zero']
+23:40:13 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 53, 56, 68, 69, 70, 71, 72, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 163, 165, 169]
+23:40:13 INFO     fontTools.subset: Closed glyph list over 'MATH': 46 glyphs after
+23:40:13 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'R', 'U', 'a', 'aacute', 'atilde', 'b', 'c', 'ccedilla', 'd', 'e', 'eight', 'five', 'four', 'i', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:13 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 53, 56, 68, 69, 70, 71, 72, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 163, 165, 169, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:13 INFO     fontTools.subset: Closing glyph list over 'GSUB': 46 glyphs before
+23:40:13 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'R', 'U', 'a', 'aacute', 'atilde', 'b', 'c', 'ccedilla', 'd', 'e', 'eight', 'five', 'four', 'i', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:13 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 53, 56, 68, 69, 70, 71, 72, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 163, 165, 169, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:13 INFO     fontTools.subset: Closed glyph list over 'GSUB': 46 glyphs after
+23:40:13 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'R', 'U', 'a', 'aacute', 'atilde', 'b', 'c', 'ccedilla', 'd', 'e', 'eight', 'five', 'four', 'i', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:13 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 53, 56, 68, 69, 70, 71, 72, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 163, 165, 169, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:13 INFO     fontTools.subset: Closing glyph list over 'glyf': 46 glyphs before
+23:40:13 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'R', 'U', 'a', 'aacute', 'atilde', 'b', 'c', 'ccedilla', 'd', 'e', 'eight', 'five', 'four', 'i', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:13 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 53, 56, 68, 69, 70, 71, 72, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 163, 165, 169, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:13 INFO     fontTools.subset: Closed glyph list over 'glyf': 49 glyphs after
+23:40:13 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'R', 'U', 'a', 'aacute', 'acute', 'atilde', 'b', 'c', 'ccedilla', 'cedilla', 'd', 'e', 'eight', 'five', 'four', 'i', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'tilde', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:13 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 53, 56, 68, 69, 70, 71, 72, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 118, 122, 163, 165, 169, 666, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:13 INFO     fontTools.subset: Retaining 49 glyphs
+23:40:13 INFO     fontTools.subset: head subsetting not needed
+23:40:13 INFO     fontTools.subset: hhea subsetting not needed
+23:40:13 INFO     fontTools.subset: maxp subsetting not needed
+23:40:13 INFO     fontTools.subset: OS/2 subsetting not needed
+23:40:13 INFO     fontTools.subset: hmtx subsetted
+23:40:13 INFO     fontTools.subset: cmap subsetted
+23:40:13 INFO     fontTools.subset: fpgm subsetting not needed
+23:40:13 INFO     fontTools.subset: prep subsetting not needed
+23:40:13 INFO     fontTools.subset: cvt  subsetting not needed
+23:40:13 INFO     fontTools.subset: loca subsetting not needed
+23:40:13 INFO     fontTools.subset: post subsetted
+23:40:13 INFO     fontTools.subset: gasp subsetting not needed
+23:40:13 INFO     fontTools.subset: MATH subsetted
+23:40:13 INFO     fontTools.subset: GDEF subsetted
+23:40:13 INFO     fontTools.subset: GPOS subsetted
+23:40:13 INFO     fontTools.subset: GSUB subsetted
+23:40:13 INFO     fontTools.subset: name subsetting not needed
+23:40:13 INFO     fontTools.subset: glyf subsetted
+23:40:13 INFO     fontTools.subset: head pruned
+23:40:13 INFO     fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+23:40:13 INFO     fontTools.subset: OS/2 CodePage ranges pruned: [0]
+23:40:13 INFO     fontTools.subset: glyf pruned
+23:40:13 INFO     fontTools.subset: GDEF pruned
+23:40:13 INFO     fontTools.subset: GPOS pruned
+23:40:13 INFO     fontTools.subset: GSUB pruned
+23:40:13 INFO     fontTools.subset: name pruned
+23:40:14 INFO     fontTools.subset: maxp pruned
+23:40:14 INFO     fontTools.subset: cmap pruned
+23:40:14 INFO     fontTools.subset: kern dropped
+23:40:14 INFO     fontTools.subset: post pruned
+23:40:14 INFO     fontTools.subset: FFTM dropped
+23:40:14 INFO     fontTools.subset: GPOS pruned
+23:40:14 INFO     fontTools.subset: GSUB pruned
+23:40:14 INFO     fontTools.subset: glyf pruned
+23:40:14 INFO     fontTools.subset: Added gid0 to subset
+23:40:14 INFO     fontTools.subset: Added first four glyphs to subset
+23:40:14 INFO     fontTools.subset: Closing glyph list over 'MATH': 48 glyphs before
+23:40:14 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'E', 'G', 'M', 'U', 'a', 'atilde', 'b', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'f', 'five', 'four', 'h', 'hyphen', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'y', 'zero']
+23:40:14 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 37, 38, 40, 42, 48, 56, 68, 69, 70, 71, 72, 73, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 175]
+23:40:14 INFO     fontTools.subset: Closed glyph list over 'MATH': 54 glyphs after
+23:40:14 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'E', 'G', 'M', 'U', 'a', 'atilde', 'b', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'f', 'five', 'four', 'h', 'hyphen', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'y', 'zero']
+23:40:14 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 37, 38, 40, 42, 48, 56, 68, 69, 70, 71, 72, 73, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:14 INFO     fontTools.subset: Closing glyph list over 'GSUB': 54 glyphs before
+23:40:14 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'E', 'G', 'M', 'U', 'a', 'atilde', 'b', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'f', 'five', 'four', 'h', 'hyphen', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'y', 'zero']
+23:40:14 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 37, 38, 40, 42, 48, 56, 68, 69, 70, 71, 72, 73, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:14 INFO     fontTools.subset: Closed glyph list over 'GSUB': 59 glyphs after
+23:40:14 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'E', 'G', 'M', 'U', 'a', 'atilde', 'b', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'f', 'fi', 'five', 'fl', 'four', 'h', 'hyphen', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uniFB00', 'uniFB03', 'uniFB04', 'v', 'y', 'zero']
+23:40:14 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 37, 38, 40, 42, 48, 56, 68, 69, 70, 71, 72, 73, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 175, 2357, 2358, 2359, 2360, 2361, 2362, 3311, 3312, 3313, 3314, 3315]
+23:40:14 INFO     fontTools.subset: Closing glyph list over 'glyf': 59 glyphs before
+23:40:14 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'E', 'G', 'M', 'U', 'a', 'atilde', 'b', 'c', 'colon', 'comma', 'd', 'e', 'eight', 'f', 'fi', 'five', 'fl', 'four', 'h', 'hyphen', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uniFB00', 'uniFB03', 'uniFB04', 'v', 'y', 'zero']
+23:40:14 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 37, 38, 40, 42, 48, 56, 68, 69, 70, 71, 72, 73, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 165, 175, 2357, 2358, 2359, 2360, 2361, 2362, 3311, 3312, 3313, 3314, 3315]
+23:40:14 INFO     fontTools.subset: Closed glyph list over 'glyf': 62 glyphs after
+23:40:14 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'E', 'G', 'M', 'U', 'a', 'acute', 'atilde', 'b', 'c', 'colon', 'comma', 'd', 'dotlessi', 'e', 'eight', 'f', 'fi', 'five', 'fl', 'four', 'h', 'hyphen', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'tilde', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uniFB00', 'uniFB03', 'uniFB04', 'v', 'y', 'zero']
+23:40:14 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 36, 37, 38, 40, 42, 48, 56, 68, 69, 70, 71, 72, 73, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 118, 165, 175, 243, 666, 2357, 2358, 2359, 2360, 2361, 2362, 3311, 3312, 3313, 3314, 3315]
+23:40:14 INFO     fontTools.subset: Retaining 62 glyphs
+23:40:14 INFO     fontTools.subset: head subsetting not needed
+23:40:14 INFO     fontTools.subset: hhea subsetting not needed
+23:40:14 INFO     fontTools.subset: maxp subsetting not needed
+23:40:14 INFO     fontTools.subset: OS/2 subsetting not needed
+23:40:14 INFO     fontTools.subset: hmtx subsetted
+23:40:14 INFO     fontTools.subset: cmap subsetted
+23:40:14 INFO     fontTools.subset: fpgm subsetting not needed
+23:40:14 INFO     fontTools.subset: prep subsetting not needed
+23:40:14 INFO     fontTools.subset: cvt  subsetting not needed
+23:40:14 INFO     fontTools.subset: loca subsetting not needed
+23:40:14 INFO     fontTools.subset: post subsetted
+23:40:14 INFO     fontTools.subset: gasp subsetting not needed
+23:40:14 INFO     fontTools.subset: MATH subsetted
+23:40:14 INFO     fontTools.subset: GDEF subsetted
+23:40:14 INFO     fontTools.subset: GPOS subsetted
+23:40:14 INFO     fontTools.subset: GSUB subsetted
+23:40:14 INFO     fontTools.subset: name subsetting not needed
+23:40:14 INFO     fontTools.subset: glyf subsetted
+23:40:14 INFO     fontTools.subset: head pruned
+23:40:14 INFO     fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+23:40:14 INFO     fontTools.subset: OS/2 CodePage ranges pruned: [0]
+23:40:14 INFO     fontTools.subset: glyf pruned
+23:40:14 INFO     fontTools.subset: GDEF pruned
+23:40:14 INFO     fontTools.subset: GPOS pruned
+23:40:14 INFO     fontTools.subset: GSUB pruned
+23:40:14 INFO     fontTools.subset: name pruned
+23:40:15 INFO     fontTools.subset: maxp pruned
+23:40:15 INFO     fontTools.subset: cmap pruned
+23:40:15 INFO     fontTools.subset: kern dropped
+23:40:15 INFO     fontTools.subset: post pruned
+23:40:15 INFO     fontTools.subset: FFTM dropped
+23:40:15 INFO     fontTools.subset: GPOS pruned
+23:40:15 INFO     fontTools.subset: GSUB pruned
+23:40:15 INFO     fontTools.subset: glyf pruned
+23:40:15 INFO     fontTools.subset: Added gid0 to subset
+23:40:15 INFO     fontTools.subset: Added first four glyphs to subset
+23:40:15 INFO     fontTools.subset: Closing glyph list over 'MATH': 51 glyphs before
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'E', 'F', 'L', 'N', 'T', 'V', 'a', 'atilde', 'c', 'comma', 'd', 'e', 'ecircumflex', 'eight', 'f', 'five', 'four', 'g', 'h', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'uacute', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 38, 40, 41, 47, 49, 55, 57, 68, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 165, 172, 175, 188]
+23:40:15 INFO     fontTools.subset: Closed glyph list over 'MATH': 57 glyphs after
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'E', 'F', 'L', 'N', 'T', 'V', 'a', 'atilde', 'c', 'comma', 'd', 'e', 'ecircumflex', 'eight', 'f', 'five', 'four', 'g', 'h', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'uacute', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 38, 40, 41, 47, 49, 55, 57, 68, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 165, 172, 175, 188, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:15 INFO     fontTools.subset: Closing glyph list over 'GSUB': 57 glyphs before
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'E', 'F', 'L', 'N', 'T', 'V', 'a', 'atilde', 'c', 'comma', 'd', 'e', 'ecircumflex', 'eight', 'f', 'five', 'four', 'g', 'h', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'uacute', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 38, 40, 41, 47, 49, 55, 57, 68, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 165, 172, 175, 188, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:15 INFO     fontTools.subset: Closed glyph list over 'GSUB': 62 glyphs after
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'E', 'F', 'L', 'N', 'T', 'V', 'a', 'atilde', 'c', 'comma', 'd', 'e', 'ecircumflex', 'eight', 'f', 'fi', 'five', 'fl', 'four', 'g', 'h', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'uacute', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uniFB00', 'uniFB03', 'uniFB04', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 38, 40, 41, 47, 49, 55, 57, 68, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 165, 172, 175, 188, 2357, 2358, 2359, 2360, 2361, 2362, 3311, 3312, 3313, 3314, 3315]
+23:40:15 INFO     fontTools.subset: Closing glyph list over 'glyf': 62 glyphs before
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'E', 'F', 'L', 'N', 'T', 'V', 'a', 'atilde', 'c', 'comma', 'd', 'e', 'ecircumflex', 'eight', 'f', 'fi', 'five', 'fl', 'four', 'g', 'h', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'uacute', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uniFB00', 'uniFB03', 'uniFB04', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 38, 40, 41, 47, 49, 55, 57, 68, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 165, 172, 175, 188, 2357, 2358, 2359, 2360, 2361, 2362, 3311, 3312, 3313, 3314, 3315]
+23:40:15 INFO     fontTools.subset: Closed glyph list over 'glyf': 66 glyphs after
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'E', 'F', 'L', 'N', 'T', 'V', 'a', 'acute', 'atilde', 'c', 'circumflex', 'comma', 'd', 'dotlessi', 'e', 'ecircumflex', 'eight', 'f', 'fi', 'five', 'fl', 'four', 'g', 'h', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'tilde', 'two', 'u', 'uacute', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'uniFB00', 'uniFB03', 'uniFB04', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 36, 38, 40, 41, 47, 49, 55, 57, 68, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 118, 165, 172, 175, 188, 243, 648, 666, 2357, 2358, 2359, 2360, 2361, 2362, 3311, 3312, 3313, 3314, 3315]
+23:40:15 INFO     fontTools.subset: Retaining 66 glyphs
+23:40:15 INFO     fontTools.subset: head subsetting not needed
+23:40:15 INFO     fontTools.subset: hhea subsetting not needed
+23:40:15 INFO     fontTools.subset: maxp subsetting not needed
+23:40:15 INFO     fontTools.subset: OS/2 subsetting not needed
+23:40:15 INFO     fontTools.subset: hmtx subsetted
+23:40:15 INFO     fontTools.subset: cmap subsetted
+23:40:15 INFO     fontTools.subset: fpgm subsetting not needed
+23:40:15 INFO     fontTools.subset: prep subsetting not needed
+23:40:15 INFO     fontTools.subset: cvt  subsetting not needed
+23:40:15 INFO     fontTools.subset: loca subsetting not needed
+23:40:15 INFO     fontTools.subset: post subsetted
+23:40:15 INFO     fontTools.subset: gasp subsetting not needed
+23:40:15 INFO     fontTools.subset: MATH subsetted
+23:40:15 INFO     fontTools.subset: GDEF subsetted
+23:40:15 INFO     fontTools.subset: GPOS subsetted
+23:40:15 INFO     fontTools.subset: GSUB subsetted
+23:40:15 INFO     fontTools.subset: name subsetting not needed
+23:40:15 INFO     fontTools.subset: glyf subsetted
+23:40:15 INFO     fontTools.subset: head pruned
+23:40:15 INFO     fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+23:40:15 INFO     fontTools.subset: OS/2 CodePage ranges pruned: [0]
+23:40:15 INFO     fontTools.subset: glyf pruned
+23:40:15 INFO     fontTools.subset: GDEF pruned
+23:40:15 INFO     fontTools.subset: GPOS pruned
+23:40:15 INFO     fontTools.subset: GSUB pruned
+23:40:15 INFO     fontTools.subset: name pruned
+23:40:15 INFO     fontTools.subset: maxp pruned
+23:40:15 INFO     fontTools.subset: cmap pruned
+23:40:15 INFO     fontTools.subset: kern dropped
+23:40:15 INFO     fontTools.subset: post pruned
+23:40:15 INFO     fontTools.subset: FFTM dropped
+23:40:15 INFO     fontTools.subset: GPOS pruned
+23:40:15 INFO     fontTools.subset: GSUB pruned
+23:40:15 INFO     fontTools.subset: glyf pruned
+23:40:15 INFO     fontTools.subset: Added gid0 to subset
+23:40:15 INFO     fontTools.subset: Added first four glyphs to subset
+23:40:15 INFO     fontTools.subset: Closing glyph list over 'MATH': 45 glyphs before
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'D', 'E', 'F', 'G', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'T', 'a', 'd', 'e', 'eight', 'equal', 'four', 'g', 'i', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'plus', 'r', 's', 'six', 'space', 'three', 'two', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 17, 19, 20, 21, 22, 23, 25, 27, 32, 36, 38, 39, 40, 41, 42, 44, 45, 47, 48, 49, 50, 51, 53, 55, 68, 71, 72, 74, 76, 80, 81, 82, 83, 85, 86, 89, 91]
+23:40:15 INFO     fontTools.subset: Closed glyph list over 'MATH': 51 glyphs after
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'D', 'E', 'F', 'G', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'T', 'a', 'd', 'e', 'eight', 'equal', 'four', 'g', 'i', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'plus', 'r', 's', 'six', 'space', 'three', 'two', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 17, 19, 20, 21, 22, 23, 25, 27, 32, 36, 38, 39, 40, 41, 42, 44, 45, 47, 48, 49, 50, 51, 53, 55, 68, 71, 72, 74, 76, 80, 81, 82, 83, 85, 86, 89, 91, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:15 INFO     fontTools.subset: Closing glyph list over 'GSUB': 51 glyphs before
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'D', 'E', 'F', 'G', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'T', 'a', 'd', 'e', 'eight', 'equal', 'four', 'g', 'i', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'plus', 'r', 's', 'six', 'space', 'three', 'two', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 17, 19, 20, 21, 22, 23, 25, 27, 32, 36, 38, 39, 40, 41, 42, 44, 45, 47, 48, 49, 50, 51, 53, 55, 68, 71, 72, 74, 76, 80, 81, 82, 83, 85, 86, 89, 91, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:15 INFO     fontTools.subset: Closed glyph list over 'GSUB': 51 glyphs after
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'D', 'E', 'F', 'G', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'T', 'a', 'd', 'e', 'eight', 'equal', 'four', 'g', 'i', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'plus', 'r', 's', 'six', 'space', 'three', 'two', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 17, 19, 20, 21, 22, 23, 25, 27, 32, 36, 38, 39, 40, 41, 42, 44, 45, 47, 48, 49, 50, 51, 53, 55, 68, 71, 72, 74, 76, 80, 81, 82, 83, 85, 86, 89, 91, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:15 INFO     fontTools.subset: Closing glyph list over 'glyf': 51 glyphs before
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'D', 'E', 'F', 'G', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'T', 'a', 'd', 'e', 'eight', 'equal', 'four', 'g', 'i', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'plus', 'r', 's', 'six', 'space', 'three', 'two', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 17, 19, 20, 21, 22, 23, 25, 27, 32, 36, 38, 39, 40, 41, 42, 44, 45, 47, 48, 49, 50, 51, 53, 55, 68, 71, 72, 74, 76, 80, 81, 82, 83, 85, 86, 89, 91, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:15 INFO     fontTools.subset: Closed glyph list over 'glyf': 51 glyphs after
+23:40:15 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'C', 'D', 'E', 'F', 'G', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'T', 'a', 'd', 'e', 'eight', 'equal', 'four', 'g', 'i', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'plus', 'r', 's', 'six', 'space', 'three', 'two', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'zero']
+23:40:15 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 17, 19, 20, 21, 22, 23, 25, 27, 32, 36, 38, 39, 40, 41, 42, 44, 45, 47, 48, 49, 50, 51, 53, 55, 68, 71, 72, 74, 76, 80, 81, 82, 83, 85, 86, 89, 91, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:15 INFO     fontTools.subset: Retaining 51 glyphs
+23:40:15 INFO     fontTools.subset: head subsetting not needed
+23:40:15 INFO     fontTools.subset: hhea subsetting not needed
+23:40:15 INFO     fontTools.subset: maxp subsetting not needed
+23:40:15 INFO     fontTools.subset: OS/2 subsetting not needed
+23:40:15 INFO     fontTools.subset: hmtx subsetted
+23:40:15 INFO     fontTools.subset: cmap subsetted
+23:40:15 INFO     fontTools.subset: fpgm subsetting not needed
+23:40:15 INFO     fontTools.subset: prep subsetting not needed
+23:40:15 INFO     fontTools.subset: cvt  subsetting not needed
+23:40:15 INFO     fontTools.subset: loca subsetting not needed
+23:40:15 INFO     fontTools.subset: post subsetted
+23:40:15 INFO     fontTools.subset: gasp subsetting not needed
+23:40:15 INFO     fontTools.subset: MATH subsetted
+23:40:15 INFO     fontTools.subset: GDEF subsetted
+23:40:15 INFO     fontTools.subset: GPOS subsetted
+23:40:15 INFO     fontTools.subset: GSUB subsetted
+23:40:15 INFO     fontTools.subset: name subsetting not needed
+23:40:15 INFO     fontTools.subset: glyf subsetted
+23:40:15 INFO     fontTools.subset: head pruned
+23:40:15 INFO     fontTools.subset: OS/2 Unicode ranges pruned: [0]
+23:40:15 INFO     fontTools.subset: OS/2 CodePage ranges pruned: [0]
+23:40:15 INFO     fontTools.subset: glyf pruned
+23:40:15 INFO     fontTools.subset: GDEF pruned
+23:40:15 INFO     fontTools.subset: GPOS pruned
+23:40:15 INFO     fontTools.subset: GSUB pruned
+23:40:15 INFO     fontTools.subset: name pruned
+23:40:16 INFO     fontTools.subset: maxp pruned
+23:40:16 INFO     fontTools.subset: cmap pruned
+23:40:16 INFO     fontTools.subset: kern dropped
+23:40:16 INFO     fontTools.subset: post pruned
+23:40:16 INFO     fontTools.subset: FFTM dropped
+23:40:16 INFO     fontTools.subset: GPOS pruned
+23:40:16 INFO     fontTools.subset: GSUB pruned
+23:40:16 INFO     fontTools.subset: glyf pruned
+23:40:16 INFO     fontTools.subset: Added gid0 to subset
+23:40:16 INFO     fontTools.subset: Added first four glyphs to subset
+23:40:16 INFO     fontTools.subset: Closing glyph list over 'MATH': 47 glyphs before
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'E', 'G', 'H', 'N', 'P', 'R', 'T', 'V', 'a', 'aacute', 'atilde', 'c', 'ccedilla', 'comma', 'd', 'e', 'ecircumflex', 'five', 'four', 'g', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'x', 'z', 'zero']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 17, 19, 20, 21, 22, 23, 24, 25, 28, 40, 42, 43, 49, 51, 53, 55, 57, 68, 70, 71, 72, 74, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 93, 163, 165, 169, 172, 175]
+23:40:16 INFO     fontTools.subset: Closed glyph list over 'MATH': 53 glyphs after
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'E', 'G', 'H', 'N', 'P', 'R', 'T', 'V', 'a', 'aacute', 'atilde', 'c', 'ccedilla', 'comma', 'd', 'e', 'ecircumflex', 'five', 'four', 'g', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'z', 'zero']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 17, 19, 20, 21, 22, 23, 24, 25, 28, 40, 42, 43, 49, 51, 53, 55, 57, 68, 70, 71, 72, 74, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 93, 163, 165, 169, 172, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:16 INFO     fontTools.subset: Closing glyph list over 'GSUB': 53 glyphs before
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'E', 'G', 'H', 'N', 'P', 'R', 'T', 'V', 'a', 'aacute', 'atilde', 'c', 'ccedilla', 'comma', 'd', 'e', 'ecircumflex', 'five', 'four', 'g', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'z', 'zero']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 17, 19, 20, 21, 22, 23, 24, 25, 28, 40, 42, 43, 49, 51, 53, 55, 57, 68, 70, 71, 72, 74, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 93, 163, 165, 169, 172, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:16 INFO     fontTools.subset: Closed glyph list over 'GSUB': 53 glyphs after
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'E', 'G', 'H', 'N', 'P', 'R', 'T', 'V', 'a', 'aacute', 'atilde', 'c', 'ccedilla', 'comma', 'd', 'e', 'ecircumflex', 'five', 'four', 'g', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'z', 'zero']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 17, 19, 20, 21, 22, 23, 24, 25, 28, 40, 42, 43, 49, 51, 53, 55, 57, 68, 70, 71, 72, 74, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 93, 163, 165, 169, 172, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:16 INFO     fontTools.subset: Closing glyph list over 'glyf': 53 glyphs before
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'E', 'G', 'H', 'N', 'P', 'R', 'T', 'V', 'a', 'aacute', 'atilde', 'c', 'ccedilla', 'comma', 'd', 'e', 'ecircumflex', 'five', 'four', 'g', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'six', 'space', 't', 'three', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'z', 'zero']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 17, 19, 20, 21, 22, 23, 24, 25, 28, 40, 42, 43, 49, 51, 53, 55, 57, 68, 70, 71, 72, 74, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 93, 163, 165, 169, 172, 175, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:16 INFO     fontTools.subset: Closed glyph list over 'glyf': 58 glyphs after
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'E', 'G', 'H', 'N', 'P', 'R', 'T', 'V', 'a', 'aacute', 'acute', 'atilde', 'c', 'ccedilla', 'cedilla', 'circumflex', 'comma', 'd', 'dotlessi', 'e', 'ecircumflex', 'five', 'four', 'g', 'i', 'iacute', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'r', 's', 'six', 'space', 't', 'three', 'tilde', 'two', 'u', 'uni239B', 'uni239C', 'uni239D', 'uni239E', 'uni239F', 'uni23A0', 'v', 'x', 'z', 'zero']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 17, 19, 20, 21, 22, 23, 24, 25, 28, 40, 42, 43, 49, 51, 53, 55, 57, 68, 70, 71, 72, 74, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 91, 93, 118, 122, 163, 165, 169, 172, 175, 243, 648, 666, 2357, 2358, 2359, 2360, 2361, 2362]
+23:40:16 INFO     fontTools.subset: Retaining 58 glyphs
+23:40:16 INFO     fontTools.subset: head subsetting not needed
+23:40:16 INFO     fontTools.subset: hhea subsetting not needed
+23:40:16 INFO     fontTools.subset: maxp subsetting not needed
+23:40:16 INFO     fontTools.subset: OS/2 subsetting not needed
+23:40:16 INFO     fontTools.subset: hmtx subsetted
+23:40:16 INFO     fontTools.subset: cmap subsetted
+23:40:16 INFO     fontTools.subset: fpgm subsetting not needed
+23:40:16 INFO     fontTools.subset: prep subsetting not needed
+23:40:16 INFO     fontTools.subset: cvt  subsetting not needed
+23:40:16 INFO     fontTools.subset: loca subsetting not needed
+23:40:16 INFO     fontTools.subset: post subsetted
+23:40:16 INFO     fontTools.subset: gasp subsetting not needed
+23:40:16 INFO     fontTools.subset: MATH subsetted
+23:40:16 INFO     fontTools.subset: GDEF subsetted
+23:40:16 INFO     fontTools.subset: GPOS subsetted
+23:40:16 INFO     fontTools.subset: GSUB subsetted
+23:40:16 INFO     fontTools.subset: name subsetting not needed
+23:40:16 INFO     fontTools.subset: glyf subsetted
+23:40:16 INFO     fontTools.subset: head pruned
+23:40:16 INFO     fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+23:40:16 INFO     fontTools.subset: OS/2 CodePage ranges pruned: [0]
+23:40:16 INFO     fontTools.subset: glyf pruned
+23:40:16 INFO     fontTools.subset: GDEF pruned
+23:40:16 INFO     fontTools.subset: GPOS pruned
+23:40:16 INFO     fontTools.subset: GSUB pruned
+23:40:16 INFO     fontTools.subset: name pruned
+23:40:16 INFO     fontTools.subset: maxp pruned
+23:40:16 INFO     fontTools.subset: cmap pruned
+23:40:16 INFO     fontTools.subset: kern dropped
+23:40:16 INFO     fontTools.subset: post pruned
+23:40:16 INFO     fontTools.subset: FFTM dropped
+23:40:16 INFO     fontTools.subset: GPOS pruned
+23:40:16 INFO     fontTools.subset: GSUB pruned
+23:40:16 INFO     fontTools.subset: glyf pruned
+23:40:16 INFO     fontTools.subset: Added gid0 to subset
+23:40:16 INFO     fontTools.subset: Added first four glyphs to subset
+23:40:16 INFO     fontTools.subset: Closing glyph list over 'MATH': 5 glyphs before
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 3312]
+23:40:16 INFO     fontTools.subset: Closed glyph list over 'MATH': 5 glyphs after
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 3312]
+23:40:16 INFO     fontTools.subset: Closing glyph list over 'GSUB': 5 glyphs before
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 3312]
+23:40:16 INFO     fontTools.subset: Closed glyph list over 'GSUB': 5 glyphs after
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 3312]
+23:40:16 INFO     fontTools.subset: Closing glyph list over 'glyf': 5 glyphs before
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 3312]
+23:40:16 INFO     fontTools.subset: Closed glyph list over 'glyf': 5 glyphs after
+23:40:16 INFO     fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+23:40:16 INFO     fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 3312]
+23:40:16 INFO     fontTools.subset: Retaining 5 glyphs
+23:40:16 INFO     fontTools.subset: head subsetting not needed
+23:40:16 INFO     fontTools.subset: hhea subsetting not needed
+23:40:16 INFO     fontTools.subset: maxp subsetting not needed
+23:40:16 INFO     fontTools.subset: OS/2 subsetting not needed
+23:40:16 INFO     fontTools.subset: hmtx subsetted
+23:40:16 INFO     fontTools.subset: cmap subsetted
+23:40:16 INFO     fontTools.subset: fpgm subsetting not needed
+23:40:16 INFO     fontTools.subset: prep subsetting not needed
+23:40:16 INFO     fontTools.subset: cvt  subsetting not needed
+23:40:16 INFO     fontTools.subset: loca subsetting not needed
+23:40:16 INFO     fontTools.subset: post subsetted
+23:40:16 INFO     fontTools.subset: gasp subsetting not needed
+23:40:16 INFO     fontTools.subset: MATH subsetted
+23:40:16 INFO     fontTools.subset: GDEF subsetted
+23:40:16 INFO     fontTools.subset: GPOS subsetted
+23:40:16 INFO     fontTools.subset: GSUB subsetted
+23:40:16 INFO     fontTools.subset: name subsetting not needed
+23:40:16 INFO     fontTools.subset: glyf subsetted
+23:40:16 INFO     fontTools.subset: head pruned
+23:40:16 INFO     fontTools.subset: OS/2 Unicode ranges pruned: [62]
+23:40:16 INFO     fontTools.subset: OS/2 CodePage ranges pruned: [0]
+23:40:16 INFO     fontTools.subset: glyf pruned
+23:40:16 INFO     fontTools.subset: GDEF pruned
+23:40:16 INFO     fontTools.subset: GPOS pruned
+23:40:16 INFO     fontTools.subset: GSUB pruned
+23:40:16 INFO     fontTools.subset: name pruned
+Concluído em 2468.3 s. Resultados em C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\backend\avaliacao\resultados
+(banco temporário em C:\Users\queir\AppData\Local\Temp\dfd-avaliacao-q526knrw)

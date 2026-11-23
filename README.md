@@ -78,7 +78,7 @@ dfd-assistido/
 │   │   └── services/        orquestrador, ingestão e exportador .docx
 │   ├── db/                  DDL de cada dialeto (com os gatilhos)
 │   ├── scripts/seed.py      povoamento (--forcar, --reindexar)
-│   ├── tests/               88 testes automatizados
+│   ├── tests/               144 testes automatizados
 │   └── avaliacao/           gabarito, experimentos E1–E9, gráficos e tabelas do cap. 5
 ├── frontend/                interface Streamlit (fala só com a API)
 ├── ingestao/                texto oficial (oficial/, com SHA-256), amostras e download
@@ -96,7 +96,7 @@ negócio são idênticos; cada dialeto tem seu DDL com os gatilhos equivalentes.
 |---|---|---|
 | Infraestrutura | Nenhuma: um arquivo | Servidor |
 | Escritores simultâneos | Um processo | Vários |
-| Quando usar | Enquanto só a API escreve | Ao acrescentar o orquestrador n8n |
+| Quando usar | Enquanto só a API escreve | Com mais de um processo escrevendo (várias instâncias da API) |
 
 ```bash
 # MySQL
@@ -185,11 +185,14 @@ Selecionados por `LLM_PROVEDOR`, atrás da interface `ProvedorLLM` (RNF08).
 
 | Valor | Uso |
 |---|---|
-| `echo` | Determinístico, sem rede e sem custo. Padrão em desenvolvimento e nos testes |
-| `ollama` | Modelo aberto local: nenhum dado sai da máquina (Experimento 2) |
-| `anthropic` | Modelo comercial por API (gerador principal) |
-| `gemini` | Modelo comercial do Google por API REST (alternativa ao `anthropic`) |
-| `groq` | Modelos abertos (gpt-oss, Qwen, Llama) hospedados pela Groq, API no formato OpenAI |
+| `echo` | Simulador determinístico, sem rede: só para os testes automatizados e para E1 a E8 (camadas sem modelo de linguagem). Não gera texto de qualidade |
+| `groq` | Modelos abertos (gpt-oss, Qwen, Llama) hospedados pela Groq, API no formato OpenAI. Gerador do E9 |
+| `gemini` | Modelo comercial do Google por API REST. Revisor de redação (RF13) e réplica do E9 |
+
+Os dois provedores em nuvem são usados no nível gratuito, que limita requisições
+e tokens por minuto e por dia; o sistema espera e tenta de novo quando recebe 429.
+Para dados pessoais reais em produção, a interface permite acrescentar um modelo
+local ou um plano pago com cláusulas de privacidade; esta versão não inclui nenhum.
 
 ### Revisão de texto por um segundo modelo
 
@@ -214,32 +217,50 @@ python -m pytest
 
 Cobrem a segmentação normativa (inclusive os casos do HTML oficial), a
 minimização de dados pessoais, a verificação de citações, o índice lexical, as
-regras de governança (testes T1 a T6) e o percurso completo do UC02 ao UC08 pela
-API.
+regras de governança (testes T1 a T6), a delimitação dos dados do usuário no
+prompt (v0.4) e o percurso completo do UC02 ao UC08 pela API. São 142 testes;
+as mudanças de cada versão estão em [CHANGELOG.md](CHANGELOG.md).
 
-## Avaliação (capítulo 5 do TCC)
+## Avaliação (capítulo 6 do TCC)
 
 ```bash
 cd backend
 python -m avaliacao.executar                  # E1 a E8 (~35 min com o BGE-M3 em CPU)
-python -m avaliacao.executar --somente-e9 --llm anthropic gemini     # E9, dois provedores
-python -m avaliacao.executar --somente-e9 --llm gemini --amostra 6   # cota gratuita do Gemini
-python -m avaliacao.executar --somente-e9 --llm anthropic --condicoes completo completo_bm25 sem_rag isolada
-python -m avaliacao.executar --llm ollama     # E9 com modelo local
+python -m avaliacao.executar --somente-e9 --llm groq                 # E9: 32 demandas, 4 condições
+python -m avaliacao.executar --somente-e9 --llm gemini --amostra 6   # réplica: 6 demandas, 4 condições
+python -m avaliacao.executar --somente-e9 --llm groq --condicoes completo isolada   # só duas condições
 ```
 
 O E9 compara o mesmo modelo em até quatro condições: **sistema completo**
 (minimização, RAG no modo configurado, portão, esquema de saída e verificação),
-**RAG só lexical** (`completo_bm25`, opcional: compara os métodos de recuperação
-de ponta a ponta), **sistema sem RAG** e **LLM isolada** (a demanda enviada direto
+**RAG só lexical** (`completo_bm25`: compara os métodos de recuperação de
+ponta a ponta), **sistema sem RAG** e **LLM isolada** (a demanda enviada direto
 ao modelo, em texto livre, sem nada do sistema). As métricas comuns são citações
 por minuta, precisão das citações em relação ao gabarito, citações a artigos
 inexistentes, citações a normas revogadas (Lei nº 8.666/1993 e outras) e valores
 da demanda presentes no texto, com diferenças pareadas e IC 95% por bootstrap.
+Desde a versão 0.4.5, nas condições do sistema as citações são contadas no texto
+do documento, como ele é exportado: os campos redigidos com a linha de
+fundamentação (as referências dos marcadores T1 a T6 que o modelo indicou) e os
+valores extraídos; um marcador sem trecho correspondente conta como citação
+inexistente. Para reaplicar essa medida a gerações feitas com a 0.4.4, sem chamar
+o modelo de novo:
+
+```bash
+cd ../rodada_final && python extrair_minutas_e9.py      # copia as minutas dos bancos temporários
+cd ../backend && python -m avaliacao.remedir_e9 --minutas ../rodada_final/e9_minutas/minutas_e9.jsonl
+python -m avaliacao.executar --somente-e9 --llm groq    # refaz as tabelas (sem novas gerações)
+python -m avaliacao.executar --somente-e9 --llm gemini --amostra 6
+```
+
+Desde a versão 0.4.1, o E9 completo (sem `--amostra` nem `--ids`) roda também as
+6 demandas adversariais do gabarito nas condições `completo` e `isolada`: cada uma
+tem um código-marcador que só aparece na minuta se o modelo obedecer à instrução
+injetada (tabela `tab_e9_injecao`). Use `--sem-injecao` para pular essa parte.
 
 Cada provedor/modelo fica numa entrada própria de `resumo.json` (`e9.execucoes`),
 e cada geração é gravada em `resultados/e9/<provedor>_<modelo>.jsonl` assim que
-termina, com o texto produzido. Se a execução parar (cota diária do Gemini, queda
+termina, com o texto produzido. Se a execução parar (cota diária da Groq ou do Gemini, queda
 de rede), rode o mesmo comando de novo: ela continua de onde parou. `--refazer`
 descarta o progresso. No `--somente-e9`, os vetores do BGE-M3 ficam em cache
 (`avaliacao/cache/`) e a segunda execução não espera a vetorização do corpus.
@@ -273,9 +294,13 @@ hash da fonte muda.
   teste retido (com NER do spaCy); ficaram de fora telefones com prefixo "(045)" ou
   ponto como separador e nomes inteiramente em maiúsculas.
 - O gerador de embeddings determinístico existe para testes e **não tem qualidade
-  semântica**; a média de vetores do spaCy é boa no portão de suficiência, mas
-  fraca na ordenação. A recuperação de referência exige o BGE-M3
-  (`pip install sentence-transformers`).
+  semântica**. A média de vetores do spaCy é fraca na ordenação e, com os 50
+  pedidos fora do domínio da v0.4, também no portão: aceita pedidos
+  administrativos que não são contratação. A recuperação de referência exige o
+  BGE-M3 (`pip install sentence-transformers`).
+- O portão de suficiência mede proximidade de assunto, não intenção: pedidos
+  jurídico-administrativos sem contratação podem passar e seguem para a
+  verificação e a revisão humana.
 - A verificação automática confere citações e evidências, não a interpretação
   jurídica de um dispositivo corretamente citado: isso continua com o agente.
 - O protótipo é prova de conceito avaliada em ambiente controlado, sem implantação

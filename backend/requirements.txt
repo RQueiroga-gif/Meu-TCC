@@ -7,7 +7,6 @@ SQLAlchemy>=2.0
 PyMySQL>=1.1            # somente para DB_DIALETO=mysql
 bcrypt>=4.1
 httpx>=0.27
-anthropic>=0.40         # somente para LLM_PROVEDOR=anthropic
 beautifulsoup4>=4.12
 lxml>=5.2
 html5lib>=1.1          # analise do HTML oficial como um navegador (segmentador)
@@ -18,11 +17,10 @@ requests>=2.31
 pyyaml>=6.0             # ingestao/baixar.py
 tzdata>=2024.1          # base de fusos horarios no Windows (zoneinfo)
 
-# opcionais: embeddings reais, nomes (NER) e índice ChromaDB
+# opcionais: embeddings reais e nomes (NER)
 # sentence-transformers>=3.0     # BGE-M3 (~2 GB na primeira execução)
 # spacy>=3.7                     # NER de nomes (RN06) e embeddings leves; depois:
 #   pip install https://github.com/explosion/spacy-models/releases/download/pt_core_news_md-3.8.0/pt_core_news_md-3.8.0-py3-none-any.whl
-# chromadb>=0.5
 
 # desenvolvimento e avaliação (python -m avaliacao.executar)
 pytest>=8.0

@@ -2,7 +2,7 @@
 
 O BGE-M3 leva varios minutos em CPU para vetorizar o corpus (1.734 dispositivos).
 Na repeticao do E9 para outro provedor (--somente-e9 --llm gemini depois de
---llm anthropic), o mesmo texto seria vetorizado de novo. Este invólucro guarda
+--llm groq), o mesmo texto seria vetorizado de novo. Este invólucro guarda
 cada vetor pela impressao digital (SHA-256) do texto e do identificador do
 gerador: um texto ja visto nao volta ao modelo.
 

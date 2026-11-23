@@ -1,0 +1,41 @@
+% Gerado por avaliacao/relatorio.py — nao editar a mao; rode novamente a avaliacao.
+\begin{table}[htbp]
+\caption{Diferenças pareadas entre as condições do E9}\label{tab:llm-pareado}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrl}
+\toprule
+Comparação & Métrica & n & Diferença (IC 95\%) \\
+\midrule
+\multicolumn{4}{l}{\textit{Gemini (gemini-3.6-flash)}} \\
+\quad completo $-$ LLM isolada & Citações pertinentes (nº) & 6 & 0,33 (-0,83 a 1,67) \\
+\quad completo $-$ LLM isolada & Precisão das citações & 5 & 17,5 p.p. (-8,3 p.p. a 32,5 p.p.) \\
+\quad completo $-$ LLM isolada & Citações a artigo inexistente & 5 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\quad completo $-$ LLM isolada & Minutas com norma revogada & 6 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\quad completo $-$ sem RAG & Citações pertinentes (nº) & 6 & 1,67 (0,50 a 3,17) \\
+\quad completo $-$ sem RAG & Minutas com norma revogada & 6 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\quad completo $-$ RAG BM25 & Citações pertinentes (nº) & 6 & -0,50 (-0,83 a -0,17) \\
+\quad completo $-$ RAG BM25 & Precisão das citações & 5 & -39,2 p.p. (-47,5 p.p. a -30,8 p.p.) \\
+\quad completo $-$ RAG BM25 & Citações a artigo inexistente & 5 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\quad completo $-$ RAG BM25 & Minutas com norma revogada & 6 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\multicolumn{4}{l}{\textit{Groq (openai/gpt-oss-120b)}} \\
+\quad completo $-$ LLM isolada & Citações pertinentes (nº) & 30 & -1,23 (-1,90 a -0,57) \\
+\quad completo $-$ LLM isolada & Precisão das citações & 30 & 47,8 p.p. (33,5 p.p. a 61,0 p.p.) \\
+\quad completo $-$ LLM isolada & Citações a artigo inexistente & 30 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\quad completo $-$ LLM isolada & Minutas com norma revogada & 30 & -6,7 p.p. (-16,7 p.p. a 0,0 p.p.) \\
+\quad completo $-$ LLM isolada & Valores da demanda no texto & 9 & -17,6 p.p. (-40,7 p.p. a 0,0 p.p.) \\
+\quad completo $-$ sem RAG & Citações pertinentes (nº) & 30 & 1,77 (1,37 a 2,17) \\
+\quad completo $-$ sem RAG & Precisão das citações & 3 & 55,6 p.p. (0,0 p.p. a 100,0 p.p.) \\
+\quad completo $-$ sem RAG & Citações a artigo inexistente & 3 & -100,0 p.p. (-100,0 p.p. a -100,0 p.p.) \\
+\quad completo $-$ sem RAG & Minutas com norma revogada & 30 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\quad completo $-$ sem RAG & Valores da demanda no texto & 9 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\quad completo $-$ RAG BM25 & Citações pertinentes (nº) & 30 & 0,07 (-0,40 a 0,57) \\
+\quad completo $-$ RAG BM25 & Precisão das citações & 30 & 4,1 p.p. (-10,7 p.p. a 20,2 p.p.) \\
+\quad completo $-$ RAG BM25 & Citações a artigo inexistente & 30 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\quad completo $-$ RAG BM25 & Minutas com norma revogada & 30 & 0,0 p.p. (0,0 p.p. a 0,0 p.p.) \\
+\quad completo $-$ RAG BM25 & Valores da demanda no texto & 9 & 11,1 p.p. (0,0 p.p. a 33,3 p.p.) \\
+\bottomrule
+\end{tabular}
+\fonte{Elaborado pelo autor, a partir de \texttt{avaliacao/resultados/resumo.json}.}
+\nota{Diferença média por demanda entre as condições, com intervalo de confiança por bootstrap (2.000 reamostragens); intervalo que não contém zero indica diferença sustentada pelos dados. Precisão e citações inexistentes só são definidas para minutas com ao menos uma citação.}
+\end{table}

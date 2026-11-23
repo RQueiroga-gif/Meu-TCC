@@ -1,16 +1,19 @@
 """Provedores concretos de modelo de linguagem.
 
-Cinco implementacoes da interface ProvedorLLM:
+Tres implementacoes da interface ProvedorLLM:
 
-  * ProvedorAnthropic — modelo comercial pelo SDK oficial (gerador principal);
-  * ProvedorGemini — modelo comercial do Google pela API REST do Gemini;
-  * ProvedorGroq — modelos abertos hospedados pela Groq (API no formato OpenAI);
-  * ProvedorOllama — modelo aberto executado localmente, modo em que nenhum dado
-    deixa a maquina; usado no Experimento 2 (nuvem x local) e na depuracao;
-  * ProvedorEco — implementacao deterministica, sem rede, que monta a minuta a
-    partir dos trechos recuperados. Serve para exercitar o fluxo completo e os
-    testes automatizados sem chave de API e sem custo. Nao produz texto de
-    qualidade e nunca deve alimentar as metricas do capitulo de resultados.
+  * ProvedorGroq — modelos abertos hospedados pela Groq (API no formato OpenAI),
+    gerador usado no E9;
+  * ProvedorGemini — modelo comercial do Google pela API REST do Gemini, usado
+    na revisao de redacao (RF13) e como replica no E9;
+  * ProvedorEco — simulador deterministico, sem rede, que monta a minuta a
+    partir dos trechos recuperados. Uso restrito aos testes automatizados e aos
+    experimentos E1 a E8, que avaliam as camadas sem modelo de linguagem. Nao
+    produz texto de qualidade e nunca alimenta as metricas do E9.
+
+Um modelo executado localmente (requisito para dados pessoais reais em producao)
+pode ser acrescentado como nova implementacao da interface, sem alterar o
+orquestrador (RNF08); nao faz parte desta prova de conceito.
 """
 from __future__ import annotations
 
@@ -26,94 +29,6 @@ from ..config import config
 from .base import ErroProvedorLLM, ProvedorLLM, Resposta
 
 log = logging.getLogger(__name__)
-
-# Modelos que ainda aceitam parametros de amostragem (temperature). Nos modelos
-# mais novos (Opus 4.7+, Sonnet 5+, Fable) o parametro e rejeitado com 400.
-RE_ACEITA_TEMPERATURA = re.compile(r"^claude-(haiku-4|sonnet-4|opus-4-[0-6]|3)")
-
-
-class ProvedorAnthropic(ProvedorLLM):
-    """Modelo comercial acessado pelo SDK oficial da Anthropic.
-
-    O SDK repete automaticamente as falhas transitorias (conexao, 408, 409, 429,
-    5xx e 529 "overloaded") com espera exponencial; LLM_TENTATIVAS controla
-    quantas vezes.
-    """
-
-    nome = "anthropic"
-
-    def __init__(self, modelo: str | None = None, api_key: str | None = None) -> None:
-        import anthropic   # import tardio: dependencia so necessaria para este provedor
-
-        self._anthropic = anthropic
-        self._modelo = modelo or config.LLM_MODELO
-        try:
-            # Sem chave explicita, o SDK tenta as demais credenciais do ambiente
-            # (ANTHROPIC_AUTH_TOKEN, perfil do `ant auth login`).
-            self._cliente = anthropic.Anthropic(
-                api_key=api_key or config.ANTHROPIC_API_KEY or None,
-                timeout=float(config.LLM_TIMEOUT_S),
-                max_retries=config.LLM_TENTATIVAS,
-            )
-        except anthropic.AnthropicError as erro:
-            raise ErroProvedorLLM(
-                "Credencial da Anthropic nao encontrada. Defina ANTHROPIC_API_KEY no .env "
-                "ou use LLM_PROVEDOR=ollama (local) ou LLM_PROVEDOR=echo (offline)."
-            ) from erro
-
-    def _parametros(self) -> dict[str, Any]:
-        if RE_ACEITA_TEMPERATURA.match(self._modelo):
-            return {"temperature": config.LLM_TEMPERATURA}
-        return {}
-
-    def completar(
-        self, prompt_sistema: str, prompt_usuario: str, *, formato_json: bool = True
-    ) -> Resposta:
-        anthropic = self._anthropic
-        try:
-            mensagem = self._cliente.messages.create(
-                model=self._modelo,
-                max_tokens=config.LLM_MAX_TOKENS,
-                system=prompt_sistema,
-                messages=[{"role": "user", "content": prompt_usuario}],
-                **self._parametros(),
-            )
-        except anthropic.AuthenticationError as erro:
-            raise ErroProvedorLLM("chave da Anthropic invalida ou revogada") from erro
-        except anthropic.NotFoundError as erro:
-            raise ErroProvedorLLM(f"modelo inexistente: {self._modelo}") from erro
-        except anthropic.BadRequestError as erro:
-            raise ErroProvedorLLM(f"requisicao recusada pelo provedor: {erro.message}") from erro
-        except anthropic.RateLimitError as erro:
-            raise ErroProvedorLLM("limite de uso do provedor atingido; tente mais tarde") from erro
-        except anthropic.APIStatusError as erro:
-            raise ErroProvedorLLM(f"provedor respondeu {erro.status_code}") from erro
-        except anthropic.APIConnectionError as erro:
-            raise ErroProvedorLLM(f"falha de comunicacao com o provedor: {erro}") from erro
-
-        if mensagem.stop_reason == "refusal":
-            raise ErroProvedorLLM("o modelo recusou a solicitacao")
-        if mensagem.stop_reason == "max_tokens":
-            raise ErroProvedorLLM(
-                "resposta do modelo truncada (LLM_MAX_TOKENS insuficiente)"
-            )
-
-        texto = "".join(b.text for b in mensagem.content if b.type == "text")
-        if not texto.strip():
-            raise ErroProvedorLLM("provedor devolveu resposta vazia")
-
-        return Resposta(
-            texto=texto,
-            modelo=mensagem.model,
-            parametros={
-                **{("temperatura" if k == "temperature" else k): v for k, v in self._parametros().items()},
-                "provedor": self.nome,
-                "tokens_entrada": mensagem.usage.input_tokens,
-                "tokens_saida": mensagem.usage.output_tokens,
-                "id_requisicao": getattr(mensagem, "_request_id", None),
-            },
-        )
-
 
 class ProvedorGemini(ProvedorLLM):
     """Modelo comercial do Google acessado pela API REST do Gemini (generateContent).
@@ -141,7 +56,7 @@ class ProvedorGemini(ProvedorLLM):
         if not self._chave:
             raise ErroProvedorLLM(
                 "Credencial do Gemini nao encontrada. Defina GEMINI_API_KEY no .env "
-                "ou use LLM_PROVEDOR=ollama (local) ou LLM_PROVEDOR=echo (offline)."
+                "ou use LLM_PROVEDOR=echo (simulador offline, so para testes)."
             )
 
     def _configuracao(self, formato_json: bool = True) -> dict[str, Any]:
@@ -295,7 +210,7 @@ class ProvedorGroq(ProvedorLLM):
         if not self._chave:
             raise ErroProvedorLLM(
                 "Credencial da Groq nao encontrada. Defina GROQ_API_KEY no .env "
-                "ou use LLM_PROVEDOR=ollama (local) ou LLM_PROVEDOR=echo (offline)."
+                "ou use LLM_PROVEDOR=echo (simulador offline, so para testes)."
             )
 
     @classmethod
@@ -406,63 +321,6 @@ class ProvedorGroq(ProvedorLLM):
         )
 
 
-class ProvedorOllama(ProvedorLLM):
-    """Modelo aberto executado localmente: nenhum dado deixa o ambiente."""
-
-    nome = "ollama"
-
-    def __init__(self, modelo: str | None = None, url: str | None = None) -> None:
-        self._modelo = modelo or config.OLLAMA_MODELO
-        self._url = (url or config.OLLAMA_URL).rstrip("/")
-
-    def completar(
-        self, prompt_sistema: str, prompt_usuario: str, *, formato_json: bool = True
-    ) -> Resposta:
-        corpo: dict[str, Any] = {
-            "model": self._modelo,
-            "stream": False,
-            "options": {"temperature": config.LLM_TEMPERATURA},
-            "messages": [
-                {"role": "system", "content": prompt_sistema},
-                {"role": "user", "content": prompt_usuario},
-            ],
-        }
-        if formato_json:
-            corpo["format"] = "json"
-        ultimo_erro: Exception | None = None
-        for tentativa in range(max(config.LLM_TENTATIVAS, 0) + 1):
-            try:
-                resposta = httpx.post(
-                    f"{self._url}/api/chat", json=corpo, timeout=config.LLM_TIMEOUT_S
-                )
-                if resposta.status_code == 404:
-                    raise ErroProvedorLLM(
-                        f"modelo '{self._modelo}' nao encontrado no Ollama "
-                        f"(execute: ollama pull {self._modelo})"
-                    )
-                resposta.raise_for_status()
-                texto = resposta.json().get("message", {}).get("content", "")
-                break
-            except httpx.HTTPError as erro:
-                ultimo_erro = erro
-                if tentativa < config.LLM_TENTATIVAS:
-                    time.sleep(2 ** tentativa)
-        else:
-            raise ErroProvedorLLM(
-                f"Ollama indisponivel em {self._url}: {ultimo_erro}. "
-                "Verifique se o servico esta em execucao (ollama serve)."
-            ) from ultimo_erro
-
-        if not texto.strip():
-            raise ErroProvedorLLM("Ollama devolveu resposta vazia")
-
-        return Resposta(
-            texto=texto,
-            modelo=self._modelo,
-            parametros={"temperatura": config.LLM_TEMPERATURA, "provedor": self.nome},
-        )
-
-
 class ProvedorEco(ProvedorLLM):
     """Gerador deterministico, sem rede, para desenvolvimento e testes.
 
@@ -553,11 +411,16 @@ class ProvedorEco(ProvedorLLM):
 
     @staticmethod
     def _extrair(texto: str, inicio: str, fim: str) -> str:
+        """Bloco entre dois rotulos, sem os delimitadores do prompt p-1.1."""
+        from .prompt import _DELIMITADORES
+
         i = texto.find(inicio)
-        f = texto.find(fim)
+        f = texto.find(fim, i + len(inicio)) if i != -1 else -1
         if i == -1:
             return ""
-        return texto[i : f if f > i else len(texto)]
+        bloco = texto[i : f if f > i else len(texto)]
+        linhas = [ln for ln in bloco.split("\n") if ln.strip() not in _DELIMITADORES]
+        return "\n".join(linhas)
 
 
-__all__ = ["ProvedorAnthropic", "ProvedorGemini", "ProvedorGroq", "ProvedorOllama", "ProvedorEco"]
+__all__ = ["ProvedorGemini", "ProvedorGroq", "ProvedorEco"]

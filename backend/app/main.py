@@ -42,7 +42,7 @@ async def ciclo_de_vida(_: FastAPI):
     log.info(
         "Banco: %s | Índice: %s (%d trechos) | Provedor de LLM: %s | Revisão de texto: %s",
         config.DB_DIALETO,
-        config.INDICE_BACKEND,
+        config.RECUPERACAO_MODO,
         obter_indice().total(),
         config.LLM_PROVEDOR,
         config.LLM_PROVEDOR_CORRECAO or config.LLM_PROVEDOR,
@@ -114,7 +114,7 @@ def verificar_saude() -> dict[str, object]:
         "aplicacao": config.APP_NOME,
         "versao": config.APP_VERSAO,
         "banco": {"dialeto": config.DB_DIALETO, "disponivel": banco_ok},
-        "indice": {"backend": config.INDICE_BACKEND, "trechos": obter_indice().total()},
+        "indice": {"modo": config.RECUPERACAO_MODO, "trechos": obter_indice().total()},
         "embeddings": {"gerador": embedder.identificador, "semantico": embedder.semantico},
         "provedor_llm": provedor,
         "provedor_correcao": config.LLM_PROVEDOR_CORRECAO or provedor,

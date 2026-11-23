@@ -26,10 +26,14 @@ services:
       DB_SENHA: ${DB_SENHA:-troque-esta-senha}
       SECRET_KEY: ${SECRET_KEY:-troque-esta-chave-em-producao}
       LLM_PROVEDOR: ${LLM_PROVEDOR:-echo}
-      LLM_MODELO: ${LLM_MODELO:-claude-haiku-4-5-20251001}
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      # Groq (gerador), Gemini (revisor de redacao, RF13) e respectivos modelos
+      LLM_PROVEDOR_CORRECAO: ${LLM_PROVEDOR_CORRECAO:-}
+      LLM_MODELO_CORRECAO: ${LLM_MODELO_CORRECAO:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODELO: ${GEMINI_MODELO:-gemini-3.6-flash}
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      GROQ_MODELO: ${GROQ_MODELO:-openai/gpt-oss-120b}
       EMBEDDING_MODELO: ${EMBEDDING_MODELO:-hash}
-      OLLAMA_URL: http://host.docker.internal:11434
       INDICE_ARQUIVO: /app/dados/indice.npz
       PASTA_SAIDA: /app/dados/saida
     extra_hosts: ["host.docker.internal:host-gateway"]

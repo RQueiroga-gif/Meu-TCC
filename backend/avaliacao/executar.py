@@ -3,17 +3,16 @@
 Uso (na pasta backend, com o ambiente virtual ativo):
 
     python -m avaliacao.executar                    # E1 a E8 (sem LLM real)
-    python -m avaliacao.executar --llm anthropic    # E1 a E8 e o E9 com a Anthropic
-    python -m avaliacao.executar --somente-e9 --llm anthropic gemini
+    python -m avaliacao.executar --llm groq         # E1 a E8 e o E9 com a Groq
+    python -m avaliacao.executar --somente-e9 --llm groq              # 32 demandas, 4 condicoes
     python -m avaliacao.executar --somente-e9 --llm gemini --amostra 6
-    python -m avaliacao.executar --somente-e9 --llm anthropic \
-        --condicoes completo completo_bm25 sem_rag isolada
+    python -m avaliacao.executar --somente-e9 --llm groq --condicoes completo isolada
     python -m avaliacao.executar --rapido           # pula o E8 (pytest) e o E6
 
 O E9 guarda o resultado de cada provedor/modelo separadamente (resumo.json,
 chave e9.execucoes) e salva cada geracao em resultados/e9/<provedor>_<modelo>.jsonl
 assim que ela fica pronta. Rodar o mesmo comando de novo continua de onde parou
-(util com a cota diaria do Gemini gratuito); --refazer descarta o progresso.
+(util com as cotas diarias dos niveis gratuitos da Groq e do Gemini); --refazer descarta o progresso.
 
 O BGE-M3 entra automaticamente nos experimentos de recuperacao quando o
 sentence-transformers estiver instalado (pip install sentence-transformers).
@@ -46,7 +45,6 @@ def _ambiente_isolado() -> Path:
         "DB_DIALETO": "sqlite",
         "DB_ARQUIVO": str(pasta / "avaliacao.sqlite3"),
         "INDICE_ARQUIVO": str(pasta / "indice.npz"),
-        "INDICE_BACKEND": "numpy",
         "PASTA_SAIDA": str(pasta / "saida"),
         "SECRET_KEY": "avaliacao-" + os.urandom(8).hex(),
         "LLM_PROVEDOR": "echo",
@@ -73,6 +71,25 @@ def _chave_execucao(provedor: str, modelo: str) -> str:
     return re.sub(r"[^A-Za-z0-9.-]+", "-", f"{provedor}_{modelo}")
 
 
+PACOTES_REGISTRADOS = ("fastapi", "uvicorn", "pydantic", "SQLAlchemy", "beautifulsoup4",
+                       "html5lib", "numpy", "snowballstemmer", "httpx", "python-docx",
+                       "sentence-transformers", "transformers", "torch", "spacy", "pytest",
+                       "matplotlib", "streamlit")
+
+
+def _versoes_pacotes() -> dict[str, str | None]:
+    """Versoes instaladas dos pacotes da pilha (reprodutibilidade; Quadro de tecnologias)."""
+    from importlib import metadata
+
+    versoes: dict[str, str | None] = {}
+    for nome in PACOTES_REGISTRADOS:
+        try:
+            versoes[nome] = metadata.version(nome)
+        except metadata.PackageNotFoundError:
+            versoes[nome] = None
+    return versoes
+
+
 def _e9_existente(resumo: dict) -> dict:
     """E9 ja gravado, convertido para o formato por execucao (provedor/modelo)."""
     e9 = resumo.get("e9") or {}
@@ -85,7 +102,7 @@ def _e9_existente(resumo: dict) -> dict:
 
 def main() -> int:  # noqa: C901
     analisador = argparse.ArgumentParser(description="Avaliação do Assistente de DFD")
-    analisador.add_argument("--llm", nargs="+", choices=["anthropic", "gemini", "groq", "ollama"],
+    analisador.add_argument("--llm", nargs="+", choices=["gemini", "groq"],
                             help="executa o E9 com um ou mais provedores, em sequência")
     analisador.add_argument("--rapido", action="store_true", help="pula E6 e E8")
     analisador.add_argument(
@@ -93,14 +110,17 @@ def main() -> int:  # noqa: C901
         help="roda apenas o E9 e o acrescenta ao resumo.json existente (exige --llm)",
     )
     analisador.add_argument("--condicoes", nargs="+",
-                            default=["completo", "sem_rag", "isolada"],
+                            default=["completo", "completo_bm25", "sem_rag", "isolada"],
                             choices=["completo", "completo_bm25", "sem_rag", "isolada"],
-                            help="condições do E9 (padrão: completo sem_rag isolada)")
+                            help="condições do E9 (padrão: as quatro)")
     analisador.add_argument("--amostra", type=int,
                             help="E9 só com N demandas espaçadas do gabarito (cota do Gemini)")
     analisador.add_argument("--ids", nargs="+", help="E9 só com estas demandas (ex.: D01 D07)")
     analisador.add_argument("--refazer", action="store_true",
                             help="E9: descarta o progresso salvo e gera tudo de novo")
+    analisador.add_argument("--sem-injecao", action="store_true",
+                            help="E9: não roda as 6 demandas adversariais (injeção de prompt); "
+                                 "elas já são puladas com --amostra ou --ids")
     analisador.add_argument("--cache-embeddings", action="store_true",
                             help="reaproveita os vetores do BGE-M3 já calculados (ligado no "
                                  "--somente-e9; não use quando o tempo de indexação importa)")
@@ -150,6 +170,22 @@ def main() -> int:  # noqa: C901
             situacao = "concluído" if resultado["concluido"] else \
                 f"INCOMPLETO ({resultado['pendentes']} gerações pendentes)"
             print(f"  E9 {chave}: {situacao}")
+            # Injecao de prompt (v0.4.1): 6 demandas adversariais x (completo, isolada).
+            # Pulada com amostra (cota do Gemini) ou com --sem-injecao.
+            if args.sem_injecao or args.amostra or args.ids:
+                continue
+            print(f"E9 — injeção de prompt — {provedor} ({modelo})")
+            inj = E.e9_injecao(provedor, checkpoint=SAIDA / "e9" / f"{chave}_injecao.jsonl",
+                               refazer=args.refazer)
+            linhas_inj = inj.pop("linhas")
+            _csv(f"e9_injecao_{chave}.csv",
+                 [{k: v for k, v in ln.items() if k not in ("texto", "fontes")} for ln in linhas_inj])
+            inj["executado_em"] = datetime.now().isoformat(timespec="seconds")
+            resumo.setdefault("e9_injecao", {"execucoes": {}})["execucoes"][chave] = inj
+            gravar(resumo)
+            for c in inj["resumo"]:
+                print(f"  injeção {c['configuracao']}: {c['injecoes_sucesso']} de {c['geradas']} "
+                      f"geradas obedeceram à instrução injetada")
 
     usar_cache = args.cache_embeddings or args.somente_e9
 
@@ -175,8 +211,9 @@ def main() -> int:  # noqa: C901
         return 0
 
     anterior = SAIDA / "resumo.json"
-    e9_anterior = (_e9_existente(json.loads(anterior.read_text(encoding="utf-8")))
-                   if anterior.exists() else {"execucoes": {}})
+    resumo_anterior = json.loads(anterior.read_text(encoding="utf-8")) if anterior.exists() else {}
+    e9_anterior = _e9_existente(resumo_anterior) if resumo_anterior else {"execucoes": {}}
+    injecao_anterior = resumo_anterior.get("e9_injecao")
 
     resumo: dict = {
         "executado_em": datetime.now().isoformat(timespec="seconds"),
@@ -185,6 +222,7 @@ def main() -> int:  # noqa: C901
             "sistema": f"{platform.system()} {platform.release()}",
             "processador": platform.processor() or platform.machine(),
             "nucleos": os.cpu_count(),
+            "pacotes": _versoes_pacotes(),
         },
         "corpus_sha256": hashes(),
     }
@@ -232,6 +270,8 @@ def main() -> int:  # noqa: C901
     # O E9 de execucoes anteriores (outros provedores) e preservado.
     if e9_anterior["execucoes"]:
         resumo["e9"] = e9_anterior
+    if injecao_anterior:
+        resumo["e9_injecao"] = injecao_anterior
     # Grava E1 a E8 antes do E9: uma falha do provedor nao apaga o que ja foi medido.
     resumo["duracao_s"] = round(time.perf_counter() - inicio, 1)
     gravar(resumo)

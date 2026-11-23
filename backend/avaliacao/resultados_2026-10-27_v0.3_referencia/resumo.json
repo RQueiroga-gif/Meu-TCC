@@ -1,0 +1,1249 @@
+{
+  "executado_em": "2026-10-27T13:35:06",
+  "ambiente": {
+    "python": "3.13.14",
+    "sistema": "Windows 11",
+    "processador": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+    "nucleos": 16
+  },
+  "corpus_sha256": {
+    "L14133": "71244ea6f2ce95007f8af07761a034a8572c30531751d1f05c9399a54ad8eb05",
+    "D10947": "9eb9deeffcb15479d5893678ebe3358227157dbec0a9f173e2eeb2ec87cb0b48",
+    "L13709": "81d1a9a34d7bca9a3908a4c3b018f5fd128deedc04699209b740ca5d4b2467be"
+  },
+  "e5": {
+    "ner_disponivel": true,
+    "conjuntos": {
+      "desenvolvimento": {
+        "v0.2.0": {
+          "revocacao_por_tipo": {
+            "CEP": 0.5,
+            "CNPJ": 0.6667,
+            "CPF": 1.0,
+            "EMAIL": 1.0,
+            "NOME": 0.0,
+            "RG": 0.0,
+            "TELEFONE": 0.8571
+          },
+          "itens_por_tipo": {
+            "CEP": 2,
+            "CNPJ": 3,
+            "CPF": 4,
+            "EMAIL": 4,
+            "NOME": 6,
+            "RG": 2,
+            "TELEFONE": 7
+          },
+          "revocacao_global": 0.6071,
+          "itens": 28,
+          "preservacao": 1.0,
+          "negativos": 15,
+          "falsos_positivos": 1,
+          "falsos_positivos_ids": [
+            "N14"
+          ]
+        },
+        "v0.3 (regex)": {
+          "revocacao_por_tipo": {
+            "CEP": 1.0,
+            "CNPJ": 1.0,
+            "CPF": 1.0,
+            "EMAIL": 1.0,
+            "NOME": 0.0,
+            "RG": 1.0,
+            "TELEFONE": 1.0
+          },
+          "itens_por_tipo": {
+            "CEP": 2,
+            "CNPJ": 3,
+            "CPF": 4,
+            "EMAIL": 4,
+            "NOME": 6,
+            "RG": 2,
+            "TELEFONE": 7
+          },
+          "revocacao_global": 0.7857,
+          "itens": 28,
+          "preservacao": 1.0,
+          "negativos": 15,
+          "falsos_positivos": 0,
+          "falsos_positivos_ids": []
+        },
+        "v0.3 (regex + NER)": {
+          "revocacao_por_tipo": {
+            "CEP": 1.0,
+            "CNPJ": 1.0,
+            "CPF": 1.0,
+            "EMAIL": 1.0,
+            "NOME": 1.0,
+            "RG": 1.0,
+            "TELEFONE": 1.0
+          },
+          "itens_por_tipo": {
+            "CEP": 2,
+            "CNPJ": 3,
+            "CPF": 4,
+            "EMAIL": 4,
+            "NOME": 6,
+            "RG": 2,
+            "TELEFONE": 7
+          },
+          "revocacao_global": 1.0,
+          "itens": 28,
+          "preservacao": 1.0,
+          "negativos": 15,
+          "falsos_positivos": 0,
+          "falsos_positivos_ids": []
+        },
+        "_tamanho": {
+          "positivos": 25,
+          "negativos": 15
+        }
+      },
+      "teste": {
+        "v0.2.0": {
+          "revocacao_por_tipo": {
+            "CEP": 0.0,
+            "CNPJ": 1.0,
+            "CPF": 1.0,
+            "EMAIL": 1.0,
+            "NOME": 0.0,
+            "RG": 0.0,
+            "TELEFONE": 0.75
+          },
+          "itens_por_tipo": {
+            "CEP": 1,
+            "CNPJ": 1,
+            "CPF": 2,
+            "EMAIL": 2,
+            "NOME": 6,
+            "RG": 1,
+            "TELEFONE": 4
+          },
+          "revocacao_global": 0.4706,
+          "itens": 17,
+          "preservacao": 1.0,
+          "negativos": 12,
+          "falsos_positivos": 0,
+          "falsos_positivos_ids": []
+        },
+        "v0.3 (regex)": {
+          "revocacao_por_tipo": {
+            "CEP": 1.0,
+            "CNPJ": 1.0,
+            "CPF": 1.0,
+            "EMAIL": 1.0,
+            "NOME": 0.0,
+            "RG": 1.0,
+            "TELEFONE": 0.5
+          },
+          "itens_por_tipo": {
+            "CEP": 1,
+            "CNPJ": 1,
+            "CPF": 2,
+            "EMAIL": 2,
+            "NOME": 6,
+            "RG": 1,
+            "TELEFONE": 4
+          },
+          "revocacao_global": 0.5294,
+          "itens": 17,
+          "preservacao": 1.0,
+          "negativos": 12,
+          "falsos_positivos": 0,
+          "falsos_positivos_ids": []
+        },
+        "v0.3 (regex + NER)": {
+          "revocacao_por_tipo": {
+            "CEP": 1.0,
+            "CNPJ": 1.0,
+            "CPF": 1.0,
+            "EMAIL": 1.0,
+            "NOME": 0.8333,
+            "RG": 1.0,
+            "TELEFONE": 0.5
+          },
+          "itens_por_tipo": {
+            "CEP": 1,
+            "CNPJ": 1,
+            "CPF": 2,
+            "EMAIL": 2,
+            "NOME": 6,
+            "RG": 1,
+            "TELEFONE": 4
+          },
+          "revocacao_global": 0.8235,
+          "itens": 17,
+          "preservacao": 1.0,
+          "negativos": 12,
+          "falsos_positivos": 0,
+          "falsos_positivos_ids": []
+        },
+        "_tamanho": {
+          "positivos": 15,
+          "negativos": 12
+        }
+      }
+    }
+  },
+  "geradores": {
+    "hash": "hash:256:3",
+    "spaCy": "spacy:pt_core_news_md",
+    "BGE-M3": "bge:BAAI/bge-m3"
+  },
+  "e1": {
+    "unidades": 1734,
+    "demandas": 32,
+    "relevantes": 86,
+    "agregado": [
+      {
+        "recuperador": "hash",
+        "n": 32,
+        "indexacao_s": 1.92,
+        "consulta_ms_mediana": 0.9,
+        "P@1": 0.125,
+        "R@1": 0.0781,
+        "Hit@1": 0.125,
+        "P@3": 0.0833,
+        "R@3": 0.1354,
+        "Hit@3": 0.2188,
+        "P@5": 0.0625,
+        "R@5": 0.1536,
+        "Hit@5": 0.2812,
+        "P@6": 0.0521,
+        "R@6": 0.1536,
+        "Hit@6": 0.2812,
+        "P@10": 0.0312,
+        "R@10": 0.1536,
+        "Hit@10": 0.2812,
+        "MRR": 0.1875,
+        "nDCG@6": 0.1458,
+        "R@6_artigo": 0.4297,
+        "P@6_artigo": 0.1771,
+        "dispositivos_por_unidade": 1.0,
+        "unidades_citaveis": 1.0,
+        "R@6_ic95": [
+          0.0651,
+          0.2552
+        ],
+        "MRR_ic95": [
+          0.0781,
+          0.3047
+        ],
+        "R@6_artigo_ic95": [
+          0.2995,
+          0.5547
+        ]
+      },
+      {
+        "recuperador": "spaCy",
+        "n": 32,
+        "indexacao_s": 2.07,
+        "consulta_ms_mediana": 1.98,
+        "P@1": 0.0938,
+        "R@1": 0.0469,
+        "Hit@1": 0.0938,
+        "P@3": 0.0521,
+        "R@3": 0.0938,
+        "Hit@3": 0.1562,
+        "P@5": 0.0625,
+        "R@5": 0.1693,
+        "Hit@5": 0.2812,
+        "P@6": 0.0521,
+        "R@6": 0.1693,
+        "Hit@6": 0.2812,
+        "P@10": 0.0375,
+        "R@10": 0.1901,
+        "Hit@10": 0.3438,
+        "MRR": 0.1545,
+        "nDCG@6": 0.1243,
+        "R@6_artigo": 0.3385,
+        "P@6_artigo": 0.1562,
+        "dispositivos_por_unidade": 1.0,
+        "unidades_citaveis": 1.0,
+        "R@6_ic95": [
+          0.0703,
+          0.2891
+        ],
+        "MRR_ic95": [
+          0.0625,
+          0.2698
+        ],
+        "R@6_artigo_ic95": [
+          0.2135,
+          0.4635
+        ]
+      },
+      {
+        "recuperador": "BGE-M3",
+        "n": 32,
+        "indexacao_s": 465.92,
+        "consulta_ms_mediana": 240.87,
+        "P@1": 0.2188,
+        "R@1": 0.1458,
+        "Hit@1": 0.2188,
+        "P@3": 0.1354,
+        "R@3": 0.2135,
+        "Hit@3": 0.3438,
+        "P@5": 0.0875,
+        "R@5": 0.2214,
+        "Hit@5": 0.375,
+        "P@6": 0.0833,
+        "R@6": 0.2422,
+        "Hit@6": 0.4375,
+        "P@10": 0.0781,
+        "R@10": 0.3464,
+        "Hit@10": 0.5938,
+        "MRR": 0.3125,
+        "nDCG@6": 0.2311,
+        "R@6_artigo": 0.4661,
+        "P@6_artigo": 0.3125,
+        "dispositivos_por_unidade": 1.0,
+        "unidades_citaveis": 1.0,
+        "R@6_ic95": [
+          0.1276,
+          0.362
+        ],
+        "MRR_ic95": [
+          0.1774,
+          0.4469
+        ],
+        "R@6_artigo_ic95": [
+          0.3333,
+          0.5938
+        ]
+      },
+      {
+        "recuperador": "BM25",
+        "n": 32,
+        "indexacao_s": 3.65,
+        "consulta_ms_mediana": 9.25,
+        "P@1": 0.25,
+        "R@1": 0.1302,
+        "Hit@1": 0.25,
+        "P@3": 0.2083,
+        "R@3": 0.3151,
+        "Hit@3": 0.4688,
+        "P@5": 0.1438,
+        "R@5": 0.3411,
+        "Hit@5": 0.5312,
+        "P@6": 0.1302,
+        "R@6": 0.3646,
+        "Hit@6": 0.5625,
+        "P@10": 0.0906,
+        "R@10": 0.4036,
+        "Hit@10": 0.6562,
+        "MRR": 0.3743,
+        "nDCG@6": 0.3179,
+        "R@6_artigo": 0.7109,
+        "P@6_artigo": 0.3385,
+        "dispositivos_por_unidade": 1.0,
+        "unidades_citaveis": 1.0,
+        "R@6_ic95": [
+          0.2292,
+          0.5
+        ],
+        "MRR_ic95": [
+          0.2326,
+          0.5191
+        ],
+        "R@6_artigo_ic95": [
+          0.6016,
+          0.8099
+        ]
+      },
+      {
+        "recuperador": "Híbrido (BGE-M3 + BM25)",
+        "n": 32,
+        "indexacao_s": 469.57,
+        "consulta_ms_mediana": 251.21,
+        "P@1": 0.3125,
+        "R@1": 0.1719,
+        "Hit@1": 0.3125,
+        "P@3": 0.1771,
+        "R@3": 0.2891,
+        "Hit@3": 0.4375,
+        "P@5": 0.1562,
+        "R@5": 0.3724,
+        "Hit@5": 0.6562,
+        "P@6": 0.1406,
+        "R@6": 0.3958,
+        "Hit@6": 0.6875,
+        "P@10": 0.1094,
+        "R@10": 0.4792,
+        "Hit@10": 0.75,
+        "MRR": 0.4266,
+        "nDCG@6": 0.3395,
+        "R@6_artigo": 0.6745,
+        "P@6_artigo": 0.4062,
+        "dispositivos_por_unidade": 1.0,
+        "unidades_citaveis": 1.0,
+        "R@6_ic95": [
+          0.2708,
+          0.5312
+        ],
+        "MRR_ic95": [
+          0.2856,
+          0.5673
+        ],
+        "R@6_artigo_ic95": [
+          0.5677,
+          0.7786
+        ]
+      }
+    ],
+    "curvas_revocacao": {
+      "hash": {
+        "1": 0.0781,
+        "3": 0.1354,
+        "5": 0.1536,
+        "6": 0.1536,
+        "10": 0.1536
+      },
+      "spaCy": {
+        "1": 0.0469,
+        "3": 0.0938,
+        "5": 0.1693,
+        "6": 0.1693,
+        "10": 0.1901
+      },
+      "BGE-M3": {
+        "1": 0.1458,
+        "3": 0.2135,
+        "5": 0.2214,
+        "6": 0.2422,
+        "10": 0.3464
+      },
+      "BM25": {
+        "1": 0.1302,
+        "3": 0.3151,
+        "5": 0.3411,
+        "6": 0.3646,
+        "10": 0.4036
+      },
+      "Híbrido (BGE-M3 + BM25)": {
+        "1": 0.1719,
+        "3": 0.2891,
+        "5": 0.3724,
+        "6": 0.3958,
+        "10": 0.4792
+      }
+    }
+  },
+  "e3": {
+    "dentro": 32,
+    "fora": 10,
+    "resultados": [
+      {
+        "gerador": "hash",
+        "auc": 0.9812,
+        "dentro_min": 0.4509,
+        "dentro_mediana": 0.5866,
+        "fora_max": 0.5204,
+        "fora_mediana": 0.3879,
+        "limiar_anterior": 0.1,
+        "tpr_anterior": 1.0,
+        "fpr_anterior": 1.0,
+        "limiar_configurado": 0.46,
+        "tpr_configurado": 0.9688,
+        "fpr_configurado": 0.1,
+        "limiares_cv": [
+          0.4658,
+          0.4485
+        ],
+        "tpr_cv": 0.9688,
+        "fpr_cv": 0.1,
+        "limiar_sugerido": 0.4485,
+        "spearman_tamanho": 0.3819
+      },
+      {
+        "gerador": "spaCy",
+        "auc": 0.9969,
+        "dentro_min": 0.6363,
+        "dentro_mediana": 0.8667,
+        "fora_max": 0.6725,
+        "fora_mediana": 0.4038,
+        "limiar_anterior": null,
+        "tpr_anterior": null,
+        "fpr_anterior": null,
+        "limiar_configurado": 0.64,
+        "tpr_configurado": 0.9688,
+        "fpr_configurado": 0.1,
+        "limiares_cv": [
+          0.6798,
+          0.5988
+        ],
+        "tpr_cv": 0.9688,
+        "fpr_cv": 0.1,
+        "limiar_sugerido": 0.6798,
+        "spearman_tamanho": 0.1317
+      },
+      {
+        "gerador": "BGE-M3",
+        "auc": 0.975,
+        "dentro_min": 0.5076,
+        "dentro_mediana": 0.5933,
+        "fora_max": 0.5507,
+        "fora_mediana": 0.4,
+        "limiar_anterior": 0.45,
+        "tpr_anterior": 1.0,
+        "fpr_anterior": 0.4,
+        "limiar_configurado": 0.52,
+        "tpr_configurado": 0.9375,
+        "fpr_configurado": 0.1,
+        "limiares_cv": [
+          0.5255,
+          0.5521
+        ],
+        "tpr_cv": 0.8438,
+        "fpr_cv": 0.1,
+        "limiar_sugerido": 0.5211,
+        "spearman_tamanho": 0.0465
+      },
+      {
+        "gerador": "BM25",
+        "auc": 0.9938,
+        "dentro_min": 0.4643,
+        "dentro_mediana": 0.6257,
+        "fora_max": 0.5048,
+        "fora_mediana": 0.425,
+        "limiar_anterior": null,
+        "tpr_anterior": null,
+        "fpr_anterior": null,
+        "limiar_configurado": null,
+        "tpr_configurado": null,
+        "fpr_configurado": null,
+        "limiares_cv": [
+          0.516,
+          0.5049
+        ],
+        "tpr_cv": 0.9688,
+        "fpr_cv": 0.0,
+        "limiar_sugerido": 0.516,
+        "spearman_tamanho": 0.0343
+      }
+    ],
+    "pontos": {
+      "hash": {
+        "dentro": [
+          0.6138330101966858,
+          0.7276806235313416,
+          0.49642515182495117,
+          0.5483977198600769,
+          0.5912975668907166,
+          0.5846714973449707,
+          0.5884922742843628,
+          0.6169929504394531,
+          0.450946569442749,
+          0.6713842153549194,
+          0.5414299964904785,
+          0.5232629179954529,
+          0.5509443283081055,
+          0.5644115805625916,
+          0.5123416185379028,
+          0.5644674301147461,
+          0.6433511972427368,
+          0.5283383131027222,
+          0.518007755279541,
+          0.5697146654129028,
+          0.625552773475647,
+          0.6017849445343018,
+          0.720790445804596,
+          0.7231448292732239,
+          0.5166630744934082,
+          0.6787193417549133,
+          0.6419229507446289,
+          0.5101540088653564,
+          0.6248072385787964,
+          0.6464030742645264,
+          0.6108667850494385,
+          0.5535002946853638
+        ],
+        "fora": [
+          0.5203700065612793,
+          0.3970385789871216,
+          0.3198128938674927,
+          0.35371705889701843,
+          0.42470598220825195,
+          0.2953396737575531,
+          0.44597989320755005,
+          0.4213787317276001,
+          0.260036438703537,
+          0.37868353724479675
+        ]
+      },
+      "spaCy": {
+        "dentro": [
+          0.899638831615448,
+          0.8963884115219116,
+          0.7639236450195312,
+          0.8660316467285156,
+          0.8744481801986694,
+          0.9032032489776611,
+          0.7942008376121521,
+          0.8658086061477661,
+          0.8895593881607056,
+          0.9056932926177979,
+          0.7559000849723816,
+          0.8151307702064514,
+          0.8166429996490479,
+          0.9039190411567688,
+          0.8994536399841309,
+          0.7994636297225952,
+          0.8925730586051941,
+          0.859129786491394,
+          0.636316180229187,
+          0.6870427131652832,
+          0.8390340805053711,
+          0.810591459274292,
+          0.9160592555999756,
+          0.9205845594406128,
+          0.7387765645980835,
+          0.8673383593559265,
+          0.9112483263015747,
+          0.7771357297897339,
+          0.8282789587974548,
+          0.8977295160293579,
+          0.8969414234161377,
+          0.8873631954193115
+        ],
+        "fora": [
+          0.5612620711326599,
+          0.38597774505615234,
+          0.13128662109375,
+          0.6725252270698547,
+          0.20931342244148254,
+          0.5731384754180908,
+          0.272411584854126,
+          0.4215327799320221,
+          0.4802422523498535,
+          0.3803466558456421
+        ]
+      },
+      "BGE-M3": {
+        "dentro": [
+          0.57643723487854,
+          0.6255000829696655,
+          0.5269302129745483,
+          0.550627589225769,
+          0.6137557625770569,
+          0.6523971557617188,
+          0.6233198642730713,
+          0.5790238380432129,
+          0.5814566612243652,
+          0.6413140296936035,
+          0.5533982515335083,
+          0.5460984706878662,
+          0.5827388763427734,
+          0.535619854927063,
+          0.5812953114509583,
+          0.6304541826248169,
+          0.6330279111862183,
+          0.6199884414672852,
+          0.5133129358291626,
+          0.5075998306274414,
+          0.6892955303192139,
+          0.5627298355102539,
+          0.6376653909683228,
+          0.6903860569000244,
+          0.5705186128616333,
+          0.7478633522987366,
+          0.6515944004058838,
+          0.5818751454353333,
+          0.5803302526473999,
+          0.6039246320724487,
+          0.6839932203292847,
+          0.604708194732666
+        ],
+        "fora": [
+          0.4897991716861725,
+          0.31549009680747986,
+          0.3775598406791687,
+          0.48736828565597534,
+          0.4213748276233673,
+          0.515290379524231,
+          0.3786640167236328,
+          0.36656826734542847,
+          0.5507231950759888,
+          0.3746660053730011
+        ]
+      },
+      "BM25": {
+        "dentro": [
+          0.6239135622381542,
+          0.625653919862724,
+          0.5609090782189895,
+          0.57951117282095,
+          0.6783718863310363,
+          0.5665682863255058,
+          0.6127722213148685,
+          0.6641539452513856,
+          0.5369277685724337,
+          0.6238495053680156,
+          0.7089506048156663,
+          0.6390389758092292,
+          0.6655260983287158,
+          0.6256995051918011,
+          0.5391337630463869,
+          0.5273150725692956,
+          0.6618203470260532,
+          0.46428960356437804,
+          0.7445474082420208,
+          0.5684813493894308,
+          0.6508750104297892,
+          0.5521001928407018,
+          0.7265929473182812,
+          0.7893971150918204,
+          0.5336891085829374,
+          0.8008552986516332,
+          0.6839358765342002,
+          0.5528498280030775,
+          0.5980852994934951,
+          0.745612131628939,
+          0.6912469131296586,
+          0.7338628068648232
+        ],
+        "fora": [
+          0.476078664907033,
+          0.37373076887955975,
+          0.0,
+          0.5047720502948001,
+          0.4058931604534146,
+          0.41925434279939205,
+          0.4306913350861008,
+          0.4445254220660305,
+          0.40008486867611004,
+          0.44818611791521534
+        ]
+      }
+    }
+  },
+  "e4": {
+    "resumo": [
+      {
+        "tipo": "C0",
+        "descricao": "Controle (sem falha)",
+        "casos": 32,
+        "v0.2.0": 0.0,
+        "v0.3": 0.0
+      },
+      {
+        "tipo": "F1",
+        "descricao": "Fundamento inexistente (T9)",
+        "casos": 32,
+        "v0.2.0": 1.0,
+        "v0.3": 1.0
+      },
+      {
+        "tipo": "F2",
+        "descricao": "Artigo fora do contexto",
+        "casos": 32,
+        "v0.2.0": 1.0,
+        "v0.3": 1.0
+      },
+      {
+        "tipo": "F3",
+        "descricao": "Artigo de outra norma, mesmo número",
+        "casos": 31,
+        "v0.2.0": 0.0,
+        "v0.3": 1.0
+      },
+      {
+        "tipo": "F4",
+        "descricao": "Norma revogada citada (Lei 8.666/1993)",
+        "casos": 32,
+        "v0.2.0": 0.0,
+        "v0.3": 1.0
+      },
+      {
+        "tipo": "F5",
+        "descricao": "Artigos no plural fora do contexto",
+        "casos": 32,
+        "v0.2.0": 0.0,
+        "v0.3": 1.0
+      },
+      {
+        "tipo": "F6",
+        "descricao": "Campo redigido sem fundamento",
+        "casos": 32,
+        "v0.2.0": 1.0,
+        "v0.3": 1.0
+      },
+      {
+        "tipo": "F7",
+        "descricao": "Valor extraído inventado",
+        "casos": 32,
+        "v0.2.0": 1.0,
+        "v0.3": 1.0
+      },
+      {
+        "tipo": "F8",
+        "descricao": "Evidência parafraseada",
+        "casos": 6,
+        "v0.2.0": 1.0,
+        "v0.3": 1.0
+      }
+    ]
+  },
+  "e2": {
+    "tamanhos": [
+      100,
+      300
+    ],
+    "sobreposicao": 0.2,
+    "resultados": [
+      {
+        "segmentacao": "dispositivo",
+        "recuperador": "BM25",
+        "unidades": 1734,
+        "R@6": 0.3646,
+        "P@6": 0.1302,
+        "MRR": 0.3743,
+        "R@6_artigo": 0.7109,
+        "dispositivos_por_unidade": 1.0,
+        "unidades_citaveis": 1.0,
+        "palavras_contexto_mediana": 398.0,
+        "R@600_palavras": 0.3932,
+        "R@1800_palavras": 0.5443
+      },
+      {
+        "segmentacao": "dispositivo",
+        "recuperador": "hash",
+        "unidades": 1734,
+        "R@6": 0.1536,
+        "P@6": 0.0521,
+        "MRR": 0.1875,
+        "R@6_artigo": 0.4297,
+        "dispositivos_por_unidade": 1.0,
+        "unidades_citaveis": 1.0,
+        "palavras_contexto_mediana": 869.5,
+        "R@600_palavras": 0.1536,
+        "R@1800_palavras": 0.1797
+      },
+      {
+        "segmentacao": "dispositivo",
+        "recuperador": "spaCy",
+        "unidades": 1734,
+        "R@6": 0.1693,
+        "P@6": 0.0521,
+        "MRR": 0.1545,
+        "R@6_artigo": 0.3385,
+        "dispositivos_por_unidade": 1.0,
+        "unidades_citaveis": 1.0,
+        "palavras_contexto_mediana": 910.0,
+        "R@600_palavras": 0.1589,
+        "R@1800_palavras": 0.1901
+      },
+      {
+        "segmentacao": "dispositivo",
+        "recuperador": "BGE-M3",
+        "unidades": 1734,
+        "R@6": 0.2422,
+        "P@6": 0.0833,
+        "MRR": 0.3125,
+        "R@6_artigo": 0.4661,
+        "dispositivos_por_unidade": 1.0,
+        "unidades_citaveis": 1.0,
+        "palavras_contexto_mediana": 355.0,
+        "R@600_palavras": 0.3359,
+        "R@1800_palavras": 0.5391
+      },
+      {
+        "segmentacao": "bloco 100",
+        "recuperador": "BM25",
+        "unidades": 657,
+        "R@6": 0.401,
+        "P@6": 0.1458,
+        "MRR": 0.4422,
+        "R@6_artigo": 0.6406,
+        "dispositivos_por_unidade": 3.1667,
+        "unidades_citaveis": 0.0781,
+        "palavras_contexto_mediana": 600.0,
+        "R@600_palavras": 0.401,
+        "R@1800_palavras": 0.5755
+      },
+      {
+        "segmentacao": "bloco 100",
+        "recuperador": "hash",
+        "unidades": 657,
+        "R@6": 0.099,
+        "P@6": 0.0312,
+        "MRR": 0.1472,
+        "R@6_artigo": 0.3958,
+        "dispositivos_por_unidade": 2.7135,
+        "unidades_citaveis": 0.1198,
+        "palavras_contexto_mediana": 600.0,
+        "R@600_palavras": 0.099,
+        "R@1800_palavras": 0.1667
+      },
+      {
+        "segmentacao": "bloco 100",
+        "recuperador": "spaCy",
+        "unidades": 657,
+        "R@6": 0.1719,
+        "P@6": 0.0469,
+        "MRR": 0.0862,
+        "R@6_artigo": 0.4193,
+        "dispositivos_por_unidade": 2.2396,
+        "unidades_citaveis": 0.1302,
+        "palavras_contexto_mediana": 600.0,
+        "R@600_palavras": 0.1719,
+        "R@1800_palavras": 0.25
+      },
+      {
+        "segmentacao": "bloco 100",
+        "recuperador": "BGE-M3",
+        "unidades": 657,
+        "R@6": 0.3047,
+        "P@6": 0.1094,
+        "MRR": 0.3419,
+        "R@6_artigo": 0.5052,
+        "dispositivos_por_unidade": 2.7969,
+        "unidades_citaveis": 0.1406,
+        "palavras_contexto_mediana": 600.0,
+        "R@600_palavras": 0.3047,
+        "R@1800_palavras": 0.487
+      },
+      {
+        "segmentacao": "bloco 300",
+        "recuperador": "BM25",
+        "unidades": 220,
+        "R@6": 0.5156,
+        "P@6": 0.2083,
+        "MRR": 0.6109,
+        "R@6_artigo": 0.7083,
+        "dispositivos_por_unidade": 8.9375,
+        "unidades_citaveis": 0.0312,
+        "palavras_contexto_mediana": 1800.0,
+        "R@600_palavras": 0.3958,
+        "R@1800_palavras": 0.5156
+      },
+      {
+        "segmentacao": "bloco 300",
+        "recuperador": "hash",
+        "unidades": 220,
+        "R@6": 0.2474,
+        "P@6": 0.0833,
+        "MRR": 0.238,
+        "R@6_artigo": 0.4245,
+        "dispositivos_por_unidade": 9.125,
+        "unidades_citaveis": 0.0104,
+        "palavras_contexto_mediana": 1800.0,
+        "R@600_palavras": 0.1094,
+        "R@1800_palavras": 0.2474
+      },
+      {
+        "segmentacao": "bloco 300",
+        "recuperador": "spaCy",
+        "unidades": 220,
+        "R@6": 0.2292,
+        "P@6": 0.0781,
+        "MRR": 0.2777,
+        "R@6_artigo": 0.474,
+        "dispositivos_por_unidade": 7.1458,
+        "unidades_citaveis": 0.0781,
+        "palavras_contexto_mediana": 1800.0,
+        "R@600_palavras": 0.1562,
+        "R@1800_palavras": 0.2292
+      },
+      {
+        "segmentacao": "bloco 300",
+        "recuperador": "BGE-M3",
+        "unidades": 220,
+        "R@6": 0.4193,
+        "P@6": 0.1458,
+        "MRR": 0.4813,
+        "R@6_artigo": 0.5807,
+        "dispositivos_por_unidade": 8.7083,
+        "unidades_citaveis": 0.0312,
+        "palavras_contexto_mediana": 1800.0,
+        "R@600_palavras": 0.2969,
+        "R@1800_palavras": 0.4193
+      }
+    ]
+  },
+  "api": {
+    "ingestao": [
+      {
+        "sigla": "L14133",
+        "dispositivos": 1249,
+        "segundos": 407.66
+      },
+      {
+        "sigla": "D10947",
+        "dispositivos": 75,
+        "segundos": 23.1
+      },
+      {
+        "sigla": "L13709",
+        "dispositivos": 410,
+        "segundos": 124.93
+      }
+    ],
+    "gerador": "bge:BAAI/bge-m3"
+  },
+  "e7": {
+    "casos": [
+      {
+        "id": "CT01",
+        "cenario": "Cenário principal (registro → exportação)",
+        "esperado": "201, 200, 200, 200, 200; .docx com hash conferido; auditoria íntegra",
+        "obtido": "201, 200, 200, 200, 200; hash conferido; cadeia íntegra (8 registros)",
+        "aprovado": true,
+        "evidencia": "ações: EDICAO, EXPORTACAO, GERACAO, REGISTRO_DEMANDA, VALIDACAO"
+      },
+      {
+        "id": "CT02",
+        "cenario": "A1 — demanda sem fundamento normativo",
+        "esperado": "422; nenhuma chamada ao LLM; GERACAO_BARRADA auditada",
+        "obtido": "422; chamadas ao LLM: 0; GERACAO_BARRADA registrada",
+        "aprovado": true,
+        "evidencia": "Não foram encontrados fundamentos normativos suficientes para esta demanda. Descreva a nec"
+      },
+      {
+        "id": "CT03",
+        "cenario": "A2 — serviço de LLM indisponível",
+        "esperado": "503; demanda preservada; FALHA_GERACAO auditada",
+        "obtido": "503; demanda preservada; FALHA_GERACAO registrada",
+        "aprovado": true,
+        "evidencia": "O serviço de geração está temporariamente indisponível. A demanda foi preservada e nenhum "
+      },
+      {
+        "id": "CT04",
+        "cenario": "Dados pessoais na descrição da demanda",
+        "esperado": "marcadores no texto gravado e no prompt enviado ao LLM",
+        "obtido": "removidos {'CPF': 1, 'EMAIL': 1, 'TELEFONE': 1, 'NOME': 1}; vazamentos no banco: 0; no prompt: 0",
+        "aprovado": true,
+        "evidencia": "NER ativo"
+      },
+      {
+        "id": "CT05",
+        "cenario": "Exportação sem validação (API e SQL direto)",
+        "esperado": "409 na API; INSERT direto rejeitado pelo gatilho RN01",
+        "obtido": "409; SQL direto rejeitado (RN01)",
+        "aprovado": true,
+        "evidencia": "gatilho trg_rn01_validacao"
+      },
+      {
+        "id": "CT06",
+        "cenario": "Aprovação com 7 de 8 campos confirmados (RF07)",
+        "esperado": "422",
+        "obtido": "422",
+        "aprovado": true,
+        "evidencia": "Confirme todos os campos do art. 8º antes de aprovar. Faltam: area_requisitante."
+      },
+      {
+        "id": "CT07",
+        "cenario": "Edição após a aprovação, seguida de exportação",
+        "esperado": "409 (a aprovação vale só para a versão aprovada)",
+        "obtido": "409",
+        "aprovado": true,
+        "evidencia": "RN01: versão exata"
+      },
+      {
+        "id": "CT08",
+        "cenario": "Outro demandante consulta DFD alheio",
+        "esperado": "404 (não revela existência)",
+        "obtido": "404",
+        "aprovado": true,
+        "evidencia": "RNF05"
+      },
+      {
+        "id": "CT09",
+        "cenario": "Demandante solicita geração sem RAG",
+        "esperado": "403 (restrito aos experimentos)",
+        "obtido": "403",
+        "aprovado": true,
+        "evidencia": "RN03"
+      },
+      {
+        "id": "CT10",
+        "cenario": "Adulteração direta da trilha de auditoria",
+        "esperado": "UPDATE rejeitado; adulteração com gatilho removido detectada pela cadeia de hashes",
+        "obtido": "UPDATE rejeitado; cadeia quebrada no registro 3",
+        "aprovado": true,
+        "evidencia": "RN05, RNF07"
+      }
+    ],
+    "aprovados": 10,
+    "total": 10
+  },
+  "e6": {
+    "resumo": [
+      {
+        "medida": "etapa_geracao_ms",
+        "n": 30,
+        "mediana_ms": 0.2,
+        "p95_ms": 0.2,
+        "max_ms": 0.3
+      },
+      {
+        "medida": "etapa_persistencia_ms",
+        "n": 30,
+        "mediana_ms": 6.1,
+        "p95_ms": 6.9,
+        "max_ms": 15.6
+      },
+      {
+        "medida": "etapa_recuperacao_ms",
+        "n": 30,
+        "mediana_ms": 579.5,
+        "p95_ms": 645.4,
+        "max_ms": 687.4
+      },
+      {
+        "medida": "etapa_total_ms",
+        "n": 30,
+        "mediana_ms": 637.8,
+        "p95_ms": 703.0,
+        "max_ms": 807.9
+      },
+      {
+        "medida": "etapa_verificacao_ms",
+        "n": 30,
+        "mediana_ms": 43.0,
+        "p95_ms": 80.1,
+        "max_ms": 112.8
+      },
+      {
+        "medida": "exportar_ms",
+        "n": 30,
+        "mediana_ms": 264.5,
+        "p95_ms": 292.4,
+        "max_ms": 314.1
+      },
+      {
+        "medida": "gerar_ms",
+        "n": 32,
+        "mediana_ms": 642.9,
+        "p95_ms": 710.2,
+        "max_ms": 815.7
+      },
+      {
+        "medida": "registrar_ms",
+        "n": 32,
+        "mediana_ms": 32.5,
+        "p95_ms": 40.0,
+        "max_ms": 51.2
+      },
+      {
+        "medida": "validar_ms",
+        "n": 30,
+        "mediana_ms": 9.7,
+        "p95_ms": 10.8,
+        "max_ms": 11.3
+      }
+    ],
+    "observacao": "provedor deterministico (echo): o tempo do LLM nao esta incluido"
+  },
+  "e8": {
+    "codigo_saida": 0,
+    "duracao_s": 28.5,
+    "por_arquivo": [
+      {
+        "arquivo": "test_anonimizador.py",
+        "grupo": "Minimização v0.3 (RN06)",
+        "testes": 17,
+        "falhas": 0,
+        "ignorados": 0
+      },
+      {
+        "arquivo": "test_avaliacao_e9.py",
+        "grupo": "test_avaliacao_e9.py",
+        "testes": 5,
+        "falhas": 0,
+        "ignorados": 0
+      },
+      {
+        "arquivo": "test_fluxo.py",
+        "grupo": "Fluxo pela API (UC01–UC11)",
+        "testes": 15,
+        "falhas": 0,
+        "ignorados": 0
+      },
+      {
+        "arquivo": "test_governanca.py",
+        "grupo": "Governança na camada de dados (RN01, RN05)",
+        "testes": 7,
+        "falhas": 0,
+        "ignorados": 0
+      },
+      {
+        "arquivo": "test_lexical.py",
+        "grupo": "Índice lexical e modos de recuperação (RF03)",
+        "testes": 10,
+        "falhas": 0,
+        "ignorados": 0
+      },
+      {
+        "arquivo": "test_nucleo.py",
+        "grupo": "Minimização e verificação (RN02, RN06)",
+        "testes": 17,
+        "falhas": 0,
+        "ignorados": 0
+      },
+      {
+        "arquivo": "test_provedores.py",
+        "grupo": "Provedores de modelo de linguagem (RNF08)",
+        "testes": 10,
+        "falhas": 0,
+        "ignorados": 0
+      },
+      {
+        "arquivo": "test_segmentador.py",
+        "grupo": "Segmentação normativa (F1)",
+        "testes": 17,
+        "falhas": 0,
+        "ignorados": 0
+      },
+      {
+        "arquivo": "test_verificacao.py",
+        "grupo": "Verificação com norma qualificada (RN02)",
+        "testes": 6,
+        "falhas": 0,
+        "ignorados": 0
+      }
+    ],
+    "total": 104,
+    "falhas": 0,
+    "ignorados": 0,
+    "cobertura_total": 85.2,
+    "cobertura_modulos": {
+      "app/__init__.py": 100.0,
+      "app/config.py": 93.9,
+      "app/core/__init__.py": 100.0,
+      "app/core/analise.py": 80.5,
+      "app/core/anonimizador.py": 91.7,
+      "app/core/auditoria.py": 100.0,
+      "app/core/conteudo.py": 91.7,
+      "app/core/embeddings.py": 65.4,
+      "app/core/indice.py": 64.6,
+      "app/core/lexical.py": 86.0,
+      "app/core/recuperacao.py": 93.5,
+      "app/core/segmentador.py": 98.5,
+      "app/core/verificacao.py": 98.2,
+      "app/database.py": 80.0,
+      "app/llm/__init__.py": 100.0,
+      "app/llm/base.py": 77.8,
+      "app/llm/factory.py": 88.9,
+      "app/llm/prompt.py": 100.0,
+      "app/llm/provedores.py": 63.7,
+      "app/main.py": 75.0,
+      "app/models.py": 100.0,
+      "app/routers/__init__.py": 100.0,
+      "app/routers/auth.py": 98.1,
+      "app/routers/demandas.py": 93.0,
+      "app/routers/dfd.py": 80.0,
+      "app/routers/indicadores.py": 100.0,
+      "app/routers/normas.py": 60.0,
+      "app/schemas.py": 98.7,
+      "app/security.py": 87.5,
+      "app/services/__init__.py": 100.0,
+      "app/services/exportador.py": 96.2,
+      "app/services/geracao.py": 96.9,
+      "app/services/ingestao.py": 72.7
+    },
+    "saida": ".................................................................. [ 69%]\n................................                                         [100%]\n=============================== tests coverage ================================\n______________ coverage: platform win32, python 3.13.14-final-0 _______________\n\nCoverage JSON written to file C:\\Users\\queir\\AppData\\Local\\Temp\\tmp4p1twasw\\cov.json\n"
+  },
+  "duracao_s": 2317.3
+}

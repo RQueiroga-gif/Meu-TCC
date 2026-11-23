@@ -1,17 +1,17 @@
-"""Indice vetorial com backend intercambiavel (RF03, RF12, RN03).
+"""Indice vetorial (RF03, RF12, RN03).
 
-Duas implementacoes atras do mesmo contrato:
+IndiceNumpy: busca exata por produto interno sobre vetores normalizados,
+persistida em um arquivo .npz. Com o corpus deste trabalho (1.734 dispositivos)
+a busca exata custa milissegundos e dispensa servidor, decisao de projeto
+registrada no capitulo de metodologia. O contrato `Indice` permanece, de modo que
+um banco vetorial dedicado pode ser acrescentado se o corpus crescer.
 
-  * IndiceNumpy — busca exata por produto interno sobre vetores normalizados,
-    persistida em um arquivo .npz. Com o corpus deste trabalho (entre dois e cinco
-    mil dispositivos) a busca exata custa milissegundos e dispensa servidor. E o
-    padrao, e a escolha esta registrada no capitulo como decisao de projeto.
+v0.4: o backend ChromaDB foi retirado. Nunca era exercitado pelos testes, nao
+acompanhava o indice lexical (a fusao exige o BM25 local) e respondia a um
+cenario de integracao (orquestrador n8n) que o projeto abandonou.
 
-  * IndiceChroma — ChromaDB auto-hospedado, para quando o corpus crescer ou o
-    orquestrador n8n precisar consultar o indice diretamente.
-
-O filtro de vigencia (RN03) e aplicado na propria consulta, nos dois backends:
-norma revogada nunca chega a fundamentar uma minuta.
+O filtro de vigencia (RN03) e aplicado na propria consulta: norma revogada nunca
+chega a fundamentar uma minuta.
 
 O indice numpy grava o identificador do gerador de embeddings que o construiu.
 Se o gerador mudar (por exemplo, ao instalar o sentence-transformers depois do
@@ -297,95 +297,11 @@ class IndiceNumpy:
         self.salvar()
 
 
-class IndiceChroma:
-    """ChromaDB auto-hospedado (mesmo contrato do IndiceNumpy)."""
-
-    COLECAO = "normas"
-
-    def __init__(self) -> None:
-        import chromadb   # import tardio: dependencia opcional
-
-        cliente = chromadb.HttpClient(host=config.CHROMA_HOST, port=config.CHROMA_PORTA)
-        self._colecao = cliente.get_or_create_collection(
-            self.COLECAO, configuration={"hnsw": {"space": "cosine"}}
-        )
-
-    def indexar(self, itens: list[dict[str, Any]]) -> int:
-        if not itens:
-            return 0
-        textos = [i["texto_indexado"] for i in itens]
-        self._colecao.upsert(
-            ids=[i["referencia_vetorial"] for i in itens],
-            documents=textos,
-            embeddings=obter_embedder().codificar(textos).tolist(),
-            metadatas=[
-                {"referencia": i["referencia"], "vigente": bool(i.get("vigente", True))}
-                for i in itens
-            ],
-        )
-        return len(itens)
-
-    def buscar(self, consulta: str, k: int, apenas_vigentes: bool = True) -> list[Ocorrencia]:
-        resposta = self._colecao.query(
-            query_embeddings=obter_embedder().codificar([consulta]).tolist(),
-            n_results=max(k, 1),
-            where={"vigente": True} if apenas_vigentes else None,
-            include=["documents", "metadatas", "distances"],
-        )
-        if not resposta["ids"] or not resposta["ids"][0]:
-            return []
-        return [
-            Ocorrencia(
-                referencia_vetorial=ident,
-                referencia=meta.get("referencia", ""),
-                texto=documento,
-                similaridade=1.0 - float(distancia),
-                metadados=dict(meta),
-            )
-            for ident, documento, meta, distancia in zip(
-                resposta["ids"][0],
-                resposta["documents"][0],
-                resposta["metadatas"][0],
-                resposta["distances"][0],
-                strict=True,
-            )
-        ]
-
-    def remover(self, referencias: list[str]) -> int:
-        if referencias:
-            self._colecao.delete(ids=referencias)
-        return len(referencias)
-
-    def atualizar_vigencia(self, referencias: list[str], vigente: bool) -> int:
-        if not referencias:
-            return 0
-        atuais = self._colecao.get(ids=referencias, include=["metadatas"])
-        self._colecao.update(
-            ids=atuais["ids"],
-            metadatas=[{**dict(m or {}), "vigente": vigente} for m in atuais["metadatas"]],
-        )
-        return len(atuais["ids"])
-
-    def faltantes(self, referencias: list[str]) -> list[str]:
-        if not referencias:
-            return []
-        presentes = set(self._colecao.get(ids=referencias, include=[])["ids"])
-        return [r for r in referencias if r not in presentes]
-
-    def total(self) -> int:
-        return int(self._colecao.count())
-
-    def limpar(self) -> None:
-        ids = self._colecao.get(include=[])["ids"]
-        if ids:
-            self._colecao.delete(ids=ids)
-
-
 _indice: Indice | None = None
 
 
 def obter_indice() -> Indice:
-    """Instancia unica do indice: vetorial (INDICE_BACKEND) + lexical (BM25).
+    """Instancia unica do indice: vetorial (numpy) + lexical (BM25).
 
     O indice composto decide, pelo RECUPERACAO_MODO, qual dos dois responde a
     busca; ingestao, vigencia e reindexacao alimentam ambos.
@@ -394,17 +310,9 @@ def obter_indice() -> Indice:
     if _indice is None:
         from .lexical import IndiceComposto, IndiceLexical
 
-        denso: Indice
-        if config.INDICE_BACKEND == "chroma":
-            try:
-                denso = IndiceChroma()
-            except Exception as erro:  # noqa: BLE001
-                log.warning("ChromaDB indisponivel (%s); usando indice local", erro)
-                denso = IndiceNumpy()
-        else:
-            denso = IndiceNumpy()
+        denso = IndiceNumpy()
         lexical = IndiceLexical()
-        if lexical.total() == 0 and isinstance(denso, IndiceNumpy) and denso.total():
+        if lexical.total() == 0 and denso.total():
             # Base indexada antes da versao 0.3: o texto ja esta no indice
             # vetorial, entao o lexical e reconstruido sem tocar no banco.
             lexical.indexar(denso.itens())
@@ -422,7 +330,6 @@ def redefinir_indice(instancia: Indice | None = None) -> None:
 __all__ = [
     "Indice",
     "IndiceNumpy",
-    "IndiceChroma",
     "IndiceIncompativel",
     "Ocorrencia",
     "obter_indice",

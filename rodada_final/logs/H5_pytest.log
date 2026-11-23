@@ -1,0 +1,44 @@
+........................................................................ [ 49%]
+........................................................................ [ 98%]
+..                                                                       [100%]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.13.14-final-0 _______________
+
+Name                         Stmts   Miss  Cover
+------------------------------------------------
+app\__init__.py                  0      0   100%
+app\config.py                   92      6    93%
+app\core\__init__.py             0      0   100%
+app\core\analise.py             82     16    80%
+app\core\anonimizador.py       133     11    92%
+app\core\auditoria.py           40      0   100%
+app\core\conteudo.py            60      5    92%
+app\core\embeddings.py         104     36    65%
+app\core\indice.py             187     43    77%
+app\core\lexical.py            157     22    86%
+app\core\recuperacao.py         46      3    93%
+app\core\segmentador.py        136      2    99%
+app\core\verificacao.py        112      2    98%
+app\database.py                100     20    80%
+app\llm\__init__.py              0      0   100%
+app\llm\base.py                 36      8    78%
+app\llm\factory.py              28      3    89%
+app\llm\prompt.py               19      0   100%
+app\llm\provedores.py          213     31    85%
+app\main.py                     48     12    75%
+app\models.py                  130      0   100%
+app\routers\__init__.py          0      0   100%
+app\routers\auth.py             54      1    98%
+app\routers\demandas.py         71      5    93%
+app\routers\dfd.py             188     35    81%
+app\routers\indicadores.py      33      0   100%
+app\routers\normas.py           65     26    60%
+app\schemas.py                 170      2    99%
+app\security.py                 80     10    88%
+app\services\__init__.py         0      0   100%
+app\services\correcao.py        97      4    96%
+app\services\exportador.py     185      7    96%
+app\services\geracao.py        129      4    97%
+app\services\ingestao.py        99     27    73%
+------------------------------------------------
+TOTAL                         2894    341    88%

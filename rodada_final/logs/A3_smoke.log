@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\rodada_final\smoke_provedores.py", line 3, in <module>
+    from app.config import config
+ModuleNotFoundError: No module named 'app'

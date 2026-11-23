@@ -241,12 +241,13 @@ def painel_analise(analise: dict[str, Any], *, compacto: bool = False) -> None:
         return
     resumo = analise.get("resumo", {})
     indicadores_ = analise.get("indicadores", {})
-    colunas = st.columns(4)
-    colunas[0].metric("Prontidão", f"{analise.get('prontidao', 0):.0%}")
+    # v0.4: grade 2 x 2 (em quatro colunas o painel lateral truncava os valores)
+    linha_1, linha_2 = st.columns(2), st.columns(2)
+    linha_1[0].metric("Prontidão", f"{analise.get('prontidao', 0):.0%}")
     taxa = indicadores_.get("taxa_ancoragem")
-    colunas[1].metric("Ancoragem", f"{taxa:.0%}" if taxa is not None else "—")
-    colunas[2].metric("Alertas", resumo.get("alerta", 0))
-    colunas[3].metric("Pendências", resumo.get("pendente", 0))
+    linha_1[1].metric("Ancoragem", f"{taxa:.0%}" if taxa is not None else "—")
+    linha_2[0].metric("Alertas", resumo.get("alerta", 0))
+    linha_2[1].metric("Pendências", resumo.get("pendente", 0))
     if compacto:
         return
     for item in analise.get("checklist", []):

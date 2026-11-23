@@ -1,0 +1,11 @@
+# v0.4: cor de destaque azul institucional. O vermelho padrao do Streamlit
+# aparecia nas barras de progresso e de similaridade e sugeria erro onde nao
+# havia (achado da avaliacao heuristica, heuristica 4: consistencia e padroes).
+[theme]
+primaryColor = "#1f4e79"
+
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false

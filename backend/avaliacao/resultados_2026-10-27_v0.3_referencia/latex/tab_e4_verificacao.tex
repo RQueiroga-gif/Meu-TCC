@@ -1,0 +1,24 @@
+% Gerado por avaliacao/relatorio.py — nao editar a mao; rode novamente a avaliacao.
+\begin{table}[htbp]
+\caption{Detecção de falhas injetadas pela verificação automática}\label{tab:verificacao}
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrr}
+\toprule
+Tipo & Falha injetada & Casos & v0.2.0 & v0.3 \\
+\midrule
+C0 & Controle (sem falha) & 32 & 0\% & 0\% \\
+F1 & Fundamento inexistente (T9) & 32 & 100\% & 100\% \\
+F2 & Artigo fora do contexto & 32 & 100\% & 100\% \\
+F3 & Artigo de outra norma, mesmo número & 31 & 0\% & 100\% \\
+F4 & Norma revogada citada (Lei 8.666/1993) & 32 & 0\% & 100\% \\
+F5 & Artigos no plural fora do contexto & 32 & 0\% & 100\% \\
+F6 & Campo redigido sem fundamento & 32 & 100\% & 100\% \\
+F7 & Valor extraído inventado & 32 & 100\% & 100\% \\
+F8 & Evidência parafraseada & 6 & 100\% & 100\% \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}{\small \textbf{Fonte:} Elaborado pelo autor (2026), a partir de \texttt{avaliacao/resultados/resumo.json}.}\par
+{\small \textbf{Nota:} no controle (C0), o valor é a taxa de falso positivo; nos demais, a taxa de detecção.}\end{minipage}
+\end{table}

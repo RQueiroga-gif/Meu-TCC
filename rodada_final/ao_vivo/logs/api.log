@@ -1,0 +1,173 @@
+
+===== 2026-11-23 07:15:43 -m uvicorn app.main:app --host 127.0.0.1 --port 8011
+INFO:     Started server process [7656]
+INFO:     Waiting for application startup.
+07:15:46 INFO     app.database: Esquema aplicado (sqlite): schema_sqlite.sql
+07:15:46 INFO     app.core.indice: Indice carregado: 1734 trechos (bge:BAAI/bge-m3)
+07:15:46 INFO     dfd: Banco: sqlite | Índice: automatico (1734 trechos) | Provedor de LLM: groq | Revisão de texto: gemini
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+07:15:47 INFO     app.llm.factory: Provedor de LLM ativo: groq
+07:15:58 INFO     app.core.embeddings: Carregando modelo de embeddings: BAAI/bge-m3
+07:15:58 INFO     app.core.embeddings: Carregando modelo de embeddings: BAAI/bge-m3
+07:15:58 INFO     sentence_transformers.base.model: No device provided, using cpu
+07:15:58 INFO     sentence_transformers.base.model: No device provided, using cpu
+07:15:58 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:15:58 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:15:58 INFO     sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-m3.
+07:15:58 INFO     sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-m3.
+07:15:59 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+07:15:59 WARNING  huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+07:15:59 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+07:15:59 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:15:59 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:15:59 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/main "HTTP/1.1 200 OK"
+07:15:59 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/main "HTTP/1.1 200 OK"
+07:15:59 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/discussions?p=0 "HTTP/1.1 200 OK"
+07:15:59 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/discussions?p=0 "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s][ALoading weights: 100%|██████████| 391/391 [00:00<00:00, 3949.83it/s]
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 5906.85it/s]
+07:15:59 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/refs%2Fpr%2F130 "HTTP/1.1 200 OK"
+07:15:59 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/refs%2Fpr%2F130 "HTTP/1.1 200 OK"
+07:15:59 INFO     app.core.embeddings: Carregando modelo de embeddings: BAAI/bge-m3
+07:15:59 INFO     sentence_transformers.base.model: No device provided, using cpu
+07:16:00 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+07:16:00 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+07:16:00 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+07:16:00 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+07:16:00 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:16:00 INFO     sentence_transformers.base.model: Loading SentenceTransformer model from BAAI/bge-m3.
+07:16:00 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors "HTTP/1.1 302 Found"
+07:16:00 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors "HTTP/1.1 302 Found"
+07:16:00 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+07:16:00 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+07:16:00 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+07:16:01 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:16:05 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/main "HTTP/1.1 200 OK"
+07:16:05 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:16:05 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/discussions?p=0 "HTTP/1.1 200 OK"
+07:16:05 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]07:16:05 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/5617a9f61b028005a4858fdac845db406aefb181/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+07:16:05 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/commits/refs%2Fpr%2F130 "HTTP/1.1 200 OK"
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 7727.67it/s]
+C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\backend\app\core\embeddings.py:68: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dimensao = int(self._modelo.get_sentence_embedding_dimension())
+07:16:05 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/5617a9f61b028005a4858fdac845db406aefb181/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+07:16:06 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+07:16:06 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+07:16:06 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/refs%2Fpr%2F130/model.safetensors "HTTP/1.1 302 Found"
+07:16:06 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:62167 - "GET /saude HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62169 - "GET /saude HTTP/1.1" 200 OK
+07:16:09 INFO     httpx2: HTTP Request: GET https://huggingface.co/api/models/BAAI/bge-m3 "HTTP/1.1 200 OK"
+07:16:09 INFO     httpx2: HTTP Request: HEAD https://huggingface.co/BAAI/bge-m3/resolve/5617a9f61b028005a4858fdac845db406aefb181/2_Normalize/config.json "HTTP/1.1 404 Not Found"
+C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\backend\app\core\embeddings.py:68: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  self.dimensao = int(self._modelo.get_sentence_embedding_dimension())
+INFO:     127.0.0.1:51351 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51353 - "GET /demandas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51355 - "GET /demandas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51359 - "POST /demandas HTTP/1.1" 201 Created
+07:16:26 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+07:16:27 INFO     httpx: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+07:16:48 INFO     httpx: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+07:16:48 INFO     app.services.geracao: DFD 1: versao 1 gravada (geracao)
+INFO:     127.0.0.1:51362 - "POST /dfd/1/gerar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51383 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51396 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+07:16:58 INFO     httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 503 Service Unavailable"
+07:17:10 INFO     httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:51397 - "POST /dfd/1/corrigir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51412 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51416 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51417 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51418 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51419 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51420 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51425 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51426 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51428 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51429 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51430 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51431 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51433 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51434 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51435 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51436 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51438 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51439 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51441 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51442 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51443 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51444 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51446 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51447 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51449 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51450 - "POST /dfd/1/validar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51451 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51453 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51457 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51458 - "GET /demandas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51459 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51465 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51466 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+07:17:33 INFO     app.services.geracao: DFD 1: versao 2 gravada (edicao)
+INFO:     127.0.0.1:51467 - "POST /dfd/1/revisar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51469 - "GET /dfd/1/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51470 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51471 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51473 - "POST /dfd/1/exportar HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:51474 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51475 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51477 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51478 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51479 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51480 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51482 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51483 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51485 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51486 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51489 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51490 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51492 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51493 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51494 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51495 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51497 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51498 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51500 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51501 - "POST /dfd/1/validar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51502 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51503 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51505 - "GET /dfd/1 HTTP/1.1" 200 OK
+07:17:50 INFO     app.services.exportador: DFD exportado: C:\Users\queir\Documents\Faculdade Ciencias da Computação\TCC\TCC2\dfd-assistido_sistema_v0.4.1_2026-11-22\dfd-assistido\rodada_final\ao_vivo\dados\saida\dfd_0001_v2_exp1.docx
+INFO:     127.0.0.1:51506 - "POST /dfd/1/exportar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51508 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51509 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51511 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51512 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51513 - "GET /dfd/1/exportacoes/1/arquivo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51514 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51515 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51519 - "GET /dfd/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51520 - "GET /dfd/1/exportacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51521 - "GET /demandas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51528 - "POST /demandas HTTP/1.1" 201 Created
+07:17:57 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+07:17:58 INFO     httpx: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+07:18:25 INFO     httpx: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+07:18:25 INFO     app.services.geracao: DFD 2: versao 1 gravada (geracao)
+INFO:     127.0.0.1:51529 - "POST /dfd/2/gerar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51546 - "GET /dfd/2/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51549 - "GET /demandas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51551 - "POST /demandas HTTP/1.1" 201 Created
+07:18:30 INFO     app.core.recuperacao: Recuperacao (hibrido): 6 candidatos, 6 aceitos pelo portao (limiar 0.52)
+07:18:31 INFO     httpx: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+07:18:43 INFO     httpx: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+07:18:43 INFO     app.services.geracao: DFD 3: versao 1 gravada (geracao)
+INFO:     127.0.0.1:51552 - "POST /dfd/3/gerar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59090 - "GET /dfd/3/versoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59092 - "GET /demandas HTTP/1.1" 200 OK
+07:18:48 INFO     app.routers.demandas: Demanda de demandante@orgao.gov.br: 4 identificador(es) removido(s) antes da gravação
+INFO:     127.0.0.1:59094 - "POST /demandas HTTP/1.1" 201 Created

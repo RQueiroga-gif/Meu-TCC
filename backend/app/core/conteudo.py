@@ -5,7 +5,7 @@ linguagem ou da edicao do agente publico:
 
   * o formato e garantido: os sete campos existem, os redigidos tem "texto" e
     "fundamentos" (lista de marcadores), os extraidos tem "valor" e "evidencia";
-    modelos pequenos (Ollama) frequentemente devolvem listas como texto, campos
+    modelos menores frequentemente devolvem listas como texto, campos
     ausentes ou chaves extras;
   * a minimizacao de dados pessoais (RN06) e reaplicada: o agente pode digitar
     um CPF ou e-mail durante a revisao;

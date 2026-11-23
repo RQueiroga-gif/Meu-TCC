@@ -20,6 +20,3 @@ backend/db/*.json.gz
 
 # cache de vetores da avaliacao (regeravel)
 backend/avaliacao/cache/
-.coverage
-coverage.json
-backend/avaliacao/resultados_anteriores/

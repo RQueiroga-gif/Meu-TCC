@@ -76,6 +76,22 @@ def ic_bootstrap(
     )
 
 
+def ic_wilson(acertos: int, n: int, z: float = 1.959964) -> tuple[float, float]:
+    """Intervalo de confianca de Wilson para uma proporcao (WILSON, 1927).
+
+    Preferivel ao intervalo normal (Wald) em amostras pequenas e em proporcoes
+    proximas de 0 ou de 1, casos do portao (10 a 50 pedidos fora do dominio) e da
+    minimizacao (17 itens no conjunto retido), em que o Wald sai do intervalo [0, 1].
+    """
+    if n <= 0:
+        return (float("nan"), float("nan"))
+    p = acertos / n
+    denominador = 1 + z * z / n
+    centro = (p + z * z / (2 * n)) / denominador
+    meia = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / denominador
+    return (max(0.0, centro - meia), min(1.0, centro + meia))
+
+
 def auc(positivos: Sequence[float], negativos: Sequence[float]) -> float:
     """Area sob a curva ROC pela estatistica de Mann-Whitney (FAWCETT, 2006)."""
     if not positivos or not negativos:
